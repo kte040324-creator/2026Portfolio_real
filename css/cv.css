@@ -1,0 +1,37 @@
+/* ============================================
+   CV PAGE — Portfolio 2026
+   ============================================ */
+
+.cv-page {
+  width: 100%;
+  min-height: 2005px;
+  padding-top: 60px;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.cv__tab-label {}
+
+.cv__section {
+  width: 100%;
+  position: relative;
+}
+
+.cv__section--skills {}
+
+.cv__section--experiences {}
+
+.cv__section-label {}
+
+.cv__section-content {}
+
+.cv__entries {
+  display: flex;
+  flex-direction: column;
+}
+
+.cv__entry {}
+
+.cv__entry-date {}
+
+.cv__entry-title {}

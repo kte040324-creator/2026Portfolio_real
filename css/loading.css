@@ -1,0 +1,20 @@
+/* ============================================
+   LOADING SCREEN — Portfolio 2026
+   ============================================ */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-loading);
+}
+
+.loading-screen__logo {
+  width: 1186px;
+  height: 358px;
+}

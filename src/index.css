@@ -1,0 +1,55 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'FFFAcidGrotesk';
+  src: url('/fonts/FFFAcidGroteskVariableTRIALVF.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f8f8f8;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* 랜딩 헤더 — Figma 이메일 / @2026 (SVG 늘리기 금지 → 텍스트) */
+.landing-header-email {
+  position: absolute;
+  left: calc(48.28 / 1920 * 100%);
+  top: 28.38px;
+  font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 520;
+  letter-spacing: 0.01em;
+  color: #ec5cf0;
+  line-height: 1.35;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.landing-header-email:hover {
+  opacity: 0.85;
+}
+
+.landing-header-year {
+  position: absolute;
+  right: calc(49.904 / 1920 * 100%);
+  top: 39.66px;
+  font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 520;
+  letter-spacing: 0.02em;
+  color: #ec5cf0;
+  line-height: 1;
+  white-space: nowrap;
+}

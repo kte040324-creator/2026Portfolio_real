@@ -1,0 +1,122 @@
+/* ============================================
+   BASE STYLES — Portfolio 2026
+   Taeeun Clara Kim
+   ============================================ */
+
+@font-face {
+  font-family: 'FFFAcidGrotesk';
+  src: url('../fonts/TRIAL TTF (Variable format) copy/FFFAcidGroteskVariableTRIALVF.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   CSS CUSTOM PROPERTIES
+   ============================================ */
+
+:root {
+  /* Colors */
+  --color-bg: #f8f8f8;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-accent: #ec5cf0;
+
+  /* Typography */
+  --font-primary: 'FFFAcidGrotesk', sans-serif;
+
+  /* Font variation axes */
+  --font-weight-light: 70;
+  --font-weight-medium: 170;
+  --font-weight-bold: 220;
+  --font-ital-default: 30;
+  --font-ital-italic: 300;
+
+  /* Layout */
+  --viewport-width: 1920px;
+  --viewport-height: 1080px;
+  --gutter: 48px;
+
+  /* Z-index layers */
+  --z-loading: 1000;
+  --z-nav: 100;
+  --z-content: 1;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: #f8f8f8;
+  color: var(--color-black);
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mix-blend-difference {
+  mix-blend-mode: difference;
+}
+
+/* 서브페이지용 기본 헤더 (랜딩은 landing.css 전용) */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 48px;
+  z-index: var(--z-nav);
+  background: transparent;
+}

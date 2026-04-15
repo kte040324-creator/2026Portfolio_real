@@ -1,0 +1,81 @@
+/* ============================================
+   PROJECT DETAIL PAGE (shared) — Portfolio 2026
+   ============================================ */
+
+.project-page {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 60px;
+}
+
+/* ---- Hero ---- */
+
+.project__hero {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.project__hero-media {}
+
+.project__hero-title {}
+
+/* ---- Overview ---- */
+
+.project__overview {
+  width: 100%;
+  padding: var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+}
+
+.project__overview-description {}
+
+.project__overview-meta {}
+
+.project__overview-meta-item {}
+
+/* ---- Content blocks ---- */
+
+.project__content {
+  width: 100%;
+  padding: var(--gutter);
+}
+
+.project__block {}
+
+.project__block--full {}
+
+.project__block--half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+}
+
+.project__media {
+  width: 100%;
+  overflow: hidden;
+}
+
+.project__media img,
+.project__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- Nav between projects ---- */
+
+.project__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--gutter);
+  border-top: 1px solid var(--color-black);
+}
+
+.project__nav-prev {}
+
+.project__nav-next {}

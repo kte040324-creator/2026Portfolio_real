@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taeeun Clara Kim</title>
+    <style>
+      #vite-boot-notice {
+        font-family: system-ui, sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        padding: 14px 18px;
+        margin: 0;
+        background: #fff3cd;
+        color: #664d03;
+        border-bottom: 1px solid #e6d69a;
+      }
+      #vite-boot-notice code {
+        background: #f5e6b3;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      #vite-boot-notice a {
+        color: #084298;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="vite-boot-notice">
+      이 화면이 하얗게만 보이면 <strong>정적 서버(python http.server 등)로 이 파일을 연 상태</strong>입니다.
+      터미널에서 프로젝트 폴더로 이동한 뒤 <code>npm install</code> → <code>npm run dev</code> 를 실행하고,
+      나오는 주소(보통 <code>http://localhost:5173</code>)로 다시 열어 주세요.
+      빌드 후에는 <code>npm run serve:dist</code> 로 <code>dist</code> 폴더를 띄운 뒤 같은 주소로 열면 됩니다.
+      정적 이미지만 보려면 저장소의 <code>public/preview.html</code>을 브라우저로 열거나, 빌드 결과의 <code>preview.html</code>을 사용하세요.
+    </p>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

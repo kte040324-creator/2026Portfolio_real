@@ -14,14 +14,66 @@
   /* overflow-x는 html에서 처리 — mix-blend-mode 백드롭이 잘리며 무효처럼 보이는 경우 방지 */
 }
 
+/* 스냅 트랙: 모바일에선 숨김(높이는 main-stage 플로우가 담당) */
+.main-scroll-snap-track {
+  display: none;
+}
+
 .main-stage {
   position: relative;
   /* z-index 제거 — stacking context 생성을 막아야 히어로(fixed)와 같은 컨텍스트에서 difference 합성됨 */
   width: 100%;
   max-width: 1920px;
-  /* 푸터 top 3172 + CONTACT 한 줄(~152) + 아래 여백 40px */
-  min-height: calc(3172px + 152px + 40px);
   margin: 0 auto;
+}
+
+/* 데스크톱: 트랙으로 문서 높이(3364px) + html scroll-snap; 레이어는 absolute로 카드·텍스트만 겹침 */
+@media (min-width: 1280px) {
+  html {
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
+  }
+
+  .main-scroll-snap-track {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    pointer-events: none;
+    /* z-index 두지 않음 — 스택킹 컨텍스트가 생기면 difference가 히어로 백드롭과 합성 안 됨 */
+  }
+
+  .main-scroll-snap {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+
+  /* IAC 카드 아래 ~ Personal 라벨 위: 히어로 SVG가 비치는 구간에서 한 번 멈춤 */
+  .main-scroll-snap--bridge {
+    scroll-snap-stop: always;
+  }
+
+  /* 트랙 위에 main-stage만 겹침(래퍼 없음). z-index 주지 않음 → difference가 히어로 SVG 백드롭과 합성 */
+  .main-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    min-height: 100%;
+    height: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
 }
 
 /* Figma 76:841 — 히어로: 뷰포트 상단 고정(스크롤 시에도 같은 자리). 모바일은 아래 미디어쿼리에서 해제 */
@@ -188,6 +240,7 @@
   .main-section-label {
     color: #fff;
     mix-blend-mode: difference;
+    isolation: auto;
   }
 }
 
@@ -224,6 +277,15 @@
   height: 441px;
   overflow: hidden;
   z-index: 2;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.main-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  z-index: 3;
 }
 
 .main-card--c1 {
@@ -284,6 +346,12 @@
 .main-personal-row-2 .main-card--c2,
 .main-personal-row-2 .main-card--c3 {
   transform: none;
+}
+
+.main-iac-row .main-card:hover,
+.main-personal-row-1 .main-card:hover,
+.main-personal-row-2 .main-card:hover {
+  transform: scale(1.03);
 }
 
 .main-card__fill {
@@ -637,6 +705,15 @@
 
 /* 태블릿·모바일: 절대 좌표 해제, 패딩·플루이드 타이포 */
 @media (max-width: 1279px) {
+  html {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+
+  .main-scroll-snap-track {
+    display: none;
+  }
+
   .main-stage {
     min-height: 0;
     padding: 0 clamp(16px, 4vw, 32px);

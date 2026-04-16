@@ -1,4 +1,5 @@
 import { LandingHeader } from '../components/LandingHeader';
+import { MainScrollSnapTrack } from '../components/MainScrollSnapTrack';
 import '../styles/main.css';
 
 /** Figma-exported assets for frame "main" (node 43:134) */
@@ -19,8 +20,10 @@ export function Main() {
         />
       </div>
 
+      <MainScrollSnapTrack />
+
       <main id="main" className="main-stage">
-        {/* Figma 43:286 — mix-blend-mode: difference. 히어로와 같은 root stacking context에서 합성 */}
+        {/* Figma 43:286 — mix-blend-mode: difference. 히어로(fixed)와 같은 root에서 합성 — main-page 직속, 래퍼 없음 */}
         <div className="main-intro" data-node-id="43:286">
           <p className="main-intro__line">Designing the Interaction Between Humans and Systems</p>
           <p className="main-intro__spacer" aria-hidden="true">&nbsp;</p>

@@ -1,0 +1,445 @@
+/* Figma 171:2354 — sooin, 1920 × 11736 px, scale-root */
+
+.sooin-scale-root {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  background: #7f7f79;
+  padding-bottom: calc(11736 / 1920 * 100%);
+}
+
+.sooin-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 11736px;
+  transform-origin: top left;
+  transform: scale(var(--sooin-scale, 1));
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #fff;
+  overflow: hidden;
+  --sooin-sub: #e4e5da;
+  background: linear-gradient(187.941deg, rgb(127, 127, 121) 0.10807%, rgb(101, 103, 80) 105.08%);
+}
+
+.sooin-abs {
+  position: absolute;
+}
+
+/* 171:2355 — subject, centered, FFF Acid Regular 16 #eaeaea */
+.sooin-subject-line {
+  left: 50%;
+  top: 32px;
+  transform: translateX(-50%);
+  width: 598px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: 'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: #eaeaea;
+  font-variation-settings: 'wght' 130, 'ital' 30;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.sooin-section-h {
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+  color: #fff;
+  margin: 0;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.sooin-text-20 {
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+  color: #fff;
+  margin: 0;
+  z-index: 5;
+}
+
+.sooin-text-20--sub {
+  color: var(--sooin-sub);
+}
+
+.sooin-text-15 {
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.165px;
+  color: var(--sooin-sub);
+  margin: 0;
+}
+
+.sooin-label-20 {
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--sooin-sub);
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ── Hero 172:2359 ───────────────────────────────────────── */
+.sooin-hero {
+  left: 0;
+  top: 78px;
+  width: 1920px;
+  height: 1083px;
+  z-index: 4;
+}
+.sooin-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* ── Overview 176:3789 / 1285 ────────────────────────────── */
+.sooin-overview-h {
+  left: 69px;
+  top: 1219px;
+}
+.sooin-overview-line {
+  left: 69px;
+  top: 1285px;
+  width: 319px;
+  height: 0;
+  border: 0;
+  border-top: 1px solid #fff;
+  margin: 0;
+  padding: 0;
+  z-index: 5;
+}
+.sooin-overview-p1 {
+  left: 69px;
+  top: 1335px;
+  width: 331px;
+}
+.sooin-overview-p1 p {
+  margin: 0;
+}
+.sooin-overview-p2 {
+  left: 69px;
+  top: 1677px;
+  width: 331px;
+  white-space: pre-wrap;
+}
+.sooin-overview-p2 p {
+  margin: 0;
+}
+.sooin-overview-p2 .sooin-text-20--sub {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.sooin-overview-img-main {
+  left: 450px;
+  top: 1285px;
+  width: 937px;
+  height: 596px;
+  border: 0.5px solid var(--sooin-sub);
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 4;
+}
+.sooin-overview-img-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sooin-overview-img-side {
+  left: 1419px;
+  top: 1286px;
+  width: 423px;
+  height: 595px;
+  border: 0.5px solid var(--sooin-sub);
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 4;
+}
+.sooin-overview-img-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Design Process heading 176:3793 ─────────────────────── */
+.sooin-dp-h {
+  left: 69px;
+  top: 2228px;
+}
+
+/* ── Existing resources / MoodBoard labels ───────────────── */
+.sooin-label-existing {
+  left: 234px;
+  top: 2379px;
+}
+.sooin-label-mood {
+  left: 777px;
+  top: 2379px;
+}
+
+/* Figma 191:5267 — Existing Resources 메인 컷 */
+.sooin-dp-group9 {
+  left: 236px;
+  top: 2426px;
+  width: 346px;
+  height: 431px;
+  overflow: hidden;
+  z-index: 4;
+}
+.sooin-dp-group9 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Figma 191:5266 — MoodBoard 패널 */
+.sooin-dp-mood {
+  left: 777px;
+  top: 2427px;
+  width: 938px;
+  height: 821px;
+  overflow: hidden;
+  z-index: 4;
+}
+.sooin-dp-mood img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 172:2382 image 13 — 투명 PNG(手印)는 contain + 약한 배경으로 대비 확보 */
+.sooin-ex-img {
+  left: 234px;
+  top: 2872.11px;
+  width: 348px;
+  height: 376px;
+  overflow: hidden;
+  z-index: 8;
+  background: #fff;
+  box-sizing: border-box;
+}
+.sooin-ex-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+}
+
+/* Screenshots 172:2408 / 172:2407 */
+.sooin-shot-left {
+  left: 72px;
+  top: 3498px;
+  width: 745px;
+  height: 489px;
+  z-index: 4;
+}
+.sooin-shot-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 172:2407 process2 — Figma x=864 y=3498 965×489, 이미지 128.05% / top -8.03% */
+.sooin-shot-right {
+  left: 864px;
+  top: 3498px;
+  width: 965px;
+  height: 489px;
+  overflow: hidden;
+  z-index: 4;
+}
+.sooin-shot-right-inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.sooin-shot-right-inner img {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 128.05%;
+  top: -8.03%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+}
+
+/* Figma 191:5268 — Group 1410167660: 세로 스크롤 + 드래그로 가로 이동 (JS translateX) */
+.sooin-process-strip-viewport {
+  left: 0;
+  top: 4119px;
+  width: 1920px;
+  height: 978px;
+  overflow: hidden;
+  z-index: 6;
+  padding-left: 72px;
+  box-sizing: border-box;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sooin-process-strip-viewport--dragging {
+  cursor: grabbing;
+}
+
+.sooin-process-strip-slide {
+  display: block;
+  width: max-content;
+  height: 978px;
+  will-change: transform;
+}
+
+.sooin-process-strip-slide img {
+  height: 978px;
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sooin-process-strip-slide {
+    will-change: auto;
+  }
+}
+
+/* ── Final delivery 177:3812 / 177:3815 ──────────────────── */
+.sooin-final-h {
+  left: 69px;
+  top: 5424px;
+}
+
+.sooin-final-hero {
+  left: 50%;
+  top: 5508px;
+  width: 1920px;
+  height: 1061px;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+.sooin-final-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Final poster 172:2417 — 02 A4 Poster Mockup On Concrete 1 (IMG_8591 제거, 단일 블록) */
+.sooin-poster {
+  left: 841px;
+  top: 6620px;
+  width: 1026px;
+  height: 684px;
+  z-index: 4;
+  overflow: hidden;
+}
+.sooin-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.sooin-web-label {
+  left: 49px;
+  top: 7360px;
+  z-index: 5;
+}
+
+/* Video placeholder 179:3868 */
+/* 179:3868 insertvideo — Figma #d9d9d9 */
+.sooin-video-slot {
+  left: -1px;
+  top: 7418px;
+  width: 1920px;
+  height: 1080px;
+  background: #d9d9d9;
+  z-index: 4;
+}
+.sooin-video-slot video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+
+/* Tall image 172:3756 */
+.sooin-tall {
+  left: 433px;
+  top: 8580px;
+  width: 1055px;
+  height: 2986px;
+  z-index: 4;
+}
+.sooin-tall img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Footer meta 177:3857 / 177:3856 */
+.sooin-meta-tools {
+  left: calc(50% - 910px);
+  top: 11635px;
+  width: 472px;
+  z-index: 5;
+}
+
+.sooin-meta-exhibit {
+  left: calc(50% + 440px);
+  top: 11614px;
+  width: 471px;
+  z-index: 5;
+  text-align: right;
+}
+
+/* Bottom logo 183:4141 */
+.sooin-bottom-logo {
+  left: calc(50% - 0.5px);
+  bottom: 21px;
+  width: 295px;
+  height: 137px;
+  transform: translateX(-50%);
+  z-index: 8;
+}
+.sooin-bottom-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+}

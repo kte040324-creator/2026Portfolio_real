@@ -65,36 +65,68 @@ export function FolderScene() {
   const onEnter = useCallback(() => setOpen(true), []);
   const onLeave = useCallback(() => setOpen(false), []);
 
+  const helloSpring = { type: 'spring' as const, stiffness: 400, damping: 22, mass: 0.72 };
+
   return (
-    <svg
-      viewBox="0 0 660 856"
-      width={659}
-      height={855}
-      style={{ display: 'block', overflow: 'visible', cursor: 'pointer' }}
+    <div
+      style={{ position: 'relative', display: 'inline-block', lineHeight: 0, cursor: 'pointer' }}
       onPointerEnter={onEnter}
       onPointerLeave={onLeave}
-      aria-hidden
     >
-      <title>Portfolio folder</title>
-      <path ref={backRef} fill="#A43FA7" d={BACK_CLOSED} />
-
-      <motion.rect
-        rx={10}
-        fill="#EFEDED"
+      <motion.span
+        aria-hidden
         initial={false}
-        animate={open ? PURPLE.open : PURPLE.closed}
-        transition={spring}
-      />
+        animate={
+          open
+            ? { opacity: 1, x: 0, rotate: -6, scale: 1 }
+            : { opacity: 0, x: 18, rotate: 0, scale: 0.88 }
+        }
+        transition={helloSpring}
+        style={{
+          position: 'absolute',
+          right: '100%',
+          marginRight: 16,
+          top: 'calc(50% - 0.55em)',
+          fontFamily: "'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif",
+          fontSize: 34,
+          lineHeight: 1,
+          fontWeight: 500,
+          color: '#FFFFFF',
+          letterSpacing: '0.04em',
+          whiteSpace: 'nowrap',
+          pointerEvents: 'none',
+          fontVariationSettings: "'wght' 190, 'ital' 30",
+          fontSynthesis: 'none',
+          WebkitFontSmoothing: 'antialiased',
+          textShadow: '0 2px 18px rgba(236, 92, 240, 0.25)',
+          transformOrigin: '100% 50%',
+        }}
+      >
+        Hello!
+      </motion.span>
 
-      <motion.rect
-        rx={10}
-        fill="white"
-        initial={false}
-        animate={open ? WHITE.open : WHITE.closed}
-        transition={{ ...spring, delay: open ? 0.02 : 0 }}
-      />
+      <svg viewBox="0 0 660 856" width={659} height={855} style={{ display: 'block', overflow: 'visible' }} aria-hidden>
+        <title>Portfolio folder</title>
+        <path ref={backRef} fill="#A43FA7" d={BACK_CLOSED} />
 
-      <path ref={frontRef} fill="#EC5CF0" d={FRONT_CLOSED} />
-    </svg>
+        <motion.rect
+          rx={10}
+          fill="#EFEDED"
+          initial={false}
+          animate={open ? PURPLE.open : PURPLE.closed}
+          transition={spring}
+        />
+
+        <motion.rect
+          rx={10}
+          fill="white"
+          initial={false}
+          animate={open ? WHITE.open : WHITE.closed}
+          transition={{ ...spring, delay: open ? 0.02 : 0 }}
+        />
+
+        <path ref={frontRef} fill="#EC5CF0" d={FRONT_CLOSED} />
+      </svg>
+    </div>
   );
 }

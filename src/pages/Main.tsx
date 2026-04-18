@@ -5,17 +5,17 @@ import { mainAsset } from '../lib/mainAssets';
 import '../styles/main.css';
 
 const DESIGN_W = 1920;
-const DESIGN_H = 6665;
 
+/** IAC: hyundai → lg → sori · Personal: loth → sooin → seoculus → mealtune → canon (위→아래) */
 const CARDS = [
   { top: 1561, file: 'Frame 360.png', to: '/projects/hyundai', label: 'Hyundai IAC', panel: 'white' as const },
-  { top: 2113, file: 'Frame 361.png', label: 'IAC project', panel: 'white' as const },
-  { top: 2665, file: 'Frame 362.png', label: 'IAC project', panel: 'white' as const },
-  { top: 3540, file: 'Frame 363.png', to: '/projects/mealtune', label: 'MealTune', panel: 'none' as const },
-  { top: 4081, file: 'Frame 364.png', label: 'Personal project', panel: 'none' as const },
-  { top: 4622, file: 'Frame 365.png', to: '/projects/sooin', label: 'Sooin', panel: 'gray' as const },
-  { top: 5163, file: 'Frame 366.png', label: 'Personal project', panel: 'gray' as const },
-  { top: 5704, file: 'Frame 368.png', label: 'Personal project', panel: 'gray' as const },
+  { top: 2113, file: 'Frame 361.png', to: '/projects/lg', label: 'LG IAC', panel: 'white' as const },
+  { top: 2665, file: 'Frame 362.png', to: '/projects/sori', label: 'Sori IAC', panel: 'white' as const },
+  { top: 3540, file: 'Frame 363.png', to: '/projects/loth', label: 'Loth', panel: 'none' as const },
+  { top: 4081, file: 'Frame 364.png', to: '/projects/sooin', label: 'Sooin', panel: 'none' as const },
+  { top: 4622, file: 'Frame 365.png', to: '/projects/seoculus', label: 'Seoculus', panel: 'gray' as const },
+  { top: 5163, file: 'Frame 366.png', to: '/projects/mealtune', label: 'MealTune', panel: 'gray' as const },
+  { top: 5704, file: 'Frame 368.png', to: '/projects/canon', label: 'Canon', panel: 'gray' as const },
 ] as const;
 
 export function Main() {
@@ -31,7 +31,6 @@ export function Main() {
     const update = () => {
       const scale = root.clientWidth / DESIGN_W;
       root.style.setProperty('--main-v2-scale', String(scale));
-      root.style.height = `${DESIGN_H * scale}px`;
     };
     update();
     const ro = new ResizeObserver(update);
@@ -108,7 +107,7 @@ function ProjectCard({
   top: number;
   file: string;
   label: string;
-  to?: string;
+  to: string;
   variant: 'iac' | 'personal';
   panel: 'white' | 'gray' | 'none';
 }) {
@@ -128,16 +127,9 @@ function ProjectCard({
 
   const style = { top: `${top}px` } as const;
 
-  if (to) {
-    return (
-      <Link className="main-v2-card-slot" style={style} to={to} data-project-reveal>
-        {article}
-      </Link>
-    );
-  }
   return (
-    <div className="main-v2-card-slot" style={style} data-project-reveal>
+    <Link className="main-v2-card-slot" style={style} to={to} data-project-reveal>
       {article}
-    </div>
+    </Link>
   );
 }

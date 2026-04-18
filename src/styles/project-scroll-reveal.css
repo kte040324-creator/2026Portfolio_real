@@ -17,32 +17,13 @@
   transform: translateY(0);
 }
 
-/* ── Hyundai: left:50% + translateX(-50%) ─────────────────── */
-.hy-footer[data-project-reveal]:not(.project-reveal--visible),
+/* ── Hyundai: left:50% + translateX(-50%) — hy-pc-img-3 ─── */
 .hy-pc-img-3[data-project-reveal]:not(.project-reveal--visible) {
   opacity: 0;
   transform: translateX(-50%) translateY(28px);
 }
 
-.hy-footer[data-project-reveal].project-reveal--visible,
 .hy-pc-img-3[data-project-reveal].project-reveal--visible {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* ── Mealtune ─────────────────────────────────────────────── */
-.mt-journey[data-project-reveal]:not(.project-reveal--visible),
-.mt-type-images[data-project-reveal]:not(.project-reveal--visible),
-.mt-packages-bg[data-project-reveal]:not(.project-reveal--visible),
-.mt-video-comp9[data-project-reveal]:not(.project-reveal--visible) {
-  opacity: 0;
-  transform: translateX(-50%) translateY(28px);
-}
-
-.mt-journey[data-project-reveal].project-reveal--visible,
-.mt-type-images[data-project-reveal].project-reveal--visible,
-.mt-packages-bg[data-project-reveal].project-reveal--visible,
-.mt-video-comp9[data-project-reveal].project-reveal--visible {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
@@ -75,21 +56,18 @@
   transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.sooin-shot-right[data-project-reveal]:not(.project-reveal--visible),
-.sooin-final-hero[data-project-reveal]:not(.project-reveal--visible),
-.sooin-bottom-logo[data-project-reveal]:not(.project-reveal--visible) {
+/* left:50% + translateX(-50%) 인 블록만 Y 등장을 translateX와 합성 */
+.sooin-final-hero[data-project-reveal]:not(.project-reveal--visible) {
   opacity: 0;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(28px);
   transition:
     opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1),
     transform 1.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.sooin-shot-right[data-project-reveal].project-reveal--visible,
-.sooin-final-hero[data-project-reveal].project-reveal--visible,
-.sooin-bottom-logo[data-project-reveal].project-reveal--visible {
+.sooin-final-hero[data-project-reveal].project-reveal--visible {
   opacity: 1;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(0);
   transition:
     opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1),
     transform 1.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -102,16 +80,9 @@
     transition: none;
   }
 
-  .hy-footer[data-project-reveal],
   .hy-pc-img-3[data-project-reveal],
-  .mt-journey[data-project-reveal],
-  .mt-type-images[data-project-reveal],
-  .mt-packages-bg[data-project-reveal],
-  .mt-video-comp9[data-project-reveal],
   .main-v2-card-slot[data-project-reveal],
-  .sooin-shot-right[data-project-reveal],
-  .sooin-final-hero[data-project-reveal],
-  .sooin-bottom-logo[data-project-reveal] {
+  .sooin-final-hero[data-project-reveal] {
     transform: translateX(-50%) !important;
   }
 }

@@ -1,0 +1,609 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Scale — frame 74:786 1920×9726 (Figma frame height) ───── */
+.mt-scale-root {
+  width: 100%;
+  overflow-x: hidden;
+  padding-bottom: calc(9726 / 1920 * 100%);
+  position: relative;
+}
+
+.mt-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 9726px;
+  background: #fff;
+  transform-origin: top left;
+  transform: scale(var(--mt-scale, 1));
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #000;
+  overflow: hidden;
+}
+
+.mt-abs {
+  position: absolute;
+}
+
+/* 74:786 / 79:147 — full-page wash; bottom ends at #EA8D8D (Figma), fades to transparent toward top */
+.mt-bg-gradient {
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 9726px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 1;
+  background: linear-gradient(
+    to top,
+    #EA8D8D 0%,
+    #EA8D8D 5%,
+    rgba(234, 141, 141, 0.88) 10%,
+    rgba(255, 210, 210, 0.52) 16%,
+    rgba(255, 228, 228, 0.18) 36%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* 169:2111 — Figma y=8405 (not bottom:0) */
+.mt-bottom-composite {
+  left: 0;
+  top: 8405px;
+  width: 1920px;
+  height: 1321px;
+  z-index: 0;
+}
+.mt-bottom-composite img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 79:141 */
+.mt-hero {
+  left: 0;
+  top: 76px;
+  width: 1920px;
+  height: 1132px;
+  overflow: hidden;
+  z-index: 1;
+  background: #fff;
+}
+.mt-hero__inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mt-hero__inner img {
+  position: absolute;
+  width: 100%;
+  height: 113.09%;
+  left: -0.02%;
+  top: -15.4%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+}
+
+/* 81:185 */
+.mt-logo {
+  left: 110px;
+  top: 903px;
+  width: 1701px;
+  height: 234px;
+  z-index: 2;
+}
+.mt-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── 209:1313 Overview ─────────────────────────────────────── */
+.mt-overview-title {
+  left: 69px;
+  top: 1264px;
+  margin: 0;
+  width: max-content;
+  max-width: 400px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+  color: #000;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* ── 209:1312 Line 70 — w319 @ y1330 ───────────────────────── */
+.mt-overview-line {
+  left: 69px;
+  top: 1330px;
+  width: 319px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 2;
+}
+
+/* ── 209:1310 — Figma 331×250 @ 69,1380, Helvetica Regular 20, tracking -0.22 ── */
+.mt-overview-p1 {
+  left: 69px;
+  top: 1380px;
+  width: 331px;
+  height: 250px;
+  margin: 0;
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+  color: #000;
+  z-index: 2;
+}
+
+/* ── 209:1311 — Figma 331×235 @ 69,1643, Helvetica Regular 20, tracking 0 ───── */
+.mt-overview-p2 {
+  left: 69px;
+  top: 1643px;
+  width: 331px;
+  height: 235px;
+  margin: 0;
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 0;
+  letter-spacing: 0;
+  color: #000;
+  z-index: 2;
+}
+.mt-overview-p2 p {
+  margin: 0;
+  line-height: 1.5;
+}
+.mt-overview-p2 p:first-child {
+  margin-bottom: 0;
+}
+
+/* ── 191:5270 iPhone 15 Pro ─────────────────────────────────── */
+.mt-iphone {
+  left: 400px;
+  top: 1081px;
+  width: 1434px;
+  height: 1125px;
+  z-index: 2;
+  overflow: hidden;
+}
+.mt-iphone img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* 209:1315 — Helvetica Bold 30, tracking -0.33, 프레임 735×90 */
+.mt-ux-scenario {
+  left: 69px;
+  top: 2466px;
+  width: 735px;
+  height: 90px;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 0;
+  letter-spacing: -0.33px;
+  color: #000;
+  z-index: 2;
+}
+.mt-ux-scenario p {
+  margin: 0;
+  line-height: 1.5;
+}
+.mt-ux-scenario p:first-child {
+  margin-bottom: 0;
+}
+
+/* 81:173 — Figma 893×60 @ 69,2636; second line nowrap so “the blender.” stays on line 2 */
+.mt-sub-1 {
+  left: 69px;
+  top: 2636px;
+  width: 893px;
+  height: 60px;
+  margin: 0;
+  overflow: visible;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 0;
+  letter-spacing: 0;
+  color: #000;
+  z-index: 2;
+}
+.mt-sub-1 p {
+  margin: 0;
+  line-height: 1.5;
+}
+.mt-sub-1 p:first-child {
+  margin-bottom: 0;
+}
+.mt-sub-1__line1,
+.mt-sub-1__line2 {
+  white-space: nowrap;
+}
+
+/* 169:2102 */
+.mt-journey {
+  left: 110px;
+  top: 2717px;
+  width: 1699px;
+  height: 630px;
+  z-index: 2;
+  overflow: hidden;
+}
+.mt-journey__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.mt-journey__inner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* 211:1322 / 211:1323 */
+.mt-product-heading {
+  left: 65px;
+  top: 3695px;
+  margin: 0;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+  color: #000;
+  z-index: 2;
+}
+
+/* 211:1323 — Figma 817×120 @ 69,3821, Helvetica Regular 20, lh 1.5, tracking 0 */
+.mt-product-body {
+  left: 69px;
+  top: 3821px;
+  width: 817px;
+  height: 120px;
+  margin: 0;
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: #000;
+  z-index: 2;
+}
+
+/* 106:773 / 772 / 774 — Figma x 401, 917, 1434 */
+.mt-type-label {
+  font-size: 24px;
+  line-height: 1.1;
+  color: #000;
+  white-space: nowrap;
+  top: 4145px;
+  z-index: 3;
+}
+.mt-type-a {
+  left: 401px;
+}
+.mt-type-b {
+  left: 917px;
+}
+.mt-type-c {
+  left: 1434px;
+  color: #a70000;
+}
+
+.mt-arrow {
+  z-index: 3;
+}
+
+/* 169:2105 — x=324 */
+.mt-type-images {
+  left: 324px;
+  top: 4226px;
+  width: 1272px;
+  height: 617px;
+  z-index: 2;
+  overflow: hidden;
+}
+.mt-type-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* 169:2108 — x=99 */
+.mt-packages-bg {
+  left: 99px;
+  top: 5034px;
+  width: 1722px;
+  height: 1048px;
+  z-index: 1;
+  overflow: hidden;
+}
+.mt-packages-bg__inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mt-packages-bg__inner img {
+  position: absolute;
+  width: 100%;
+  height: 125.48%;
+  left: 0;
+  top: -25.48%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+}
+
+/* 97:516–518 — Figma x 283, 745, 1218 */
+.mt-video-comp8 {
+  left: 283px;
+  top: 5086px;
+  width: 381px;
+  height: 677px;
+  z-index: 4;
+}
+.mt-video-comp9 {
+  left: 745px;
+  top: 5086px;
+  width: 381px;
+  height: 677px;
+  z-index: 4;
+}
+.mt-video-comp10 {
+  left: 1218px;
+  top: 5087px;
+  width: 381px;
+  height: 676px;
+  z-index: 4;
+}
+.mt-video-comp8 video,
+.mt-video-comp9 video,
+.mt-video-comp10 video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 117:323 — x=69 */
+.mt-final-heading {
+  left: 69px;
+  top: 7521px;
+  width: 1402px;
+  margin: 0;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  color: #000;
+  z-index: 3;
+}
+
+.mt-video-hf {
+  left: 132px;
+  top: 6051px;
+  width: 918px;
+  height: 1381px;
+  z-index: 2;
+}
+.mt-video-hf video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mt-video-han {
+  left: 1050px;
+  top: 6272px;
+  width: 768px;
+  height: 979px;
+  z-index: 2;
+}
+.mt-video-han video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 117:333 / 118:336 / 117:334 — 620×351 @ y7648; img inset-0 cover */
+.mt-g19,
+.mt-g-mid,
+.mt-g18 {
+  z-index: 2;
+  overflow: hidden;
+}
+.mt-g19 {
+  left: 0;
+  top: 7648px;
+  width: 620px;
+  height: 351px;
+}
+.mt-g-mid {
+  left: 650px;
+  top: 7648px;
+  width: 620px;
+  height: 351px;
+}
+.mt-g18 {
+  left: 1300px;
+  top: 7648px;
+  width: 620px;
+  height: 351px;
+}
+.mt-g19__inner,
+.mt-g-mid__inner,
+.mt-g18__inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mt-g19__inner img,
+.mt-g-mid__inner img,
+.mt-g18__inner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+}
+
+/* 116:322 — 2-3 1 @ 0,8054 */
+.mt-g23 {
+  left: 0;
+  top: 8054px;
+  width: 620px;
+  height: 351px;
+  z-index: 2;
+  overflow: hidden;
+}
+.mt-g23__inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mt-g23__inner img {
+  position: absolute;
+  left: 0;
+  top: -13.42%;
+  width: 100%;
+  height: 117.72%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+}
+/* 119:349 — 620×351 @ 650,8054; inner clip + img crop per Figma Dev */
+.mt-g24 {
+  left: 650px;
+  top: 8054px;
+  width: 620px;
+  height: 351px;
+  z-index: 2;
+  overflow: hidden;
+}
+.mt-g24__inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mt-g24__inner img {
+  position: absolute;
+  left: 0;
+  top: -21.67%;
+  width: 100%;
+  height: 121.76%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+}
+/* 119:350 — 22 1 @ 1300,8054 */
+.mt-g22 {
+  left: 1300px;
+  top: 8054px;
+  width: 620px;
+  height: 351px;
+  z-index: 2;
+  overflow: hidden;
+}
+.mt-g22__inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.mt-g22__inner img {
+  position: absolute;
+  left: -0.05%;
+  top: -9.04%;
+  width: 100.11%;
+  height: 118.08%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+}
+
+/* 113:223 x=50 · 113:222 x=1400 */
+.mt-footer-left {
+  left: 50px;
+  top: 9628px;
+  width: 472px;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.165px;
+  color: #000;
+  z-index: 3;
+}
+.mt-footer-left p {
+  margin: 0;
+}
+
+.mt-footer-logo {
+  left: 794px;
+  top: 9628px;
+  width: 333px;
+  height: 46px;
+  z-index: 3;
+}
+.mt-footer-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.mt-footer-right {
+  left: 1400px;
+  top: 9628px;
+  width: 471px;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.165px;
+  color: #000;
+  text-align: right;
+  z-index: 3;
+}
+.mt-footer-right p {
+  margin: 0;
+}

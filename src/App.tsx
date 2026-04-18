@@ -5,6 +5,7 @@ import { Main } from './pages/Main';
 import { Hyundai } from './pages/Hyundai';
 import { Mealtune } from './pages/Mealtune';
 import { Sooin } from './pages/Sooin';
+import { Sori } from './pages/Sori';
 import { ProjectStub } from './pages/ProjectStub';
 
 function ScrollToTop() {
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/projects/hyundai" element={<Hyundai />} />
         <Route path="/projects/mealtune" element={<Mealtune />} />
         <Route path="/projects/sooin" element={<Sooin />} />
+        <Route path="/projects/sori" element={<Sori />} />
         <Route path="/projects/:slug" element={<ProjectStub />} />
       </Routes>
     </BrowserRouter>

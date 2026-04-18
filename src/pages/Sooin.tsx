@@ -28,14 +28,13 @@ const PATH = {
   bottomLogo: 'img/image 6346525.png',
 } as const;
 
-const V = {
-  prototype: 'video/sooinweb.mov',
-} as const;
+/** Vimeo — Website Prototype (replaces local `sooinweb.mov` for repo size) */
+const SOOIN_VIMEO_SRC =
+  'https://player.vimeo.com/video/1184392583?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1';
 
 export function Sooin() {
   const rootRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const stripViewportRef = useRef<HTMLDivElement>(null);
   const stripSlideRef = useRef<HTMLDivElement>(null);
   const stripImgRef = useRef<HTMLImageElement>(null);
@@ -59,12 +58,6 @@ export function Sooin() {
     const ro = new ResizeObserver(update);
     ro.observe(root);
     return () => ro.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.play().catch(() => {});
   }, []);
 
   /** Design Process strip: 세로 스크롤 + 포인터 드래그 → 가로 이동 (191:5268 / Group 1410167660) */
@@ -269,18 +262,15 @@ export function Sooin() {
         </p>
 
         <div className="sooin-abs sooin-video-slot" data-node-id="179:3868" data-project-reveal>
-          <video
-            ref={videoRef}
-            src={sooinAsset(V.prototype)}
-            autoPlay
-            muted
-            playsInline
-            loop
-            controls
-            controlsList="nodownload"
-            preload="metadata"
-            poster={sooinAsset(PATH.hero)}
-          />
+          <div className="sooin-video-embed">
+            <iframe
+              src={SOOIN_VIMEO_SRC}
+              title="sooinweb"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
         </div>
 
         <div className="sooin-abs sooin-tall" data-node-id="172:3756" data-project-reveal>

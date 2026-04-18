@@ -1,0 +1,335 @@
+/* Figma 192:5305 — sori, 1920 × 9599 */
+
+.sori-scale-root {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  background: #d3d5f9;
+  padding-bottom: calc(9599 / 1920 * 100%);
+}
+
+.sori-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 9599px;
+  transform-origin: top left;
+  transform: scale(var(--sori-scale, 1));
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  color: #000;
+  overflow: hidden;
+  background: linear-gradient(
+    172.084deg,
+    rgb(211, 213, 249) 4.77%,
+    rgb(191, 216, 246) 33.94%,
+    rgb(203, 228, 239) 60.81%,
+    rgb(216, 240, 233) 87.67%
+  );
+}
+
+.sori-abs {
+  position: absolute;
+}
+
+/* Hero — ColorBends (behind device), full frame width */
+.sori-hero-bends {
+  left: 0;
+  top: 78px;
+  width: 100%;
+  height: 1000px;
+  z-index: 3;
+  overflow: hidden;
+}
+
+/* 193:5393 — iPhone hero */
+.sori-hero-device {
+  left: 293px;
+  top: 78px;
+  width: 1334px;
+  height: 1000px;
+  z-index: 4;
+  overflow: hidden;
+}
+.sori-hero-device img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* Overview 193:5398 / 5397 / 5395 / 5396 */
+.sori-overview-h {
+  left: 69px;
+  top: 1264px;
+  margin: 0;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+  z-index: 5;
+}
+
+.sori-overview-line {
+  left: 69px;
+  top: 1330px;
+  width: 319px;
+  height: 0;
+  border: 0;
+  border-top: 1px solid #000;
+  margin: 0;
+  padding: 0;
+  z-index: 5;
+}
+
+.sori-overview-p {
+  left: 69px;
+  top: 1380px;
+  width: 331px;
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+  z-index: 5;
+}
+
+.sori-overview-list {
+  left: 62px;
+  top: 1722px;
+  width: 331px;
+  margin: 0;
+  padding: 0 0 0 30px;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+  list-style: disc;
+  box-sizing: border-box;
+  z-index: 5;
+}
+.sori-overview-list li {
+  margin: 0 0 0 0;
+  padding-left: 0;
+}
+
+/* 227:2739 — overview video */
+.sori-overview-video {
+  left: 760px;
+  top: 1234px;
+  width: 1160px;
+  height: 1020px;
+  z-index: 6;
+  overflow: hidden;
+  background: #000;
+}
+.sori-overview-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* UX Flow 193:5676 */
+.sori-uxflow-h {
+  left: 69px;
+  top: 2626px;
+  margin: 0;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+  z-index: 5;
+}
+
+/* 227:2741 — image 6346543 (UX Flow) */
+.sori-img-flow {
+  left: 31px;
+  top: 2702px;
+  width: 1863px;
+  height: 858px;
+  z-index: 4;
+  overflow: hidden;
+}
+.sori-img-flow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* Content data 193:6115 / 7078 / 197:93 */
+.sori-content-h {
+  left: 65px;
+  top: 3921px;
+  margin: 0;
+  max-width: 882px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.32;
+  letter-spacing: -0.6px;
+  z-index: 5;
+}
+
+.sori-content-p {
+  left: 72px;
+  top: 4009px;
+  width: 316px;
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.1;
+  z-index: 5;
+}
+
+.sori-img-qa {
+  left: 550px;
+  top: 3921px;
+  width: 1275px;
+  height: 469px;
+  z-index: 4;
+  overflow: hidden;
+}
+.sori-img-qa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* UI Design Process 193:7080 / 7085 / 7088 */
+.sori-process-h {
+  left: 64px;
+  top: 4739px;
+  margin: 0;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.32;
+  letter-spacing: -0.6px;
+  z-index: 5;
+}
+
+.sori-ver-label {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.32;
+  letter-spacing: -0.48px;
+  z-index: 5;
+}
+.sori-ver-label--1 {
+  left: 72px;
+  top: 4853px;
+}
+.sori-ver-label--2 {
+  left: 119px;
+  top: 5855px;
+}
+
+.sori-img-v1 {
+  left: 103px;
+  top: 4902px;
+  width: 1705px;
+  height: 847px;
+  z-index: 4;
+  overflow: hidden;
+}
+.sori-img-v1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.sori-img-v2 {
+  left: 103px;
+  top: 5904px;
+  width: 1704px;
+  height: 843px;
+  z-index: 4;
+  overflow: hidden;
+}
+.sori-img-v2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* UI details 193:6419 / 193:7104 */
+.sori-details-h {
+  left: 107px;
+  top: 7096px;
+  margin: 0;
+  max-width: 327px;
+  font-family: Inter, Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.32;
+  letter-spacing: -0.6px;
+  z-index: 5;
+}
+
+.sori-img-landing {
+  left: 72px;
+  top: 7165px;
+  width: 1770px;
+  height: 2216px;
+  z-index: 4;
+  overflow: hidden;
+}
+.sori-img-landing img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* Footer meta 193:6989 / 193:6988 */
+.sori-meta-tools {
+  left: 86px;
+  top: 9501px;
+  width: 220px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.165px;
+  z-index: 5;
+}
+.sori-meta-tools p {
+  margin: 0;
+}
+
+.sori-meta-team {
+  left: 1575px;
+  top: 9492px;
+  width: 267px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.165px;
+  text-align: left;
+  z-index: 5;
+}
+.sori-meta-team p {
+  margin: 0;
+}
+
+/* Bottom mark 193:7101 */
+.sori-bottom-mark {
+  left: 812px;
+  top: 9472px;
+  width: 295px;
+  height: 105px;
+  z-index: 6;
+  overflow: hidden;
+}
+.sori-bottom-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}

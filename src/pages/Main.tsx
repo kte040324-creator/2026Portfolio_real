@@ -1,136 +1,143 @@
-import { LandingHeader } from '../components/LandingHeader';
-import { MainScrollSnapTrack } from '../components/MainScrollSnapTrack';
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { useProjectScrollReveal } from '../hooks/useProjectScrollReveal';
+import { mainAsset } from '../lib/mainAssets';
 import '../styles/main.css';
 
-/** Figma-exported assets for frame "main" (node 43:134) */
-const M = '/assets/main';
+const DESIGN_W = 1920;
+const DESIGN_H = 6665;
+
+const CARDS = [
+  { top: 1561, file: 'Frame 360.png', to: '/projects/hyundai', label: 'Hyundai IAC', panel: 'white' as const },
+  { top: 2113, file: 'Frame 361.png', label: 'IAC project', panel: 'white' as const },
+  { top: 2665, file: 'Frame 362.png', label: 'IAC project', panel: 'white' as const },
+  { top: 3540, file: 'Frame 363.png', to: '/projects/mealtune', label: 'MealTune', panel: 'none' as const },
+  { top: 4081, file: 'Frame 364.png', label: 'Personal project', panel: 'none' as const },
+  { top: 4622, file: 'Frame 365.png', to: '/projects/sooin', label: 'Sooin', panel: 'gray' as const },
+  { top: 5163, file: 'Frame 366.png', label: 'Personal project', panel: 'gray' as const },
+  { top: 5704, file: 'Frame 368.png', label: 'Personal project', panel: 'gray' as const },
+] as const;
 
 export function Main() {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<HTMLDivElement>(null);
+
+  useProjectScrollReveal(frameRef);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    const frame = frameRef.current;
+    if (!root || !frame) return;
+    const update = () => {
+      const scale = root.clientWidth / DESIGN_W;
+      root.style.setProperty('--main-v2-scale', String(scale));
+      root.style.height = `${DESIGN_H * scale}px`;
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(root);
+    return () => ro.disconnect();
+  }, []);
+
   return (
-    <div className="main-page">
-      <LandingHeader />
+    <div className="main-v2-root" ref={rootRef}>
+      <a className="main-v2-mail main-v2-mail--fixed" href="mailto:taeeunclarakim@gmail.com" data-node-id="211:1399">
+        taeeunclarakim@gmail.com
+      </a>
+      <span className="main-v2-year main-v2-year--fixed" data-node-id="211:1424">
+        @2026
+      </span>
 
-      {/* 히어로: main-stage 밖, main-page 직속 — stacking context를 main-stage와 분리 */}
-      <div className="main-hero-title-wrap" data-node-id="76:841">
-        <img
-          className="main-hero-title"
-          src={`${M}/5da30443c02f969c0e187e655127a7b4deaf470f.svg`}
-          alt="김태은 @Taeeun Clara Kim"
-          draggable={false}
-        />
-      </div>
+      <div className="main-v2-frame">
+        <h1 className="main-v2-hero-name main-v2-hero-name--fixed" data-node-id="211:1441">
+          Tae Kim(Clara)
+        </h1>
 
-      <MainScrollSnapTrack />
-
-      <main id="main" className="main-stage">
-        {/* Figma 43:286 — mix-blend-mode: difference. 히어로(fixed)와 같은 root에서 합성 — main-page 직속, 래퍼 없음 */}
-        <div className="main-intro" data-node-id="43:286">
-          <p className="main-intro__line">Designing the Interaction Between Humans and Systems</p>
-          <p className="main-intro__spacer" aria-hidden="true">&nbsp;</p>
-          <p className="main-intro__line">Based in Seoul, South Korea</p>
-          <p className="main-intro__line">Currently in Baltimore, Maryland</p>
-          <p className="main-intro__line main-intro__line--last">Looking for an Opportunity</p>
+        <div className="main-v2-intro main-v2-hero-blend" data-node-id="211:1377">
+          <p>Designing the Interaction Between Humans and Systems</p>
+          <p>Based in Seoul, South Korea</p>
+          <p>Currently in Baltimore, Maryland</p>
+          <p>Looking for an Opportunity</p>
         </div>
 
-        {/* Figma 52:128 */}
-        <a className="main-cv" href="/pages/cv.html" data-node-id="52:128">
+        <a className="main-v2-cv" href="/pages/cv.html" data-node-id="211:1378">
           → CV
         </a>
 
-        {/* Figma 43:280 */}
-        <div className="main-skills-line" data-node-id="43:280">
-          <p className="main-skills-line__spacer">&nbsp;</p>
-          <p className="main-skills-line__text">
-            Website, Branding Identity, Visual Coding, 3D Modeling
+        <p className="main-v2-skills main-v2-hero-blend" data-node-id="211:1379">
+          Website, Branding Identity, Visual Coding, 3D Modeling
+        </p>
+
+        <div className="main-v2-frame-inner" ref={frameRef} data-node-id="211:1346">
+          <p className="main-v2-section-label" data-node-id="211:1380">
+            IAC Projects&quot;3
           </p>
+
+          {CARDS.slice(0, 3).map((c) => (
+            <ProjectCard key={c.file} {...c} variant="iac" />
+          ))}
+
+          <p className="main-v2-section-label main-v2-section-label--personal" data-node-id="211:1672">
+            Personal Projects&quot;5
+          </p>
+
+          {CARDS.slice(3).map((c) => (
+            <ProjectCard key={c.file} {...c} variant="personal" />
+          ))}
+
+          <footer className="main-v2-contact" data-node-id="211:1374">
+            <a className="main-v2-contact__link" href="mailto:taeeunclarakim@gmail.com" data-node-id="211:1375">
+              CONTACT ME →→→
+            </a>
+            <div className="main-v2-contact__line" aria-hidden data-node-id="211:1376" />
+          </footer>
         </div>
+      </div>
+    </div>
+  );
+}
 
-        {/* Figma 54:142 — IAC section label */}
-        <p className="main-section-label main-section-label--iac" data-node-id="54:142">
-          IAC Projects”
-        </p>
+function ProjectCard({
+  top,
+  file,
+  label,
+  to,
+  variant,
+  panel,
+}: {
+  top: number;
+  file: string;
+  label: string;
+  to?: string;
+  variant: 'iac' | 'personal';
+  panel: 'white' | 'gray' | 'none';
+}) {
+  const panelClass =
+    panel === 'white' ? ' main-v2-card--panel-white' : panel === 'gray' ? ' main-v2-card--panel-gray' : '';
 
-        <div className="main-iac-row" aria-label="IAC 프로젝트">
-          <article className="main-card main-card--c1 main-iac-1" data-node-id="163:1430">
-            <div className="main-card__media">
-              <img src={`${M}/e0ecda186bdbb1e1f60ca19811130732fff49590.png`} alt="" />
-            </div>
-          </article>
+  const article = (
+    <article
+      className={`main-v2-card main-v2-card--${variant}${panelClass}`}
+      aria-label={label}
+    >
+      <div className="main-v2-card__media">
+        <img src={mainAsset(file)} alt="" draggable={false} />
+      </div>
+    </article>
+  );
 
-          <article className="main-card main-card--c2 main-iac-2" data-node-id="163:1434">
-            <div className="main-card__media">
-              <img src={`${M}/bf74cf1eaa5556b48b185bb1fe238c6e40db7116.png`} alt="" />
-            </div>
-          </article>
+  const style = { top: `${top}px` } as const;
 
-          <article className="main-card main-card--c3 main-iac-3" data-node-id="163:1438">
-            <div className="main-card__media">
-              <img src={`${M}/7dc16bb717fcd4511b4feaa4589cc56f4bcb7740.png`} alt="" />
-            </div>
-          </article>
-        </div>
-
-        <p className="main-section-label main-section-label--personal" data-node-id="54:139">
-          Personal Projects- UX/UI
-        </p>
-
-        <div className="main-personal-row-1" aria-label="퍼스널 프로젝트 1행">
-          <article className="main-card main-card--c1 main-p1" data-node-id="71:329">
-            <div className="main-card__media" data-node-id="163:1410">
-              <img src={`${M}/d006ed60e5acf9a69cf8f68c6b90027935708f54.png`} alt="" />
-            </div>
-          </article>
-
-          <article className="main-card main-card--c2 main-p2" data-node-id="163:1422">
-            <div className="main-card__media" data-node-id="163:1422">
-              <img src={`${M}/f81bd83f813d1061925d9e9a950f40a0f1e6bdad.png`} alt="" />
-            </div>
-          </article>
-
-          <article className="main-card main-card--c3 main-p3" data-node-id="71:337">
-            <div className="main-p3__art" data-node-id="71:342">
-              <img src={`${M}/c8ace78a7a1dd274e6f300db2a8f114dbc84ef13.png`} alt="" />
-            </div>
-            <div className="main-p3__mark" data-node-id="71:344">
-              <img src={`${M}/83b43b513cd9046edca765a95d6fbbace539ec18.png`} alt="" />
-            </div>
-          </article>
-        </div>
-
-        <div className="main-personal-row-2" aria-label="퍼스널 프로젝트 2행">
-          <article className="main-card main-card--c1 main-mangwoo-hands" data-node-id="71:354">
-            <div className="main-mangwoo-hands__bg" data-node-id="71:206">
-              <img src={`${M}/cb311c6c9fdc747d63031f5466ac4fe2a3e9c71b.png`} alt="" />
-            </div>
-            <div className="main-mangwoo-hands__figure" data-node-id="71:187">
-              <img src={`${M}/5df1a5f3fee48939af98945fc323e9774c498deb.png`} alt="" />
-            </div>
-            <div className="main-mangwoo-hands__fade" aria-hidden data-node-id="71:189" />
-          </article>
-
-          <article className="main-card main-card--c2 main-mangwoo-poster" data-node-id="161:1385">
-            <div className="main-mangwoo-poster__image" data-node-id="161:1383">
-              <img src={`${M}/dca4d42d492f9972d7c8ab937cde4688b4f9e2cc.png`} alt="" />
-            </div>
-          </article>
-
-          <article className="main-card main-card--c3 main-p5" data-node-id="71:351">
-            <div className="main-card__media">
-              <img src={`${M}/325e300f4587ab26a5f0260fe6492d5b5d54a614.png`} alt="" />
-            </div>
-            <div className="main-p5__tint" aria-hidden data-node-id="63:632" />
-            <div className="main-p5__svg" data-node-id="161:1387">
-              <img className="main-p5__overlay" src={`${M}/887c5f9f45c29641aee6ada10c48ad5763f2b807.png`} alt="" />
-            </div>
-          </article>
-        </div>
-
-        <div className="main-footer">
-          <div className="main-contact" data-node-id="163:1415">
-            <p className="main-contact__text" data-node-id="54:443">CONTACT ME →→→</p>
-          </div>
-        </div>
-      </main>
+  if (to) {
+    return (
+      <Link className="main-v2-card-slot" style={style} to={to} data-project-reveal>
+        {article}
+      </Link>
+    );
+  }
+  return (
+    <div className="main-v2-card-slot" style={style} data-project-reveal>
+      {article}
     </div>
   );
 }

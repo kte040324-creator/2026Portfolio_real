@@ -11,7 +11,7 @@ export function Landing() {
         maxWidth: '100%',
         minHeight: 1100,
         margin: '0 auto',
-        background: '#f8f8f8',
+        background: '#000',
       }}
     >
       <LandingHeader />

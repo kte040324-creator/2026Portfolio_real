@@ -1,0 +1,117 @@
+/*
+ * 프로젝트 세부 페이지 공통: 소문단 블록 스크롤 등장
+ * 기본은 translateY만. 각 페이지에서 이미 translateX(-50%)로 중앙 정렬된 요소는
+ * 아래 블록에서 X를 유지한 채 Y만 덧댄다 (transform 덮어쓰기 방지).
+ */
+
+[data-project-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-project-reveal].project-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hyundai: left:50% + translateX(-50%) ─────────────────── */
+.hy-footer[data-project-reveal]:not(.project-reveal--visible),
+.hy-pc-img-3[data-project-reveal]:not(.project-reveal--visible) {
+  opacity: 0;
+  transform: translateX(-50%) translateY(28px);
+}
+
+.hy-footer[data-project-reveal].project-reveal--visible,
+.hy-pc-img-3[data-project-reveal].project-reveal--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Mealtune ─────────────────────────────────────────────── */
+.mt-journey[data-project-reveal]:not(.project-reveal--visible),
+.mt-type-images[data-project-reveal]:not(.project-reveal--visible),
+.mt-packages-bg[data-project-reveal]:not(.project-reveal--visible),
+.mt-video-comp9[data-project-reveal]:not(.project-reveal--visible) {
+  opacity: 0;
+  transform: translateX(-50%) translateY(28px);
+}
+
+.mt-journey[data-project-reveal].project-reveal--visible,
+.mt-type-images[data-project-reveal].project-reveal--visible,
+.mt-packages-bg[data-project-reveal].project-reveal--visible,
+.mt-video-comp9[data-project-reveal].project-reveal--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Main (211:1346) — 카드 translateX(-50%) 유지 ───────────── */
+.main-v2-card-slot[data-project-reveal]:not(.project-reveal--visible) {
+  opacity: 0;
+  transform: translateX(-50%) translateY(72px);
+}
+
+.main-v2-card-slot[data-project-reveal].project-reveal--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Sooin ─────────────────────────────────────────────────── */
+/*
+ * 부모에 translateY를 주면 자식의 transform 마퀴(.sooin-process-strip-slide)가 깨질 수 있어
+ * Sooin은 Y 이동 없이 opacity만. translateX(-50%) 쓰는 블록은 X만 유지.
+ */
+.sooin-frame [data-project-reveal]:not(.project-reveal--visible) {
+  opacity: 0;
+  transform: none;
+  transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sooin-frame [data-project-reveal].project-reveal--visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sooin-shot-right[data-project-reveal]:not(.project-reveal--visible),
+.sooin-final-hero[data-project-reveal]:not(.project-reveal--visible),
+.sooin-bottom-logo[data-project-reveal]:not(.project-reveal--visible) {
+  opacity: 0;
+  transform: translateX(-50%);
+  transition:
+    opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sooin-shot-right[data-project-reveal].project-reveal--visible,
+.sooin-final-hero[data-project-reveal].project-reveal--visible,
+.sooin-bottom-logo[data-project-reveal].project-reveal--visible {
+  opacity: 1;
+  transform: translateX(-50%);
+  transition:
+    opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-project-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none;
+  }
+
+  .hy-footer[data-project-reveal],
+  .hy-pc-img-3[data-project-reveal],
+  .mt-journey[data-project-reveal],
+  .mt-type-images[data-project-reveal],
+  .mt-packages-bg[data-project-reveal],
+  .mt-video-comp9[data-project-reveal],
+  .main-v2-card-slot[data-project-reveal],
+  .sooin-shot-right[data-project-reveal],
+  .sooin-final-hero[data-project-reveal],
+  .sooin-bottom-logo[data-project-reveal] {
+    transform: translateX(-50%) !important;
+  }
+}

@@ -1,858 +1,316 @@
-/* Figma frame "main" (43:134) — 1920 × 3453
- * 좌표는 Figma Dev의 % 기준(프레임 너비 기준)과 동일하게: px 고정이 아니라 calc(…%+px).
- * 브라우저와 차이 나는 흔한 이유: 줌, 폰트 렌더링, mix-blend-mode, 뷰포트≠1920.
- * Desktop (≥1280px): absolute layout. Smaller: fluid stack.
- */
+/* ============================================================
+   Main landing — Figma 211:1346 (1920 × 6665)
+   히어로 이름: 뷰포트 fixed / 인트로·스킬: difference (배경 이미지 없음)
+   ============================================================ */
 
-.main-page {
-  position: relative;
+.main-v2-root {
   width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
-  min-height: 100vh;
-  background: #f8f8f8;
-  /* overflow-x는 html에서 처리 — mix-blend-mode 백드롭이 잘리며 무효처럼 보이는 경우 방지 */
-}
-
-/* 스냅 트랙: 모바일에선 숨김(높이는 main-stage 플로우가 담당) */
-.main-scroll-snap-track {
-  display: none;
-}
-
-.main-stage {
+  overflow-x: hidden;
   position: relative;
-  /* z-index 제거 — stacking context 생성을 막아야 히어로(fixed)와 같은 컨텍스트에서 difference 합성됨 */
-  width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
+  background: #000;
+  padding-bottom: calc(6665 / 1920 * 100%);
+  --main-v2-scale: 1;
 }
 
-/* 데스크톱: 트랙으로 문서 높이(3364px) + html scroll-snap; 레이어는 absolute로 카드·텍스트만 겹침 */
-@media (min-width: 1280px) {
-  html {
-    scroll-snap-type: y proximity;
-    scroll-behavior: smooth;
-  }
-
-  .main-scroll-snap-track {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-    pointer-events: none;
-    /* z-index 두지 않음 — 스택킹 컨텍스트가 생기면 difference가 히어로 백드롭과 합성 안 됨 */
-  }
-
-  .main-scroll-snap {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    scroll-snap-stop: normal;
-  }
-
-  /* IAC 카드 아래 ~ Personal 라벨 위: 히어로 SVG가 비치는 구간에서 한 번 멈춤 */
-  .main-scroll-snap--bridge {
-    scroll-snap-stop: always;
-  }
-
-  /* 트랙 위에 main-stage만 겹침(래퍼 없음). z-index 주지 않음 → difference가 히어로 SVG 백드롭과 합성 */
-  .main-stage {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-    min-height: 100%;
-    height: 100%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-snap-type: none;
-    scroll-behavior: auto;
-  }
-}
-
-/* Figma 76:841 — 히어로: 뷰포트 상단 고정(스크롤 시에도 같은 자리). 모바일은 아래 미디어쿼리에서 해제 */
-.main-hero-title-wrap {
-  position: fixed;
-  left: 50%;
-  top: 74px;
-  transform: translateX(-50%);
-  width: min(1823px, calc(100% - 96px));
-  height: auto;
-  overflow: visible;
-  pointer-events: none;
-  line-height: 0;
-  text-align: center;
+/* transform 없음: 자손 mix-blend-mode가 고정 히어로(형제)와 difference 합성 가능 */
+.main-v2-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 6665px;
+  background: transparent;
+  overflow-x: hidden;
+  overflow-y: visible;
   z-index: 1;
 }
 
-.main-hero-title-wrap .main-hero-title {
-  display: block;
-  width: 100%;
-  max-width: 1823px;
-  height: auto;
-  margin: 0 auto;
-  object-fit: contain;
-  object-position: center top;
-}
-
-/* ============================================================
-   인트로 / CV / 스킬 줄 — mix-blend-mode: difference
-   white(#fff) 텍스트 + difference:
-     · 히어로 SVG 어두운 영역 위 → 밝게(흰색)
-     · 연한 배경(#f8f8f8) 위     → 어둡게(거의 검정)
-   stacking context 조건: main-stage는 z-index 없음 → 히어로(fixed)와
-   동일한 root stacking context에서 합성됨
-   ============================================================ */
-
-/* fallback: mix-blend-mode 미지원 시 검정으로 읽힘 */
-.main-intro,
-.main-cv,
-.main-skills-line {
-  color: #0a0a0a;
-}
-
-@supports (mix-blend-mode: difference) {
-  .main-intro,
-  .main-cv,
-  .main-skills-line {
-    color: #fff;
-    mix-blend-mode: difference;
-    isolation: auto; /* 자기 자신은 새 stacking ctx 안 만듦 */
-  }
-}
-
-/* 43:286 — Figma: x=607 y=328 w=671 h=248, Light wght 70 ital 30, pre-wrap */
-.main-intro {
+.main-v2-frame-inner {
   position: absolute;
-  z-index: 20;
-  left: calc(min(100vw, 1920px) * 607 / 1920);
-  top: 328px;
-  width: 671px;
-  max-width: min(671px, calc(100% - 48px));
-  height: 248px;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow: visible;
-  font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
-  font-size: 26px;
-  font-style: normal;
-  font-synthesis: none;
-  line-height: 0;
-  letter-spacing: -0.52px;
-  white-space: pre-wrap;
-  font-variation-settings: 'wght' 70, 'ital' 30;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 6665px;
+  transform-origin: top left;
+  transform: scale(var(--main-v2-scale, 1));
+  color: #fff;
+  overflow-x: hidden;
+  overflow-y: visible;
+  z-index: 1;
+  background: transparent;
+}
+
+/* ── Fixed header row (프레임 밖 — 히어로 제목 위에 표시) ─── */
+.main-v2-mail--fixed {
+  position: fixed;
+  left: max(0px, calc(50vw - 960px + 48px));
+  top: 28px;
+  z-index: 30;
+  font-family: 'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  font-variation-settings: 'wght' 130, 'ital' 30;
+  letter-spacing: 0;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
   -webkit-font-smoothing: antialiased;
 }
 
-.main-intro__line,
-.main-intro__spacer {
-  margin: 0;
-  font-size: inherit;
+.main-v2-mail--fixed:hover {
+  text-decoration: underline;
+}
+
+.main-v2-year--fixed {
+  position: fixed;
+  right: max(0px, calc(50vw - 960px + 48px));
+  top: 40px;
+  z-index: 30;
+  font-family: 'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  font-variation-settings: 'wght' 130, 'ital' 30;
+  color: #fff;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero name — 뷰포트 상단 고정 (Figma 211:1441) ─────────── */
+.main-v2-hero-name--fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 79px;
+  width: min(1824px, calc(100vw - 96px));
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif;
+  font-size: clamp(72px, 13vw, 250px);
+  font-weight: 800;
+  font-style: normal;
   line-height: 1.1;
-  font-variation-settings: inherit;
-}
-
-.main-intro__spacer {
-  min-height: 1.1em;
-}
-
-.main-intro__line--last {
-  margin-bottom: 0;
-}
-
-/* 52:128 — Figma x=607 (intro과 같은 세로축) */
-.main-cv {
-  position: absolute;
-  z-index: 20;
-  left: calc(min(100vw, 1920px) * 607 / 1920);
-  top: 513px;
-  display: inline-block;
-  margin: 0;
-  font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
-  font-size: 26px;
-  font-style: italic;
+  letter-spacing: -5px;
+  text-align: center;
+  color: #ec5cf0;
+  font-variation-settings: 'wght' 260, 'ital' 30;
   font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Intro — Figma 211:1377 (transform 밖: 히어로와 mix-blend difference) ─ */
+.main-v2-frame > .main-v2-intro {
+  position: absolute;
+  left: calc(575px * var(--main-v2-scale, 1));
+  top: calc(413px * var(--main-v2-scale, 1));
+  width: calc(445px * var(--main-v2-scale, 1));
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: calc(30px * var(--main-v2-scale, 1));
+  font-weight: 400;
+  font-stretch: condensed;
+  line-height: 0;
+  letter-spacing: calc(-0.6px * var(--main-v2-scale, 1));
+  color: #f5f5f5;
+  z-index: 6;
+}
+
+.main-v2-frame > .main-v2-intro p {
+  margin: 0;
   line-height: 1.1;
-  letter-spacing: -0.52px;
+}
+
+/* ── CV — Figma 211:1378 (transform 밖) ─────────────────────── */
+.main-v2-frame > .main-v2-cv {
+  position: absolute;
+  left: calc(1698px * var(--main-v2-scale, 1));
+  top: calc(413px * var(--main-v2-scale, 1));
+  margin: 0;
+  font-family: 'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif;
+  font-size: calc(30px * var(--main-v2-scale, 1));
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: calc(-0.6px * var(--main-v2-scale, 1));
+  color: #fdfdfd;
   text-decoration: none;
   white-space: nowrap;
   font-variation-settings: 'wght' 220, 'ital' 300;
-  -webkit-font-smoothing: antialiased;
-}
-
-.main-cv:hover {
-  opacity: 0.85;
-}
-
-/* 43:280 */
-.main-skills-line {
-  position: absolute;
-  z-index: 20;
-  left: 50%;
-  top: 806px;
-  transform: translateX(-50%);
-  width: min(1762px, calc(100% - 96px));
-  min-height: 0;
-  box-sizing: border-box;
-  font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
-  font-size: 0;
-  line-height: 0;
-  font-style: normal;
   font-synthesis: none;
-  font-variation-settings: 'wght' 170, 'ital' 30;
+  z-index: 6;
   -webkit-font-smoothing: antialiased;
 }
 
-.main-skills-line__spacer {
-  margin: 0;
-  padding: 0;
-  font-size: 136px;
-  line-height: 0.74;
-  font-variation-settings: 'wght' 170, 'ital' 30;
-}
-
-.main-skills-line__text {
-  margin: 0;
-  padding: 0;
-  font-size: 136px;
-  line-height: 0.74;
-  letter-spacing: -0.03em;
-  font-variation-settings: 'wght' 170, 'ital' 30;
-}
-
-/* Section labels — shared */
-.main-section-label {
-  position: absolute;
-  font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
-  font-size: 20px;
-  letter-spacing: -0.4px;
-  color: #0a0a0a;
+.main-v2-frame > .main-v2-cv:hover {
+  opacity: 0.88;
 }
 
 @supports (mix-blend-mode: difference) {
-  .main-section-label {
-    color: #fff;
+  .main-v2-frame > .main-v2-cv {
     mix-blend-mode: difference;
-    isolation: auto;
+    color: #fdfdfd;
   }
 }
 
-/* Figma 54:142 — IAC Projects (Medium, wght 170, ital 30, leading-none) */
-.main-section-label--iac {
-  left: 50%;
-  top: 1350px;
-  transform: translateX(-50%);
-  width: min(1761px, calc(100% - 80px));
-  line-height: 1;
-  white-space: nowrap;
-  text-align: left;
-  font-synthesis: none;
-  font-variation-settings: 'wght' 170, 'ital' 30;
-}
-
-.main-section-label--personal {
-  left: 50%;
-  top: 2039px;
-  transform: translateX(-50%);
-  width: min(1761px, calc(100% - 80px));
-  line-height: 1;
-  white-space: nowrap;
-  text-align: left;
-  font-synthesis: none;
-  font-variation-settings: 'wght' 170, 'ital' 30;
-}
-
-/* Card grid helpers — three columns aligned to Figma */
-.main-card {
+/* ── Skills — Figma 211:1379 (transform 밖) ─────────────────── */
+.main-v2-frame > .main-v2-skills {
   position: absolute;
-  width: min(587px, calc((100% - 96px - 48px) / 3));
-  max-width: 587px;
-  height: 441px;
-  overflow: hidden;
-  z-index: 2;
-  cursor: pointer;
-  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  left: calc(79px * var(--main-v2-scale, 1));
+  top: calc(806px * var(--main-v2-scale, 1));
+  width: calc(1762px * var(--main-v2-scale, 1));
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif;
+  font-size: calc(136px * var(--main-v2-scale, 1));
+  font-weight: 500;
+  line-height: 0.74;
+  letter-spacing: 0;
+  color: #fff;
+  font-variation-settings: 'wght' 170, 'ital' 30;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  z-index: 6;
 }
 
-.main-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+/* 인트로·스킬: Figma Difference — 흰 글자 + mix-blend-mode (히어로와 겹칠 때 합성) */
+@supports (mix-blend-mode: difference) {
+  .main-v2-hero-blend {
+    color: #fff;
+    mix-blend-mode: difference;
+  }
+}
+
+@supports not (mix-blend-mode: difference) {
+  .main-v2-hero-blend {
+    color: #ececec;
+  }
+}
+
+/* ── Section labels — Figma 211:1380 / 211:1672 ──────────────── */
+.main-v2-section-label {
+  position: absolute;
+  left: 80px;
+  top: 1516px;
+  margin: 0;
+  font-family: 'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.4px;
+  color: #fff;
+  white-space: nowrap;
+  font-variation-settings: 'wght' 170, 'ital' 30;
+  z-index: 6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.main-v2-section-label--personal {
+  top: 3467px;
+}
+
+@supports (mix-blend-mode: difference) {
+  .main-v2-section-label {
+    mix-blend-mode: difference;
+  }
+}
+
+/* ── Project cards — 스크롤 등장(느린 opacity + translateY) ─── */
+.main-v2-card-slot[data-project-reveal] {
+  will-change: opacity, transform;
+  transition:
+    opacity 2.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 2.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.main-v2-card-slot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1761px;
+  height: 499px;
+  display: block;
+  text-decoration: none;
+  color: inherit;
   z-index: 3;
 }
 
-.main-card--c1 {
-  left: calc(5% - 16px);
+.main-v2-card-slot:focus-visible {
+  outline: 2px solid #ec5cf0;
+  outline-offset: 4px;
 }
 
-.main-card--c2 {
-  left: calc(50% + 0.5px);
-  transform: translateX(-50%);
-}
-
-.main-card--c3 {
-  left: calc(65% + 6px);
-}
-
-/* IAC row */
-.main-iac-row,
-.main-personal-row-1,
-.main-personal-row-2 {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(1761px, calc(100% - 80px));
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 0;
-  z-index: 2;
-}
-
-.main-iac-row {
-  top: 1398px;
-}
-
-.main-personal-row-1 {
-  top: 2090px;
-}
-
-.main-personal-row-2 {
-  top: 2516px;
-}
-
-.main-iac-row .main-card,
-.main-personal-row-1 .main-card,
-.main-personal-row-2 .main-card {
-  position: relative;
-  left: auto;
-  top: auto;
-  width: 100%;
-  max-width: none;
-  height: auto;
-  aspect-ratio: 587 / 441;
-}
-
-.main-iac-row .main-card--c2,
-.main-iac-row .main-card--c3,
-.main-personal-row-1 .main-card--c2,
-.main-personal-row-1 .main-card--c3,
-.main-personal-row-2 .main-card--c2,
-.main-personal-row-2 .main-card--c3 {
-  transform: none;
-}
-
-.main-iac-row .main-card:hover,
-.main-personal-row-1 .main-card:hover,
-.main-personal-row-2 .main-card:hover {
-  transform: scale(1.03);
-}
-
-.main-card__fill {
-  position: absolute;
-  inset: 0;
+.main-v2-card {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  pointer-events: none;
-}
-
-.main-card__media {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.main-card__media img {
-  position: absolute;
-  height: 100%;
-  width: auto;
-  min-width: 100%;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  max-width: none;
-}
-
-/* IAC row — single PNG cards */
-.main-iac-1 .main-card__media img,
-.main-iac-2 .main-card__media img,
-.main-iac-3 .main-card__media img {
-  left: 0;
-  top: 0;
-  transform: none;
-  width: 100%;
-  height: 100%;
-  min-width: 0;
-  max-width: none;
-  object-fit: cover;
-}
-
-/* Personal 1 — user-provided single PNG card */
-.main-p1 .main-card__media img {
-  left: 0;
-  top: 0;
-  transform: none;
-  width: 100%;
-  height: 100%;
-  min-width: 0;
-  max-width: none;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Personal 2 — single PNG card */
-.main-p2 .main-card__media img {
-  left: 0;
-  top: 0;
-  transform: none;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  min-width: 0;
-  max-width: none;
-}
-
-/* Personal 3 — Figma 71:337 */
-.main-p3 {
-  background: #fff;
-}
-
-.main-p3 .main-p3__art {
-  position: absolute;
-  left: 39.26px;
-  top: 85.92px;
-  width: min(498.931px, calc(100% - 78px));
-  height: 367.155px;
-  overflow: hidden;
-}
-
-.main-p3 .main-p3__art img {
-  position: absolute;
-  width: 107.69%;
-  height: 118.47%;
-  left: -7.67%;
-  top: -14.87%;
-  max-width: none;
-}
-
-.main-p3 .main-p3__mark {
-  position: absolute;
-  left: 50%;
-  top: 30px;
-  transform: translateX(-50%);
-  width: 44px;
-  height: 56px;
-}
-
-.main-p3 .main-p3__mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Personal 4 — gray + poster */
-.main-p4 {
-  background: #d9d9d9;
-}
-
-.main-p4 .main-p4__layer {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  mix-blend-mode: soft-light;
-  pointer-events: none;
-}
-
-.main-p4 .main-p4__layer-inner {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.main-p4 .main-p4__layer-inner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.main-p4 .main-p4__corner {
-  position: absolute;
-  pointer-events: none;
-}
-
-.main-p4 .main-p4__corner--tl {
-  left: 1.53%;
-  top: 4.07%;
-  width: 8%;
-  height: 8%;
-}
-
-.main-p4 .main-p4__corner--bl {
-  left: 4.6%;
-  bottom: 1.24%;
-  width: 6%;
-  height: 10%;
-}
-
-.main-p4 .main-p4__corner--tr {
-  right: 2.21%;
-  top: 7.47%;
-  width: 6%;
-  height: 8%;
-}
-
-.main-p4 .main-p4__corner--br {
-  right: 5.21%;
-  bottom: 1.27%;
-  width: 8%;
-  height: 8%;
-}
-
-.main-p4 .main-p4__row {
-  position: absolute;
-  left: 2.56%;
-  right: 1.95%;
-  top: 36.2%;
-  bottom: 35.34%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  pointer-events: none;
-}
-
-.main-p4 .main-p4__row img {
-  height: 28%;
-  width: auto;
-  max-width: 18%;
-  object-fit: contain;
-  display: block;
-}
-
-.main-p4 .main-p4__row img:nth-child(1) {
-  aspect-ratio: 130.894 / 114.621;
-}
-
-.main-p4 .main-p4__row img:nth-child(2) {
-  aspect-ratio: 112.61 / 122.016;
-}
-
-.main-p4 .main-p4__row img:nth-child(3) {
-  aspect-ratio: 105.339 / 121.81;
-}
-
-.main-p4 .main-p4__row img:nth-child(4) {
-  aspect-ratio: 100.144 / 119.14;
-}
-
-.main-p4 .main-p4__row img:nth-child(5) {
-  aspect-ratio: 122.999 / 122.837;
-}
-
-/* Personal 5 */
-.main-p5 .main-card__media img {
-  width: 132.83%;
-  left: -14.07%;
-  transform: none;
-}
-
-.main-p5 .main-p5__tint {
-  position: absolute;
-  inset: 0;
-  opacity: 0.2;
-  background: linear-gradient(120.305deg, rgb(0, 0, 0) 1.6%, rgb(29, 194, 125) 101.86%);
-  pointer-events: none;
-}
-
-.main-p5 .main-p5__svg {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: min(399px, 68%);
-  height: 278px;
-  overflow: hidden;
-}
-
-.main-p5 .main-p5__overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Personal 6 — Figma 161:1385 single PNG */
-.main-mangwoo-poster {
-  background: #fff;
-}
-
-.main-mangwoo-poster .main-mangwoo-poster__image {
-  position: absolute;
-  inset: 0;
-}
-
-.main-mangwoo-poster .main-mangwoo-poster__image img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Personal 4 replacement — Figma 71:354 hands card */
-.main-mangwoo-hands {
-  background: #000;
-}
-
-.main-mangwoo-hands .main-mangwoo-hands__bg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.main-mangwoo-hands .main-mangwoo-hands__bg img {
-  position: absolute;
-  height: 182.74%;
-  width: 135.2%;
-  left: -17%;
-  top: -3.75%;
-  max-width: none;
-}
-
-.main-mangwoo-hands .main-mangwoo-hands__figure {
-  position: absolute;
-  left: 50%;
-  top: 75px;
-  transform: translateX(-50%);
-  width: min(306.659px, 52%);
-  height: 341.883px;
-  overflow: hidden;
-}
-
-.main-mangwoo-hands .main-mangwoo-hands__figure img {
-  position: absolute;
-  height: 115.99%;
-  width: 229.88%;
-  left: -56.5%;
-  top: 0;
-  max-width: none;
-}
-
-.main-mangwoo-hands .main-mangwoo-hands__fade {
-  position: absolute;
-  left: 110px;
-  bottom: 0;
-  width: min(367px, 62%);
-  height: 76px;
-  background: linear-gradient(191deg, rgba(0, 0, 0, 0.07) 33.61%, #000 50%);
-  pointer-events: none;
-}
-
-/* Footer — CONTACT ME 중앙 정렬 */
-.main-footer {
-  position: absolute;
-  left: 50%;
-  top: 3172px;
-  transform: translateX(-50%);
-  width: min(1764px, calc(100% - 80px));
-  z-index: 2;
-  pointer-events: none;
-  /* 스크롤 끝: 글자 아래 40px (min-height와 함께 맞춤) */
-  padding-bottom: 40px;
-  box-sizing: content-box;
-}
-
-.main-contact {
-  position: relative;
-  width: 100%;
   margin: 0;
   padding: 0;
-  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.main-v2-card--panel-white {
+  background: #fff;
+}
+
+.main-v2-card--panel-gray {
+  background: #d4d4d4;
+}
+
+.main-v2-card__media {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.main-v2-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
   pointer-events: none;
 }
 
-.main-contact__text {
-  display: inline-block;
-  font-family: 'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif;
-  font-size: 200px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 0.8;
-  letter-spacing: 4px;
-  color: #000;
-  pointer-events: auto;
-  white-space: nowrap;
-  font-synthesis: none;
-  font-variation-settings: 'wght' 70, 'ital' 30;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: geometricPrecision;
+/* ── Contact footer — Figma 211:1374 ─────────────────────────── */
+.main-v2-contact {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6447px;
+  padding: 0 80px;
+  box-sizing: border-box;
+  text-align: center;
+  z-index: 4;
 }
 
-/* 태블릿·모바일: 절대 좌표 해제, 패딩·플루이드 타이포 */
-@media (max-width: 1279px) {
-  html {
-    scroll-snap-type: none;
-    scroll-behavior: auto;
-  }
+.main-v2-contact__link {
+  display: inline-block;
+  margin: 0;
+  font-family: 'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif;
+  font-size: clamp(48px, 10.4vw, 200px);
+  font-weight: 300;
+  line-height: 0.8;
+  letter-spacing: 4px;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  font-variation-settings: 'wght' 70, 'ital' 30;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
 
-  .main-scroll-snap-track {
-    display: none;
-  }
+.main-v2-contact__link:hover {
+  opacity: 0.9;
+}
 
-  .main-stage {
-    min-height: 0;
-    padding: 0 clamp(16px, 4vw, 32px);
-    padding-bottom: 40px;
-  }
-
-  .main-iac-row .main-card,
-  .main-personal-row-1 .main-card,
-  .main-personal-row-2 .main-card {
-    position: relative;
-    left: auto;
-    right: auto;
-    top: auto;
-    transform: none;
-    width: 100%;
-    max-width: 587px;
-    margin: 0 auto 24px;
-  }
-
-  .main-iac-row,
-  .main-personal-row-1,
-  .main-personal-row-2 {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0;
-    width: 100%;
-    max-width: 587px;
-    margin: 0 auto;
-  }
-
-  .main-section-label--iac,
-  .main-section-label--personal {
-    position: relative;
-    left: auto;
-    top: auto;
-    margin: 48px auto 16px;
-    padding: 0;
-    text-align: left;
-    width: 100%;
-    max-width: 587px;
-  }
-
-  .main-hero-title-wrap {
-    position: relative;
-    left: auto;
-    top: 96px;
-    transform: none;
-    width: 100%;
-    max-width: 1823px;
-    margin: 0 auto 28px;
-    text-align: center;
-    z-index: auto;
-  }
-
-  .main-hero-title-wrap .main-hero-title {
-    object-position: center top;
-  }
-
-  .main-intro {
-    position: relative;
-    left: auto;
-    top: auto;
-    z-index: auto;
-    width: 100%;
-    max-width: min(671px, calc(100% - 48px));
-    height: auto;
-    min-height: 0;
-    margin: 0 auto 20px;
-    font-size: clamp(17px, 3.8vw, 26px);
-    transform: none;
-  }
-
-  .main-cv {
-    position: relative;
-    left: auto;
-    top: auto;
-    z-index: auto;
-    display: block;
-    margin: 0 auto 32px;
-    font-size: clamp(17px, 3.8vw, 26px);
-    transform: none;
-  }
-
-  .main-intro,
-  .main-cv {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .main-skills-line {
-    position: relative;
-    left: auto;
-    top: auto;
-    z-index: auto;
-    margin: 0 auto 40px;
-    padding: 0;
-    width: 100%;
-    max-width: min(1762px, 100%);
-    transform: none;
-    height: auto;
-  }
-
-  .main-skills-line__spacer,
-  .main-skills-line__text {
-    font-size: clamp(36px, 9vw, 136px);
-  }
-
-  .main-skills-line__spacer {
-    line-height: 0.74;
-  }
-
-  .main-skills-line__text {
-    line-height: 0.74;
-    letter-spacing: -0.03em;
-  }
-
-  .main-footer {
-    position: relative;
-    left: auto;
-    top: auto;
-    transform: none;
-    width: 100%;
-    max-width: min(1764px, 100%);
-    margin: 40px auto 0;
-    padding: 0 4px;
-    padding-bottom: 0;
-    box-sizing: border-box;
-  }
-
-  .main-contact {
-    margin: 0 auto;
-  }
-
-  .main-contact__text {
-    font-size: clamp(48px, 10.4vw, 200px);
-  }
-
-
-
-
+.main-v2-contact__line {
+  width: 1764px;
+  max-width: 100%;
+  height: 0;
+  margin: 24px auto 0;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.85);
 }

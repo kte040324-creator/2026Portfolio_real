@@ -98,7 +98,7 @@ export function Hyundai() {
         <ProjectPageHeader
           embedded
           variant="dark"
-          breadcrumb="TaeeunKim - Projects - IAC - UX/UI Design, System"
+          breadcrumb="Projects - IAC - UX/UI Design, System"
         />
 
         {/* ── Overview ──────────────────────────────── */}

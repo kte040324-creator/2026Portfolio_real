@@ -1,0 +1,793 @@
+/* Figma 197:98 — loth, 1920 × 16932 */
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  src: url('../../fonts/NeueHaasGrotesk/NHaasGroteskDSPro-55Rg.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.loth-scale-root {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  background: #000;
+  padding-bottom: calc(16932 / 1920 * 100%);
+}
+
+.loth-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 16932px;
+  transform-origin: top left;
+  transform: scale(var(--loth-scale, 1));
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #eaeaea;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Figma 197:99 — Rectangle 34626614, full frame */
+.loth-bg-page {
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 16932px;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgb(93, 15, 8) 6.1543%,
+    rgb(0, 0, 0) 13.838%,
+    rgb(159, 153, 153) 92.907%,
+    rgb(0, 0, 0) 96.557%
+  );
+}
+
+.loth-abs {
+  position: absolute;
+}
+
+/* Figma 197:212 — Rectangle 34626615, hero radial (SVG from Dev) */
+.loth-hero-bg {
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  z-index: 1;
+  pointer-events: none;
+  background-color: #000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='none'%3E%3Cdefs%3E%3CradialGradient id='g' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(3.6926e-15 78.7 -139.91 3.4764e-14 960 553)'%3E%3Cstop offset='0' stop-color='rgb(93,15,8)'/%3E%3Cstop offset='0.125' stop-color='rgb(104,36,29)'/%3E%3Cstop offset='0.25' stop-color='rgb(116,56,51)'/%3E%3Cstop offset='0.375' stop-color='rgb(127,77,72)'/%3E%3Cstop offset='0.5' stop-color='rgb(139,97,94)'/%3E%3Cstop offset='0.75' stop-color='rgb(161,138,136)'/%3E%3Cstop offset='1' stop-color='rgb(184,179,179)'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.loth-header {
+  left: 0;
+  top: 18px;
+  width: 100%;
+  z-index: 10;
+  max-width: none !important;
+}
+
+/* Figma 197:213 — Neue Haas 55 Roman 30px, leading 1.1, #F5FCF9 */
+.loth-hero-line {
+  left: 789px;
+  top: 179px;
+  width: 342px;
+  min-height: 72px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: normal;
+  color: #f5fcf9;
+  text-align: center;
+}
+
+.loth-hero-mark {
+  left: 846px;
+  top: 376px;
+  width: 227px;
+  height: 287px;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.loth-hero-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Overview */
+.loth-overview-h {
+  left: 69px;
+  top: 1264px;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+  color: #fff;
+  z-index: 4;
+}
+
+.loth-overview-line {
+  left: 69px;
+  top: 1330px;
+  width: 319px;
+  height: 0;
+  border: 0;
+  border-top: 1px solid #eaeaea;
+  margin: 0;
+  padding: 0;
+  z-index: 4;
+}
+
+.loth-overview-p1 {
+  left: 69px;
+  top: 1380px;
+  width: 331px;
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+  color: #eaeaea;
+  z-index: 4;
+}
+
+.loth-overview-p2 {
+  left: 62px;
+  top: 1643px;
+  width: 331px;
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+  color: #eaeaea;
+  z-index: 4;
+}
+
+.loth-overview-video {
+  left: 666px;
+  top: 1264px;
+  width: 1186px;
+  height: 686px;
+  z-index: 4;
+  overflow: hidden;
+  background: #111;
+}
+
+.loth-overview-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Visual Identity */
+.loth-vi-h {
+  left: 69px;
+  top: 2299px;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  z-index: 4;
+}
+
+.loth-vi-sub {
+  left: 116px;
+  top: 2431px;
+  margin: 0;
+  font-size: 20px;
+  color: #c8c8c8;
+  z-index: 4;
+}
+
+.loth-mood-root {
+  left: 0;
+  top: 2363px;
+  width: 1920px;
+  height: 780px;
+  z-index: 4;
+  pointer-events: none;
+  --loth-mood-gather: 0;
+}
+
+.loth-mood-cell {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 2px;
+  --mood-nx: 0px;
+  --mood-ny: 0px;
+  transform: translate(
+    calc((1 - var(--loth-mood-gather)) * var(--mood-nx)),
+    calc((1 - var(--loth-mood-gather)) * var(--mood-ny))
+  );
+  transition: transform 0.35s ease-out;
+  will-change: transform;
+}
+
+.loth-mood-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Logo & color */
+.loth-lc-sub {
+  left: 116px;
+  top: 3284px;
+  margin: 0;
+  font-size: 20px;
+  color: #c8c8c8;
+  z-index: 4;
+}
+
+.loth-lc-board {
+  left: 234px;
+  top: 3426px;
+  width: 467px;
+  height: 589px;
+  z-index: 4;
+  overflow: hidden;
+}
+
+.loth-lc-board img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.loth-swatch {
+  z-index: 4;
+  border-radius: 2px;
+}
+
+.loth-swatch--a {
+  left: 866px;
+  top: 3447px;
+  width: 478px;
+  height: 562px;
+  background: #5d0f08;
+}
+
+.loth-swatch--b {
+  left: 1344px;
+  top: 3447px;
+  width: 317px;
+  height: 307px;
+  background: #000;
+}
+
+.loth-swatch--c {
+  left: 1661px;
+  top: 3447px;
+  width: 157px;
+  height: 307px;
+  background: #e7dcdc;
+}
+
+.loth-swatch--d {
+  left: 1343px;
+  top: 3754px;
+  width: 318px;
+  height: 255px;
+  background: #1e2521;
+}
+
+.loth-swatch--e {
+  left: 1661px;
+  top: 3754px;
+  width: 157px;
+  height: 255px;
+  background: #fff;
+}
+
+.loth-hex {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #eaeaea;
+  z-index: 5;
+}
+
+.loth-hex--1 {
+  left: 1221px;
+  top: 3960px;
+}
+
+.loth-hex--2 {
+  left: 1530px;
+  top: 3708px;
+}
+
+.loth-hex--3 {
+  left: 1691px;
+  top: 3708px;
+  color: #1a1a1a;
+}
+
+.loth-hex--4 {
+  left: 1548px;
+  top: 3960px;
+}
+
+.loth-hex--5 {
+  left: 1701px;
+  top: 3960px;
+  color: #333;
+}
+
+/* Generated */
+.loth-gen-label {
+  left: 116px;
+  top: 4320px;
+  margin: 0;
+  font-size: 20px;
+  color: #c8c8c8;
+  z-index: 4;
+}
+
+.loth-gen-row {
+  left: 48px;
+  top: 4416px;
+  width: 1824px;
+  height: 361px;
+  z-index: 4;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 23px;
+  box-sizing: border-box;
+}
+
+.loth-gen-row .loth-gen-cell {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 2px;
+  opacity: 0;
+  transform: translateY(-64px);
+}
+
+.loth-gen-row.project-reveal--visible .loth-gen-cell--1 {
+  animation: loth-gen-drop 0.78s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards;
+}
+
+.loth-gen-row.project-reveal--visible .loth-gen-cell--2 {
+  animation: loth-gen-drop 0.78s cubic-bezier(0.22, 1, 0.36, 1) 0.16s forwards;
+}
+
+.loth-gen-row.project-reveal--visible .loth-gen-cell--3 {
+  animation: loth-gen-drop 0.78s cubic-bezier(0.22, 1, 0.36, 1) 0.32s forwards;
+}
+
+@keyframes loth-gen-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-64px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loth-gen-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Wide strips — 무한 가로 흐름: [이미지+간격] 단위를 2번 이어 −50% 이동으로 루프 */
+.loth-strip {
+  --loth-strip-gap: 21px;
+  left: 0;
+  width: 1920px;
+  height: 223px;
+  z-index: 4;
+  overflow: hidden;
+}
+
+.loth-strip--a {
+  top: 4969px;
+}
+
+.loth-strip--b {
+  top: 5240px; 
+}
+
+.loth-strip-track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: max-content;
+  height: 100%;
+  will-change: transform;
+}
+
+.loth-strip-unit {
+  flex-shrink: 0;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+/* 6346545: 왼쪽으로 흐름 (트랙 이동 0 → -50%) */
+.loth-strip-track--ltr {
+  animation: loth-strip-marquee-ltr 48s linear infinite;
+}
+
+/* 6346544: 반대 방향 (이중 복제 기준 -50% → 0) */
+.loth-strip-track--rtl {
+  animation: loth-strip-marquee-rtl 56s linear infinite;
+}
+
+@keyframes loth-strip-marquee-ltr {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes loth-strip-marquee-rtl {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.loth-strip-img {
+  box-sizing: content-box;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  flex-shrink: 0;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  /* 복제 이미지 사이·루프 이음부 모두 동일 21px (span gap 미적용 이슈 방지) */
+  margin-right: var(--loth-strip-gap, 21px);
+}
+
+/* Figma 239:32 — Comp 1 2 (rounded-rectangle 메타: 229, 5463, 1463×1463) */
+.loth-frame-371 {
+  left: 229px;
+  top: 5463px;
+  width: 1463px;
+  height: 1463px;
+  z-index: 12;
+  box-sizing: border-box;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.loth-frame-371__media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  pointer-events: none;
+}
+
+/* UI Design */
+.loth-ui-h {
+  left: 69px;
+  top: 6941px;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  z-index: 4;
+}
+
+.loth-ui-col {
+  top: 7164px;
+  z-index: 4;
+  overflow: hidden;
+  /* PNG 자체 배경만 보이게 — 별도 박스 배경 없음 */
+  background: transparent;
+}
+
+.loth-ui-col--a {
+  left: 62px;
+  width: 603px;
+  height: 2048px;
+}
+
+.loth-ui-col--b {
+  left: 695px;
+  width: 551px;
+  height: 836px;
+}
+
+.loth-ui-col--c {
+  left: 1272px;
+  width: 586px;
+  height: 1816px;
+}
+
+/* Figma 203:1270 / 203:1277 / 203:1274 — 전체 UI 보이도록 contain */
+.loth-ui-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+  display: block;
+  border: 0;
+  outline: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* All pages — 캡처(9300~)보다 위에 두어 가리지 않음 */
+.loth-pages-label {
+  left: 116px;
+  top: 9220px;
+  margin: 0;
+  font-size: 20px;
+  color: #c8c8c8;
+  z-index: 6;
+}
+
+.loth-page-cap {
+  left: 62px;
+  width: 1795px;
+  z-index: 4;
+  overflow: hidden;
+  background: transparent;
+}
+
+.loth-page-cap--a {
+  top: 9300px;
+  height: 2360px;
+}
+
+/* Figma 203:1282 — 긴 스크린샷은 상단 기준 contain */
+.loth-page-cap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  display: block;
+}
+
+/* Prototype */
+.loth-proto-label {
+  left: 116px;
+  top: 12187px;
+  margin: 0;
+  font-size: 20px;
+  color: #c8c8c8;
+  z-index: 6;
+}
+
+/* Figma 206:1290 — react1; 좌우 inset은 .loth-react-pair--* 와 동일 (55 / 1810 / 55) */
+.loth-proto-video {
+  left: 55px;
+  top: 12254px;
+  width: 1810px;
+  height: 1000px;
+  z-index: 4;
+  overflow: hidden;
+  background: #000;
+  box-sizing: border-box;
+}
+
+.loth-proto-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.loth-react-pair {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+  z-index: 4;
+  align-items: flex-start;
+}
+
+.loth-react-pair--top {
+  left: 55px;
+  top: 13281px;
+  width: 1810px;
+}
+
+.loth-react-pair--btm {
+  left: 55px;
+  top: 13810px;
+  width: 1810px;
+}
+
+/* Figma 206:1293 / 206:1294 — 프로토타입 상단 2열 슬롯 */
+.loth-react-slot {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.loth-react-cell {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  background: #000;
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+/* Figma 211:1336 / 211:1337 — video fills frame, object-cover */
+.loth-react-cell video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+}
+
+.loth-react-pair--btm > video {
+  flex: 1 1 0;
+  min-width: 0;
+  width: 0;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  background: #000;
+}
+
+/* Figma 206:1297 — Helvetica Regular 20 / 1.5, sub_yellow #E4E5DA */
+.loth-mobile-label {
+  left: 116px;
+  top: 14518px;
+  margin: 0;
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: #e4e5da;
+  white-space: nowrap;
+  z-index: 4;
+}
+
+/* Figma 197:206 — mobile 1: full-bleed video, object-cover */
+.loth-mobile-video {
+  left: 0;
+  top: 15697px;
+  width: 1920px;
+  height: 1080px;
+  z-index: 3;
+  overflow: hidden;
+  background: #000;
+  box-sizing: border-box;
+}
+
+.loth-mobile-video__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+/* Figma 197:203 — iPhone 16 frame, object-cover, above video */
+.loth-iphone {
+  left: 221px;
+  top: 14533px;
+  width: 1440px;
+  height: 1080px;
+  z-index: 12;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.loth-iphone img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.loth-footer-logo {
+  left: 917px;
+  top: 16804px;
+  width: 85px;
+  height: 107px;
+  z-index: 4;
+}
+
+.loth-footer-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.loth-footer-tools {
+  left: 86px;
+  top: 16834px;
+  width: 420px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #8a8a8a;
+  z-index: 4;
+}
+
+.loth-footer-date {
+  left: 1569px;
+  top: 16834px;
+  width: 300px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #8a8a8a;
+  text-align: right;
+  z-index: 4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loth-mood-cell {
+    transform: none;
+    transition: none;
+  }
+
+  .loth-gen-row .loth-gen-cell {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .loth-strip-track {
+    animation: none;
+    transform: none;
+  }
+}

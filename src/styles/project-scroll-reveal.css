@@ -69,6 +69,19 @@
   transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Loth (197:98) — opacity only */
+.loth-frame [data-project-reveal]:not(.project-reveal--visible) {
+  opacity: 0;
+  transform: none;
+  transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.loth-frame [data-project-reveal].project-reveal--visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* left:50% + translateX(-50%) 인 블록만 Y 등장을 translateX와 합성 */
 .sooin-final-hero[data-project-reveal]:not(.project-reveal--visible) {
   opacity: 0;

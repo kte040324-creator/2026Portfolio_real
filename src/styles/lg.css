@@ -1,0 +1,185 @@
+/* LG IAC — Figma 241:888 (1920 × 12888) */
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  src: url('/fonts/NeueHaasGrotesk/NHaasGroteskDSPro-45Lt.ttf')
+    format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  src: url('/fonts/NeueHaasGrotesk/NHaasGroteskDSPro-75Bd.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Figma Pretendard:* 가족명 — public/fonts/Pretendard */
+@font-face {
+  font-family: 'Pretendard:Light';
+  src: url('/fonts/Pretendard/Pretendard-Light.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard:Regular';
+  src: url('/fonts/Pretendard/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard:Medium';
+  src: url('/fonts/Pretendard/Pretendard-Medium.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard:SemiBold';
+  src: url('/fonts/Pretendard/Pretendard-SemiBold.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard:Bold';
+  src: url('/fonts/Pretendard/Pretendard-Bold.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.lg-scale-root {
+  width: 100%;
+  /* Allow wide rotated SVG ellipses (241:891/892) to paint past 0 — frame uses overflow:visible */
+  overflow-x: visible;
+  position: relative;
+  background: #e9feff;
+  padding-bottom: calc(12888 / 1920 * 100%);
+}
+
+.lg-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 12888px;
+  transform-origin: top left;
+  transform: scale(var(--lg-scale, 1));
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #0a0a0a;
+  /* Large rotated ellipses (241:891 / 241:892) extend past 1920×12888 — must not clip */
+  overflow: visible;
+  background: transparent;
+}
+
+/* Figma 246:64 — 래퍼 위치 고정, 이미지는 intrinsic 중심(903px, 836.5px) 기준 회전 */
+@keyframes lg-ellipse-2850-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lg-img-ellipse-2850-rotate {
+  animation: lg-ellipse-2850-rotate 60s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lg-img-ellipse-2850-rotate {
+    animation: none;
+  }
+}
+
+/* Figma 247:71 — Ellipse 2840, 중심 고정 무한 회전 */
+@keyframes lg-ellipse-2840-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lg-ellipse-2840-spin {
+  transform-origin: 50% 50%;
+  animation: lg-ellipse-2840-rotate 10s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lg-ellipse-2840-spin {
+    animation: none;
+  }
+}
+
+/* Figma 74:787 패턴 — embedded 헤더 */
+.lg-header {
+  left: 0;
+  right: 0;
+  top: 18px;
+  z-index: 20;
+}
+
+.lg-figma-slide-wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 12888px;
+}
+
+.lg-abs {
+  position: absolute;
+}
+
+/* Figma 241:977 — 그라데이션 타이틀 클립 (Safari 등) */
+.lg-figma-slide-wrap [data-node-id='241:977'],
+.lg-figma-slide-wrap [data-node-id='241:977'] .bg-clip-text,
+.lg-figma-slide-wrap [data-node-id='241:977'] .shiny-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/*
+ * 영상 슬롯 공통 (LG 페이지만): 0.5px #000 outline, corner radius 10
+ * — data-node-id 기준 (Figma SBM / TV 영역)
+ */
+.lg-figma-slide-wrap [data-node-id='241:890'],
+.lg-figma-slide-wrap [data-node-id='241:1078'],
+.lg-figma-slide-wrap [data-node-id='241:1120'],
+.lg-figma-slide-wrap [data-node-id='241:1123'],
+.lg-figma-slide-wrap [data-node-id='241:1124'],
+.lg-figma-slide-wrap [data-node-id='241:1138'],
+.lg-figma-slide-wrap [data-node-id='241:1140'],
+.lg-figma-slide-wrap [data-node-id='241:1191'],
+.lg-figma-slide-wrap [data-node-id='241:1170'] {
+  box-sizing: border-box;
+  border-radius: 10px;
+  outline: 0.5px solid #000000;
+  outline-offset: 0;
+  overflow: hidden;
+}
+
+.lg-figma-slide-wrap [data-node-id='241:890'] video,
+.lg-figma-slide-wrap [data-node-id='241:1078'] video,
+.lg-figma-slide-wrap [data-node-id='241:1120'] video,
+.lg-figma-slide-wrap [data-node-id='241:1123'] video,
+.lg-figma-slide-wrap [data-node-id='241:1124'] video,
+.lg-figma-slide-wrap [data-node-id='241:1138'] video,
+.lg-figma-slide-wrap [data-node-id='241:1140'] video,
+.lg-figma-slide-wrap [data-node-id='241:1170'] video,
+.lg-figma-slide-wrap [data-node-id='241:1191'] video {
+  border-radius: 10px;
+}

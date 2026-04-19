@@ -1,8 +1,10 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Landing } from './Landing';
 import { Main } from './pages/Main';
 import { Hyundai } from './pages/Hyundai';
+
+const Lg = lazy(() => import('./pages/Lg').then((m) => ({ default: m.Lg })));
 import { Mealtune } from './pages/Mealtune';
 import { Sooin } from './pages/Sooin';
 import { Sori } from './pages/Sori';
@@ -26,6 +28,14 @@ export default function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/main" element={<Main />} />
         <Route path="/projects/hyundai" element={<Hyundai />} />
+        <Route
+          path="/projects/lg"
+          element={
+            <Suspense fallback={null}>
+              <Lg />
+            </Suspense>
+          }
+        />
         <Route path="/projects/mealtune" element={<Mealtune />} />
         <Route path="/projects/sooin" element={<Sooin />} />
         <Route path="/projects/sori" element={<Sori />} />

@@ -7,6 +7,7 @@ import { Mealtune } from './pages/Mealtune';
 import { Sooin } from './pages/Sooin';
 import { Sori } from './pages/Sori';
 import { Loth } from './pages/Loth';
+import { Seoculus } from './pages/Seoculus';
 import { ProjectStub } from './pages/ProjectStub';
 
 function ScrollToTop() {
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/projects/sooin" element={<Sooin />} />
         <Route path="/projects/sori" element={<Sori />} />
         <Route path="/projects/loth" element={<Loth />} />
+        <Route path="/projects/seoculus" element={<Seoculus />} />
         <Route path="/projects/:slug" element={<ProjectStub />} />
       </Routes>
     </BrowserRouter>

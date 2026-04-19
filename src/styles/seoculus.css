@@ -1,0 +1,289 @@
+/* Figma 109:1035 — 서클러스, 1920 × 11581 */
+
+.seo-scale-root {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  background: #000;
+  padding-bottom: calc(11581 / 1920 * 100%);
+}
+
+.seo-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 11581px;
+  transform-origin: top left;
+  transform: scale(var(--seo-scale, 1));
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #f5fcf9;
+  overflow: hidden;
+  background: #000;
+}
+
+.seo-abs {
+  position: absolute;
+}
+
+.seo-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.seo-shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.seo-footer-gradient {
+  left: 0;
+  top: 11328px;
+  width: 1920px;
+  height: 253px;
+  z-index: 0;
+  background: linear-gradient(180deg, #000 0%, #002000 100%);
+  pointer-events: none;
+}
+
+/* 푸터 문구·로고가 그라데이션 위에 보이도록 (리빌 없이도 항상 표시) */
+.seo-footer-foreground {
+  z-index: 2;
+}
+
+/* Main Logo — A → B → KOR 좌→우 순차 등장 (타이틀 섹션 진입 시 .seo-frame--main-logos-in) */
+.seo-main-logo-stagger {
+  opacity: 0;
+  transform: translate3d(-28px, 0, 0);
+  transition:
+    opacity 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.82s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.seo-frame--main-logos-in .seo-main-logo-stagger.seo-main-logo--a {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0ms;
+}
+
+.seo-frame--main-logos-in .seo-main-logo-stagger.seo-main-logo--b {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.16s;
+}
+
+.seo-frame--main-logos-in .seo-main-logo-stagger.seo-main-logo--kor {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.32s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seo-main-logo-stagger {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.seo-h30 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+  color: #fff;
+}
+
+.seo-body-20 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+  color: #f5fcf9;
+}
+
+.seo-caption {
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #e4e5da;
+}
+
+.seo-footer-meta {
+  margin: 0;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.165px;
+  color: #d0d0d0;
+}
+
+.seo-sub-arrow {
+  margin: 0;
+  font-family: 'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif;
+  font-size: 60px;
+  line-height: 1.5;
+  color: #fff;
+  font-variation-settings: 'wght' 130, 'ital' 30;
+  text-align: center;
+}
+
+.seo-img-clip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.seo-img-clip img {
+  position: absolute;
+  display: block;
+  max-width: none;
+}
+
+.seo-shot-022701 .seo-img-clip img {
+  width: 100%;
+  height: 118.66%;
+  left: 0;
+  top: -9.39%;
+}
+
+.seo-shot-022609 .seo-img-clip img {
+  width: 100%;
+  height: 116.13%;
+  left: 0;
+  top: -7.7%;
+}
+
+.seo-shot-022635 .seo-img-clip img {
+  width: 102.64%;
+  height: 104.38%;
+  left: -1.13%;
+  top: -3.32%;
+}
+
+.seo-shot-sub-11 .seo-img-clip img {
+  width: 100.05%;
+  height: 100%;
+  left: -0.02%;
+  top: 0;
+}
+
+/* Figma 215:2490 — image 11.png (투명 배경 라인 아트) */
+.seo-shot-sub-11 .seo-sublogo-11 {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+.seo-card {
+  border: 1px solid #6f6f6f;
+  border-radius: 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.seo-card .seo-fill {
+  border-radius: 20px;
+}
+
+/* ── Main logo diagram (211:2175) ── */
+.soc-d369 {
+  position: relative;
+  width: 1780.502px;
+  height: 546.768px;
+  flex-shrink: 0;
+}
+
+.soc-d369__pin {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.soc-d369__pin > img,
+.soc-d369__pin-inner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.soc-d369__pin-inner {
+  position: absolute;
+  overflow: hidden;
+}
+
+.soc-d369__pin-inner--x {
+  inset: 0 -1px;
+}
+
+.soc-d369__pin-inner--y {
+  inset: -1px 0;
+}
+
+.soc-d369__right-wrap {
+  position: absolute;
+  inset: 0 0 -0.23% 0;
+}
+
+.soc-d369__right-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.soc-d369__layer {
+  position: absolute;
+  left: 0;
+  top: 132px;
+  width: 596px;
+  height: 413px;
+  overflow: hidden;
+}
+
+.soc-d369__layer .soc-d369__pin {
+  position: absolute;
+}
+
+/* Hero video */
+/* Figma 113:143 — embedded header, y = 18 */
+.seo-header {
+  left: 0;
+  right: 0;
+  top: 18px;
+  z-index: 20;
+}
+
+.seo-mark-block {
+  overflow: hidden;
+}
+
+.seo-hero-video {
+  left: 69px;
+  top: 95px;
+  width: 1782px;
+  height: 1032px;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.seo-hero-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}

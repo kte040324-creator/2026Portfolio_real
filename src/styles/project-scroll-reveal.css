@@ -95,6 +95,36 @@
   transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* LG IAC — opacity only */
+.lg-frame [data-project-reveal]:not(.project-reveal--visible) {
+  opacity: 0;
+  transform: none;
+  transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lg-frame [data-project-reveal].project-reveal--visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Canon (215:2580) — Y 등장 */
+.canon-frame [data-project-reveal]:not(.project-reveal--visible) {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.canon-frame [data-project-reveal].project-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* left:50% + translateX(-50%) 인 블록만 Y 등장을 translateX와 합성 */
 .sooin-final-hero[data-project-reveal]:not(.project-reveal--visible) {
   opacity: 0;

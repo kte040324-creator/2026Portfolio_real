@@ -10,6 +10,7 @@ import { Sooin } from './pages/Sooin';
 import { Sori } from './pages/Sori';
 import { Loth } from './pages/Loth';
 import { Seoculus } from './pages/Seoculus';
+import { Canon } from './pages/Canon';
 import { ProjectStub } from './pages/ProjectStub';
 
 function ScrollToTop() {
@@ -41,6 +42,7 @@ export default function App() {
         <Route path="/projects/sori" element={<Sori />} />
         <Route path="/projects/loth" element={<Loth />} />
         <Route path="/projects/seoculus" element={<Seoculus />} />
+        <Route path="/projects/canon" element={<Canon />} />
         <Route path="/projects/:slug" element={<ProjectStub />} />
       </Routes>
     </BrowserRouter>

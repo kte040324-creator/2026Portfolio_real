@@ -55,8 +55,8 @@ export function useProjectScrollReveal(frameRef: RefObject<HTMLElement | null>) 
           }
         }
       },
-      /* 음수 bottom: 뷰포트 안으로 더 들어온 뒤 등장 → 스크롤 시 모션이 잘 보임 */
-      { root: null, threshold: 0, rootMargin: '0px 0px -10% 0px' }
+      /* -10% bottom 은 스케일(transform)된 긴 프레임에서 교차 판정이 빗나가는 경우가 있어 0으로 둠 */
+      { root: null, threshold: 0, rootMargin: '0px 0px 0px 0px' }
     );
 
     const sync = () => {

@@ -14,7 +14,7 @@
   overflow-x: hidden;
   position: relative;
   background: #000;
-  padding-bottom: calc(16932 / 1920 * 100%);
+  /* 높이는 Loth.tsx에서 DESIGN_H * scale 로 지정 (Mealtune과 동일 패턴) */
 }
 
 .loth-frame {
@@ -73,6 +73,11 @@
   width: 100%;
   z-index: 10;
   max-width: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-inline: 48px;
 }
 
 /* Figma 197:213 — Neue Haas 55 Roman 30px, leading 1.1, #F5FCF9 */

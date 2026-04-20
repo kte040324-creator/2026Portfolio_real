@@ -6,6 +6,7 @@ import { lothAsset } from '../lib/lothAssets';
 import '../styles/loth.css';
 
 const DESIGN_W = 1920;
+const DESIGN_H = 16932;
 
 /** Figma 197:98 — moodboard (layer names → `public/loth/img/`) */
 const MOOD_IMAGES: { src: string; left: number; top: number; w: number; h: number }[] = [
@@ -48,6 +49,7 @@ export function Loth() {
     const update = () => {
       const scale = designScaleForRoot(root, DESIGN_W);
       frame.style.setProperty('--loth-scale', String(scale));
+      root.style.height = `${DESIGN_H * scale}px`;
     };
     update();
     const ro = new ResizeObserver(update);
@@ -139,7 +141,7 @@ export function Loth() {
           cohesive user experience.
         </p>
 
-        <div className="loth-abs loth-overview-video" data-node-id="206:1306" data-project-reveal>
+        <div className="loth-abs loth-overview-video" data-node-id="206:1306">
           <video
             src={lothAsset('video/herovideo.mov')}
             autoPlay
@@ -292,7 +294,7 @@ export function Loth() {
         <p className="loth-abs loth-proto-label" data-node-id="206:1295">
           Prototype Video_Frontend Dev.
         </p>
-        <div className="loth-abs loth-proto-video" data-node-id="206:1290" data-project-reveal>
+        <div className="loth-abs loth-proto-video" data-node-id="206:1290">
           <video
             src={lothAsset('video/react1.mp4')}
             autoPlay
@@ -310,7 +312,7 @@ export function Loth() {
           />
         </div>
 
-        <div className="loth-abs loth-react-pair loth-react-pair--top" data-project-reveal>
+        <div className="loth-abs loth-react-pair loth-react-pair--top">
           <div className="loth-react-slot" data-node-id="206:1293">
             <div className="loth-react-cell" data-node-id="211:1336">
               <video
@@ -352,7 +354,7 @@ export function Loth() {
         <p className="loth-abs loth-mobile-label" data-node-id="206:1297">
           Mobile UI
         </p>
-        <div className="loth-abs loth-react-pair loth-react-pair--btm" data-project-reveal>
+        <div className="loth-abs loth-react-pair loth-react-pair--btm">
           <video
             src={lothAsset('video/react4.mp4')}
             autoPlay
@@ -383,12 +385,7 @@ export function Loth() {
           />
         </div>
 
-        <div
-          className="loth-abs loth-mobile-video"
-          data-node-id="197:206"
-          data-name="mobile 1"
-          data-project-reveal
-        >
+        <div className="loth-abs loth-mobile-video" data-node-id="197:206" data-name="mobile 1">
           <video
             className="loth-mobile-video__media"
             src={lothAsset('video/mobile 1.mp4')}

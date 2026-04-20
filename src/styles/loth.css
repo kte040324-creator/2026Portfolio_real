@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Neue Haas Grotesk Display Pro';
-  src: url('../../fonts/NeueHaasGrotesk/NHaasGroteskDSPro-55Rg.ttf')
+  src: url('/fonts/NeueHaasGrotesk/NHaasGroteskDSPro-55Rg.ttf')
     format('truetype');
   font-weight: 400;
   font-style: normal;

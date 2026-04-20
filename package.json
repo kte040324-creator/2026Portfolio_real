@@ -18,6 +18,12 @@
     "react-router-dom": "^7.14.1",
     "three": "^0.184.0"
   },
+  "browserslist": [
+    "last 3 Safari versions",
+    "last 3 iOS versions",
+    "last 3 Chrome versions",
+    "Firefox ESR"
+  ],
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
     "@types/react": "^18.3.12",

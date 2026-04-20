@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useProjectScrollReveal } from '../hooks/useProjectScrollReveal';
+import { designScaleForRoot } from '../lib/designRootWidth';
 import { sooinAsset } from '../lib/sooinAssets';
 import '../styles/sooin.css';
 
@@ -51,7 +52,7 @@ export function Sooin() {
     const frame = frameRef.current;
     if (!root || !frame) return;
     const update = () => {
-      const scale = root.clientWidth / DESIGN_W;
+      const scale = designScaleForRoot(root, DESIGN_W);
       frame.style.setProperty('--sooin-scale', String(scale));
     };
     update();
@@ -70,7 +71,7 @@ export function Sooin() {
 
     const mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    const getScale = () => Math.max(root.clientWidth / DESIGN_W, 0.0001);
+    const getScale = () => Math.max(designScaleForRoot(root, DESIGN_W), 0.0001);
 
     const innerVisibleWidth = () => {
       const cs = getComputedStyle(viewport);

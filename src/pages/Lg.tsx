@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { ProjectPageHeader } from '../components/ProjectPageHeader';
 import { LgFigmaSlide } from '../components/LgFigmaSlide';
 import { useProjectScrollReveal } from '../hooks/useProjectScrollReveal';
+import { designScaleForRoot } from '../lib/designRootWidth';
 import '../styles/lg-tailwind.css';
 import '../styles/lg.css';
 
@@ -19,7 +20,7 @@ export function Lg() {
     const frame = frameRef.current;
     if (!root || !frame) return;
     const update = () => {
-      frame.style.setProperty('--lg-scale', String(root.clientWidth / DESIGN_W));
+      frame.style.setProperty('--lg-scale', String(designScaleForRoot(root, DESIGN_W)));
     };
     update();
     const ro = new ResizeObserver(update);

@@ -78,7 +78,9 @@ export function useProjectScrollReveal(frameRef: RefObject<HTMLElement | null>) 
 
     window.addEventListener('scroll', onScrollOrResize, { passive: true });
     window.addEventListener('resize', onScrollOrResize, { passive: true });
-    window.addEventListener('scrollend', onScrollOrResize, { passive: true });
+    if ('onscrollend' in window) {
+      window.addEventListener('scrollend', onScrollOrResize, { passive: true });
+    }
 
     // 첫 페인트에서 opacity:0 이 커밋된 뒤에 visible 을 붙여야 transition 이 재생된다.
     let cancelled = false;
@@ -103,7 +105,9 @@ export function useProjectScrollReveal(frameRef: RefObject<HTMLElement | null>) 
       window.clearTimeout(fallbackTimeout);
       window.removeEventListener('scroll', onScrollOrResize);
       window.removeEventListener('resize', onScrollOrResize);
-      window.removeEventListener('scrollend', onScrollOrResize);
+      if ('onscrollend' in window) {
+        window.removeEventListener('scrollend', onScrollOrResize);
+      }
       io.disconnect();
     };
   }, [frameRef]);

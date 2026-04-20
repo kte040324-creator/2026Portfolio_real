@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { ProjectPageHeader } from '../components/ProjectPageHeader';
 import { SeoculusDiagram369 } from '../components/SeoculusDiagram369';
 import { useProjectScrollReveal } from '../hooks/useProjectScrollReveal';
+import { designScaleForRoot } from '../lib/designRootWidth';
 import { seoculusAsset } from '../lib/seoculusAssets';
 import '../styles/seoculus.css';
 
@@ -22,7 +23,7 @@ export function Seoculus() {
     const frame = frameRef.current;
     if (!root || !frame) return;
     const update = () => {
-      frame.style.setProperty('--seo-scale', String(root.clientWidth / DESIGN_W));
+      frame.style.setProperty('--seo-scale', String(designScaleForRoot(root, DESIGN_W)));
     };
     update();
     const ro = new ResizeObserver(update);

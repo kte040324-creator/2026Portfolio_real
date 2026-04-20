@@ -19,7 +19,10 @@ const imgImage6346090 = lgAsset('img/figma/4a1af670b3239d116b60a904fbea1cb05450a
 const imgA2 = lgAsset('img/figma/aa9e05fc95af9497cefb0b1f42174b468a76ac7b.png');
 const imgA1 = lgAsset('img/figma/c0161f2e9470cf1fc42570751f25d5af8a37eeb9.png');
 const imgA3 = lgAsset('img/figma/ceb193e5ef1bb7bbf1c405697e7f664ef7081fc3.png');
-const imgTae = lgAsset('img/figma/1da89a2c3937ea7f78bbbd5df082d0b4dd5c8a52.png');
+/** Figma 258:70 — UI Team (tae 1) */
+const imgTae = lgAsset('img/tae.png');
+/** Figma 258:71 — UI Team (seol 1) */
+const imgSeol = lgAsset('img/seol.png');
 const imgIPhoneBlackFlatten = lgAsset('img/iPhone 15 Pro - Black Flatten.png');
 const imgIPhoneBlackFlatten1 = lgAsset('img/iPhone 15 Pro - Black Flatten-1.png');
 const imgIPhoneBlackFlatten2 = lgAsset('img/iPhone 15 Pro - Black Flatten-2.png');
@@ -1109,13 +1112,33 @@ export function LgFigmaSlide() {
           <img alt="" className="absolute h-[114.27%] left-0 max-w-none top-[-11.51%] w-[100.02%]" src={imgA3} />
         </div>
       </div>
-      <div className="absolute border-[0.5px] border-black border-solid h-[435px] left-[532px] rounded-[10px] top-[11982px] w-[308px]" data-node-id="241:1128" data-name="tae">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[10px]">
-          <img alt="" className="absolute h-[135.49%] left-[-35.22%] max-w-none top-[-26.72%] w-[135.22%]" src={imgTae} />
+      <div
+        className="absolute border-[0.5px] border-black border-solid h-[435px] left-[532px] overflow-hidden rounded-[10px] top-[11982px] w-[308px]"
+        data-node-id="258:70"
+        data-name="tae 1"
+      >
+        <div className="relative size-full">
+          <img
+            alt=""
+            className="pointer-events-none absolute inset-0 size-full max-w-none object-cover"
+            src={imgTae}
+          />
         </div>
       </div>
       <div className="absolute contents left-[1058px] top-[11981px]" data-node-id="241:1129">
-        <div className="absolute bg-white border-[0.5px] border-black border-solid h-[436px] left-[1058px] rounded-[10px] top-[11981px] w-[306px]" data-node-id="241:1130" />
+        <div
+          className="absolute border-[0.5px] border-black border-solid h-[436px] left-[1058px] overflow-hidden rounded-[10px] top-[11981px] w-[306px] bg-white"
+          data-node-id="258:71"
+          data-name="seol 1"
+        >
+          <div className="relative size-full">
+            <img
+              alt=""
+              className="pointer-events-none absolute inset-0 size-full max-w-none object-cover"
+              src={imgSeol}
+            />
+          </div>
+        </div>
       </div>
       <p className="-translate-x-1/2 absolute font-['Pretendard:SemiBold',sans-serif] leading-[1.32] left-[calc(50%-0.5px)] not-italic text-[22px] text-[color:var(--black,black)] text-center top-[11888px] tracking-[-0.44px] w-[125px]" data-node-id="241:1132">
         UI Team
@@ -1126,7 +1149,7 @@ export function LgFigmaSlide() {
       </div>
       <div className="absolute font-['Pretendard:Regular',sans-serif] leading-[0] left-[1060px] not-italic text-[0px] text-[color:var(--black,black)] top-[12441px] tracking-[-0.44px] w-[270px]" data-node-id="241:1134">
         <p className="font-['Pretendard:Medium',sans-serif] leading-[1.8] mb-0 text-[20px]">Eunseol Kim</p>
-        <p className="leading-[1.8] text-[18px]">taeeunclarakim@gmail.com</p>
+        <p className="leading-[1.8] text-[18px]">tjf3019@naver.com</p>
       </div>
       <div className="absolute left-[129px] size-[15px] top-[4778px]" data-node-id="241:1135">
         <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse2823} />

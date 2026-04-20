@@ -64,7 +64,6 @@ export default function DecryptedText({
   const [displayText, setDisplayText] = useState(text);
   const [isAnimating, setIsAnimating] = useState(false);
   const [revealedIndices, setRevealedIndices] = useState<Set<number>>(new Set());
-  const [hasAnimated, setHasAnimated] = useState(false);
   const [isDecrypted, setIsDecrypted] = useState(animateOn === 'hover');
   const [direction, setDirection] = useState<'forward' | 'reverse'>('forward');
 
@@ -72,6 +71,8 @@ export default function DecryptedText({
   onDecryptCompleteRef.current = onDecryptComplete;
 
   const containerRef = useRef<HTMLSpanElement>(null);
+  /** In-view IO must not rely on threshold 0.12 inside transformed ancestors (Canon scale). */
+  const viewIoDoneRef = useRef(false);
   const orderRef = useRef<number[]>([]);
   const pointerRef = useRef(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -337,37 +338,6 @@ export default function DecryptedText({
     setDirection('forward');
   }, [text]);
 
-  useEffect(() => {
-    if (animateOn !== 'view' && animateOn !== 'inViewHover') return;
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          triggerDecrypt();
-          setHasAnimated(true);
-        }
-      });
-    };
-
-    const observerOptions: IntersectionObserverInit = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.12,
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const currentRef = containerRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, [animateOn, hasAnimated, triggerDecrypt]);
-
   useLayoutEffect(() => {
     if (animateOn === 'click') {
       encryptInstantly();
@@ -380,6 +350,46 @@ export default function DecryptedText({
     setRevealedIndices(new Set());
     setDirection('forward');
   }, [animateOn, text, encryptInstantly]);
+
+  useLayoutEffect(() => {
+    if (animateOn !== 'view' && animateOn !== 'inViewHover') return;
+
+    viewIoDoneRef.current = false;
+
+    const startDecrypt = () => {
+      if (viewIoDoneRef.current) return;
+      viewIoDoneRef.current = true;
+      triggerDecrypt();
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          startDecrypt();
+          break;
+        }
+      }
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0,
+    });
+
+    const el = containerRef.current;
+    if (el) observer.observe(el);
+
+    const fallbackId = window.setTimeout(() => {
+      if (!viewIoDoneRef.current) startDecrypt();
+    }, 900);
+
+    return () => {
+      window.clearTimeout(fallbackId);
+      if (el) observer.unobserve(el);
+      observer.disconnect();
+    };
+  }, [animateOn, text, triggerDecrypt]);
 
   const animateProps =
     animateOn === 'hover' || animateOn === 'inViewHover'

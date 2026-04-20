@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import DecryptedText from '../components/DecryptedText';
 import { ProjectPageHeader } from '../components/ProjectPageHeader';
-import { useProjectScrollReveal } from '../hooks/useProjectScrollReveal';
 import { canonAsset } from '../lib/canonAssets';
 import '../styles/canon.css';
 
@@ -56,10 +55,17 @@ const CANON_LOGO_PNG = 'img/image 32 [Vectorized].png';
 const CANON_MUSEUM_PNG = 'img/image 35.png';
 
 /** Canon Camera Museum — Personal (Figma 215:2580) */
+function initialCanonFrameScale(): number {
+  if (typeof window === 'undefined') return 1;
+  const w = Math.max(window.innerWidth, document.documentElement.clientWidth || 0, 1);
+  return Math.max((w - 0.5) / DESIGN_W, 0.01);
+}
+
 export function Canon() {
   const rootRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const landingDecryptDoneRef = useRef(0);
+  const [frameScale, setFrameScale] = useState(initialCanonFrameScale);
   const [landingPhase, setLandingPhase] = useState<LandingAnimPhase>('decrypt');
   const clockVideoRef = useRef<HTMLVideoElement>(null);
   const eyeVideoRef = useRef<HTMLVideoElement>(null);
@@ -115,16 +121,25 @@ export function Canon() {
     return () => window.clearTimeout(id);
   }, [landingPhase]);
 
-  useProjectScrollReveal(frameRef);
-
-  useEffect(() => {
+  /** Layout: scale from root width only (avoid shared helper edge cases). Must be finite & > 0. */
+  useLayoutEffect(() => {
     const root = rootRef.current;
     const frame = frameRef.current;
     if (!root || !frame) return;
     const update = () => {
-      const scale = root.clientWidth / DESIGN_W;
+      const w = Math.max(
+        root.offsetWidth,
+        root.clientWidth,
+        document.documentElement.clientWidth || 0,
+        window.innerWidth || 0,
+        1,
+      );
+      const eps = 0.5;
+      let scale = (w - eps) / DESIGN_W;
+      if (!Number.isFinite(scale) || scale <= 0) scale = w / DESIGN_W;
+      if (!Number.isFinite(scale) || scale <= 0) scale = 1;
       root.style.setProperty('--canon-design-h', `${DESIGN_H}px`);
-      frame.style.setProperty('--canon-scale', String(scale));
+      setFrameScale(scale);
     };
     update();
     const ro = new ResizeObserver(update);
@@ -134,7 +149,16 @@ export function Canon() {
 
   return (
     <div className="canon-scale-root" ref={rootRef}>
-      <div className="canon-frame" ref={frameRef} data-name="Canon" data-node-id="215:2580">
+      <div
+        className="canon-frame"
+        ref={frameRef}
+        data-name="Canon"
+        data-node-id="215:2580"
+        style={{
+          transform: `scale(${frameScale})`,
+          transformOrigin: 'top left',
+        }}
+      >
         <ProjectPageHeader
           embedded
           variant="light"
@@ -146,7 +170,6 @@ export function Canon() {
           className="canon-landing-block"
           data-node-id="249:218"
           data-landing-phase={landingPhase}
-          data-project-reveal
         >
           <p className="canon-landing-copyright" data-node-id="249:232">
             © Canon Inc.

@@ -34,8 +34,11 @@
 
 .canon-scale-root {
   width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
-  overflow-x: clip;
+  /* Safari: overflow: clip is recent only; hidden matches layout intent */
+  overflow-x: hidden;
   background: #ddd;
   padding-bottom: calc(var(--canon-design-h, 5920px) / 1920 * 100%);
 }
@@ -46,12 +49,21 @@
   left: 0;
   width: 1920px;
   height: var(--canon-design-h, 5920px);
-  transform-origin: top left;
-  transform: scale(var(--canon-scale, 1));
+  /* scale() is set inline in Canon.tsx — avoids empty page when --canon-scale fails */
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #000;
   overflow: visible;
   background: #ddd;
+}
+
+/*
+ * Global project-scroll-reveal.css uses [data-project-reveal]{opacity:0}. IntersectionObserver
+ * inside transform:scale() is unreliable; force Canon blocks visible without waiting for JS.
+ */
+.canon-frame [data-project-reveal],
+.canon-frame [data-project-reveal].project-reveal--visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 .canon-frame figure {

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import ColorBends from '../components/ColorBends';
 import { ProjectPageHeader } from '../components/ProjectPageHeader';
 import { useProjectScrollReveal } from '../hooks/useProjectScrollReveal';
+import { designScaleForRoot } from '../lib/designRootWidth';
 import { soriAsset } from '../lib/soriAssets';
 import '../styles/sori.css';
 
@@ -35,7 +36,7 @@ export function Sori() {
     const frame = frameRef.current;
     if (!root || !frame) return;
     const update = () => {
-      const scale = root.clientWidth / DESIGN_W;
+      const scale = designScaleForRoot(root, DESIGN_W);
       frame.style.setProperty('--sori-scale', String(scale));
     };
     update();

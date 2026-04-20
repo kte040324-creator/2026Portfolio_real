@@ -1,6 +1,7 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
 import { ProjectPageHeader } from '../components/ProjectPageHeader';
 import { useProjectScrollReveal } from '../hooks/useProjectScrollReveal';
+import { designScaleForRoot } from '../lib/designRootWidth';
 import { lothAsset } from '../lib/lothAssets';
 import '../styles/loth.css';
 
@@ -45,7 +46,7 @@ export function Loth() {
     const frame = frameRef.current;
     if (!root || !frame) return;
     const update = () => {
-      const scale = root.clientWidth / DESIGN_W;
+      const scale = designScaleForRoot(root, DESIGN_W);
       frame.style.setProperty('--loth-scale', String(scale));
     };
     update();

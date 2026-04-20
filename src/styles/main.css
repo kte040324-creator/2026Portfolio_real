@@ -44,6 +44,8 @@
 .main-v2-mail--fixed {
   position: fixed;
   left: max(calc((100vw - 1920px) / 2 + 48.28px), calc(48.28 / 1920 * 100vw));
+  /* svw: avoids 100vw > layout width when scrollbars overlay (Safari) */
+  left: max(calc((100svw - 1920px) / 2 + 48.28px), calc(48.28 / 1920 * 100svw));
   top: 28.38px;
   z-index: 30;
   font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
@@ -64,6 +66,7 @@
 .main-v2-year--fixed {
   position: fixed;
   right: max(calc((100vw - 1920px) / 2 + 49.904px), calc(49.904 / 1920 * 100vw));
+  right: max(calc((100svw - 1920px) / 2 + 49.904px), calc(49.904 / 1920 * 100svw));
   top: 39.66px;
   z-index: 30;
   font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
@@ -83,6 +86,7 @@
   right: 0;
   top: 79px;
   width: min(1760px, calc(100vw - 160px));
+  width: min(1760px, calc(100svw - 160px));
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;

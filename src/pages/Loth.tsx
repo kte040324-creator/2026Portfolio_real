@@ -265,7 +265,6 @@ export function Loth() {
             loop
             preload="auto"
             aria-hidden
-            style={{ backgroundColor: 'transparent' }}
           >
             <source src={lothAsset('Comp 1.webm')} type="video/webm" />
           </video>
@@ -410,7 +409,7 @@ export function Loth() {
         </div>
 
         <div className="loth-abs loth-footer-logo" data-node-id="208:1307">
-          <img src={lothAsset('img/logo_red_fill.png')} alt="" />
+          <img src={lothAsset('img/logo.png')} alt="LOTH" />
         </div>
 
         <p className="loth-abs loth-footer-tools" data-node-id="206:1301">

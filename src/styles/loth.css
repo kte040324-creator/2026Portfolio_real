@@ -501,13 +501,13 @@
 .loth-frame-371__media {
   width: 100%;
   height: 100%;
-  /* cover 시 인코딩된 레터박스 검정이 도드라질 수 있어 contain + 투명 배경 */
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   display: block;
   pointer-events: none;
   background: transparent;
-  background-color: transparent;
+  /* 파일에 박힌 레터박스 검정을 페이지 배경과 합성해 덜 보이게 (다크 그라데이션 전제) */
+  mix-blend-mode: screen;
 }
 
 /* UI Design */
@@ -755,11 +755,13 @@
   z-index: 20;
 }
 
+/* 흰색 라인 로고(투명 PNG) — 밝은 그라데이션 구간에서도 보이도록 살짝 그림자 */
 .loth-footer-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.9));
 }
 
 .loth-footer-tools {

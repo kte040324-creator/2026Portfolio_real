@@ -5,5 +5,6 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   publicDir: 'public',
-  base: './',
+  // Root-relative assets so deep routes (/main, /projects/...) resolve /assets/* correctly (Vercel SPA).
+  base: '/',
 });

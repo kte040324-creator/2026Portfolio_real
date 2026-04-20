@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import DecryptedText from '../components/DecryptedText';
 import { ProjectPageHeader } from '../components/ProjectPageHeader';
+import { useProjectScrollReveal } from '../hooks/useProjectScrollReveal';
+import { designScaleForRoot, designScaleFromRootWidth } from '../lib/designRootWidth';
 import { canonAsset } from '../lib/canonAssets';
 import '../styles/canon.css';
 
@@ -8,48 +10,37 @@ const DESIGN_W = 1920;
 /** Figma 215:2580 — bottom ≈ 4950 + 918 */
 const DESIGN_H = 5920;
 
-const CANON_LANDING_LINE1 =
-  'WHAT YOU SEE               IS NEVER JUST WHAT IS THERE               THE  ';
-const CANON_LANDING_LINE2 =
+/** Figma 249:219 — 위에서 아래로 쌓이고, THE는 pupil(1330×396) 왼쪽에 맞춤 */
+const CANON_LINE_LEAD = 'WHAT YOU SEE               IS NEVER JUST WHAT IS THERE';
+const CANON_LINE_THE = 'THE  ';
+const CANON_LINE_SUB =
   '                         DOES NOT FREEZE TIME              IT DEFINES WHAT REMAINS';
 
 const canonDecryptShared = {
   animateOn: 'view' as const,
   sequential: true,
   revealDirection: 'center' as const,
-  speed: 22,
+  /** ms/글자 — 작을수록 빠름 */
+  speed: 10,
   maxIterations: 14,
   useOriginalCharsOnly: true,
+  lineLayout: 'block' as const,
   parentClassName: 'canon-landing-decrypt',
   className: 'canon-landing-decrypt__revealed',
   encryptedClassName: 'canon-landing-decrypt__encrypted',
 };
 
-/** 랜딩: decrypt → 영상 → 로고 PNG → line1 좌→우 → museum PNG */
+/** 랜딩: 복호 중·이후 병행 → mp4 페이드 → 로고 → 라인(좌→우) → museum wordmark → done */
 type LandingAnimPhase = 'decrypt' | 'videos' | 'logo' | 'line' | 'museum' | 'done';
 
-function delay(ms: number): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-}
+/** lead 끝 → sub → THE (복호는 THE 끝까지 계속, 타이밍은 영상 단계와 병행) */
+type DecryptStage = 0 | 1 | 2;
 
-function waitPlaying(video: HTMLVideoElement, timeoutMs = 2800): Promise<void> {
-  return new Promise((resolve) => {
-    let settled = false;
-    const finish = () => {
-      if (settled) return;
-      settled = true;
-      resolve();
-    };
-    if (!video.paused) {
-      queueMicrotask(finish);
-      return;
-    }
-    video.addEventListener('playing', finish, { once: true });
-    setTimeout(finish, timeoutMs);
-  });
-}
+const LANDING_HOLD_MS = 580;
+/** 복호 시작 직후 곧바로 mp4 페이드( canon.css opacity 0.5s 와 병행 ) */
+const DECRYPT_TO_VIDEO_MS = 120;
+/** canon.css `.canon-landing-block ... transition: opacity 0.5s` 와 맞춤 */
+const VIDEO_FADE_MS = 500;
 
 const CANON_LOGO_PNG = 'img/image 32 [Vectorized].png';
 const CANON_MUSEUM_PNG = 'img/image 35.png';
@@ -57,14 +48,14 @@ const CANON_MUSEUM_PNG = 'img/image 35.png';
 /** Canon Camera Museum — Personal (Figma 215:2580) */
 function initialCanonFrameScale(): number {
   if (typeof window === 'undefined') return 1;
-  const w = Math.max(window.innerWidth, document.documentElement.clientWidth || 0, 1);
-  return Math.max((w - 0.5) / DESIGN_W, 0.01);
+  const w = document.documentElement?.clientWidth ?? window.innerWidth;
+  return designScaleFromRootWidth(Math.max(w, 1), DESIGN_W);
 }
 
 export function Canon() {
   const rootRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
-  const landingDecryptDoneRef = useRef(0);
+  const [decryptStage, setDecryptStage] = useState<DecryptStage>(0);
   const [frameScale, setFrameScale] = useState(initialCanonFrameScale);
   const [landingPhase, setLandingPhase] = useState<LandingAnimPhase>('decrypt');
   const clockVideoRef = useRef<HTMLVideoElement>(null);
@@ -73,73 +64,62 @@ export function Canon() {
 
   const landingVideosPreload = landingPhase !== 'decrypt';
 
-  const onLandingDecryptLineComplete = useCallback(() => {
-    landingDecryptDoneRef.current += 1;
-    if (landingDecryptDoneRef.current >= 2) {
-      setLandingPhase('videos');
-    }
+  const onLeadDecryptComplete = useCallback(() => setDecryptStage(1), []);
+  const onSubDecryptComplete = useCallback(() => setDecryptStage(2), []);
+
+  /** 복호 진행 중에 mp4 등장(페이드) */
+  useEffect(() => {
+    const id = window.setTimeout(() => setLandingPhase('videos'), DECRYPT_TO_VIDEO_MS);
+    return () => window.clearTimeout(id);
   }, []);
 
+  /** mp4 opacity 등장이 끝난 뒤( transition 끝 ) → Canon 로고 */
   useEffect(() => {
     if (landingPhase !== 'videos') return;
     let cancelled = false;
     const videos = [clockVideoRef.current, eyeVideoRef.current, pupilVideoRef.current].filter(
       (v): v is HTMLVideoElement => v != null,
     );
-    const run = async () => {
-      videos.forEach((v) => {
-        v.muted = true;
-        void v.play().catch(() => {});
-      });
-      await Promise.all(videos.map((v) => waitPlaying(v)));
-      if (cancelled) return;
-      await delay(140);
-      if (cancelled) return;
-      setLandingPhase('logo');
-    };
-    void run();
+    videos.forEach((v) => {
+      v.muted = true;
+      void v.play().catch(() => {});
+    });
+    const t = window.setTimeout(() => {
+      if (!cancelled) setLandingPhase('logo');
+    }, VIDEO_FADE_MS + 40);
     return () => {
       cancelled = true;
+      window.clearTimeout(t);
     };
   }, [landingPhase]);
 
   useEffect(() => {
     if (landingPhase !== 'logo') return;
-    const id = window.setTimeout(() => setLandingPhase('line'), 500);
+    const id = window.setTimeout(() => setLandingPhase('line'), LANDING_HOLD_MS);
     return () => window.clearTimeout(id);
   }, [landingPhase]);
 
   useEffect(() => {
     if (landingPhase !== 'line') return;
-    const id = window.setTimeout(() => setLandingPhase('museum'), 720);
+    const id = window.setTimeout(() => setLandingPhase('museum'), LANDING_HOLD_MS);
     return () => window.clearTimeout(id);
   }, [landingPhase]);
 
   useEffect(() => {
     if (landingPhase !== 'museum') return;
-    const id = window.setTimeout(() => setLandingPhase('done'), 460);
+    const id = window.setTimeout(() => setLandingPhase('done'), LANDING_HOLD_MS);
     return () => window.clearTimeout(id);
   }, [landingPhase]);
 
-  /** Layout: scale from root width only (avoid shared helper edge cases). Must be finite & > 0. */
+  useProjectScrollReveal(frameRef);
+
+  /** Scale from the painted root width only — do not mix in window.innerWidth (scrollbar gap). */
   useLayoutEffect(() => {
     const root = rootRef.current;
-    const frame = frameRef.current;
-    if (!root || !frame) return;
+    if (!root) return;
     const update = () => {
-      const w = Math.max(
-        root.offsetWidth,
-        root.clientWidth,
-        document.documentElement.clientWidth || 0,
-        window.innerWidth || 0,
-        1,
-      );
-      const eps = 0.5;
-      let scale = (w - eps) / DESIGN_W;
-      if (!Number.isFinite(scale) || scale <= 0) scale = w / DESIGN_W;
-      if (!Number.isFinite(scale) || scale <= 0) scale = 1;
       root.style.setProperty('--canon-design-h', `${DESIGN_H}px`);
-      setFrameScale(scale);
+      setFrameScale(designScaleForRoot(root, DESIGN_W));
     };
     update();
     const ro = new ResizeObserver(update);
@@ -155,7 +135,7 @@ export function Canon() {
         data-name="Canon"
         data-node-id="215:2580"
         style={{
-          transform: `scale(${frameScale})`,
+          transform: `scale(${frameScale}) translateZ(0)`,
           transformOrigin: 'top left',
         }}
       >
@@ -175,20 +155,28 @@ export function Canon() {
             © Canon Inc.
           </p>
           <div className="canon-landing-statement" data-node-id="249:219">
-            <p className="canon-landing-statement__line">
-              <DecryptedText
-                text={CANON_LANDING_LINE1}
-                {...canonDecryptShared}
-                onDecryptComplete={onLandingDecryptLineComplete}
-              />
-            </p>
-            <p className="canon-landing-statement__line">
-              <DecryptedText
-                text={CANON_LANDING_LINE2}
-                {...canonDecryptShared}
-                onDecryptComplete={onLandingDecryptLineComplete}
-              />
-            </p>
+            <div className="canon-landing-statement__stack">
+              <div className="canon-landing-statement__lead">
+                <div className="canon-landing-statement__body">
+                  <DecryptedText
+                    text={CANON_LINE_LEAD}
+                    {...canonDecryptShared}
+                    onDecryptComplete={onLeadDecryptComplete}
+                  />
+                </div>
+              </div>
+              {decryptStage >= 1 ? (
+                <div className="canon-landing-statement__sub">
+                  <div className="canon-landing-statement__body">
+                    <DecryptedText
+                      text={CANON_LINE_SUB}
+                      {...canonDecryptShared}
+                      onDecryptComplete={onSubDecryptComplete}
+                    />
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </div>
           <div className="canon-landing-logo" data-node-id="249:220">
             <img src={canonAsset(CANON_LOGO_PNG)} alt="" />
@@ -230,6 +218,13 @@ export function Canon() {
                 </video>
               </div>
             </div>
+          </div>
+          <div className="canon-landing-the-row" data-node-id="249:219-the">
+            {decryptStage >= 2 ? (
+              <div className="canon-landing-statement__body canon-landing-statement__body--the">
+                <DecryptedText text={CANON_LINE_THE} {...canonDecryptShared} />
+              </div>
+            ) : null}
           </div>
           <div className="canon-landing-pupil" data-node-id="249:230">
             <div className="canon-landing-pupil__clip" aria-hidden="true">

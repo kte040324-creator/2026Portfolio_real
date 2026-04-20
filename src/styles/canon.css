@@ -54,16 +54,11 @@
   color: #000;
   overflow: visible;
   background: #ddd;
-}
-
-/*
- * Global project-scroll-reveal.css uses [data-project-reveal]{opacity:0}. IntersectionObserver
- * inside transform:scale() is unreliable; force Canon blocks visible without waiting for JS.
- */
-.canon-frame [data-project-reveal],
-.canon-frame [data-project-reveal].project-reveal--visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+  /* WebKit: stable metrics inside transform:scale (vs Chrome) */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  font-synthesis: none;
 }
 
 .canon-frame figure {
@@ -80,6 +75,12 @@
   right: 0;
   top: 18px;
   z-index: 20;
+}
+
+/* 고정 네비는 뷰포트 기준 — 스케일된 프레임 안 패딩은 Figma 좌우 48px만 (site-back.css 보정 덮어씀) */
+body:has(.site-back) .canon-header.project-page-header {
+  padding-left: 48px;
+  padding-right: 48px;
 }
 
 /* Overview */
@@ -125,7 +126,8 @@
   margin: 0;
   font-size: 20px;
   font-weight: 400;
-  line-height: 0;
+  /* line-height:0 + nested <p> differs in Safari; match body text line-height */
+  line-height: 1.5;
   letter-spacing: -0.22px;
 }
 
@@ -281,25 +283,63 @@
   transition: opacity 0.5s ease;
 }
 
-/* Figma 249:219 — statement block inside 249:218 */
+/* Figma 249:219 — 위→아래: lead, sub / THE는 pupil 세로선에 고정 */
 .canon-landing-statement {
   position: absolute;
   left: calc(50% - 911px);
   top: 205px;
   width: 1848px;
-  height: 652px;
+  max-height: 652px;
   margin: 0;
   font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 128px;
   font-weight: 300;
-  line-height: 0;
+  line-height: normal;
   letter-spacing: 3.84px;
   color: #fff;
   white-space: pre-wrap;
+  z-index: 2;
 }
 
-.canon-landing-statement__line {
+.canon-landing-statement__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: stretch;
+}
+
+.canon-landing-statement__lead,
+.canon-landing-statement__sub {
   margin: 0;
+}
+
+.canon-landing-statement__body {
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* THE — pupil(1330×282) 오른쪽, 동일 세로 밴드 */
+.canon-landing-the-row {
+  position: absolute;
+  left: calc(1330px + 282px);
+  right: 69px;
+  top: 396px;
+  height: 111px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 128px;
+  font-weight: 300;
+  letter-spacing: 3.84px;
+  color: #fff;
+  z-index: 4;
+}
+
+.canon-landing-statement__body--the {
+  width: 100%;
   line-height: 1.3;
 }
 
@@ -308,17 +348,22 @@
   color: inherit;
   letter-spacing: inherit;
   vertical-align: top;
+  line-height: 1.3;
 }
 
 .canon-landing-decrypt__revealed,
 .canon-landing-decrypt__encrypted {
   font: inherit;
-  color: inherit;
   letter-spacing: inherit;
 }
 
+.canon-landing-decrypt__revealed {
+  color: inherit;
+}
+
+/* opacity on glyphs can change WebKit line-box metrics during decrypt; use color instead */
 .canon-landing-decrypt__encrypted {
-  opacity: 0.55;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .canon-landing-logo {
@@ -387,6 +432,7 @@
 }
 
 .canon-landing-vid-slot video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -457,6 +503,7 @@
   top: 229px;
   width: 282px;
   height: 114px;
+  z-index: 3;
 }
 
 .canon-landing-eye__clip {
@@ -471,6 +518,7 @@
   top: 396px;
   width: 282px;
   height: 111px;
+  z-index: 3;
 }
 
 .canon-landing-pupil__clip {

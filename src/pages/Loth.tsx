@@ -123,7 +123,7 @@ export function Loth() {
         </p>
 
         <div className="loth-abs loth-hero-mark" data-node-id="197:217">
-          <img src={lothAsset('img/or아트보드 2 1.png')} alt="" />
+          <img src={lothAsset('img/logo.png')} alt="" />
         </div>
 
         <h2 className="loth-abs loth-overview-h" data-node-id="197:222">
@@ -193,7 +193,7 @@ export function Loth() {
           Logo &amp; Color Palette
         </p>
         <div className="loth-abs loth-lc-board" data-node-id="197:163" data-project-reveal>
-          <img src={lothAsset('img/or아트보드 2 1.png')} alt="" />
+          <img src={lothAsset('img/logo.png')} alt="" />
         </div>
 
         <div className="loth-abs loth-swatch loth-swatch--a" data-node-id="197:154" aria-hidden />
@@ -254,20 +254,23 @@ export function Loth() {
           </div>
         </div>
 
-        {/* Figma 239:32 — Comp 1 2 (`public/loth/Comp 1.webm`) — 리빌 미적용(항상 표시) */}
+        {/* Figma 239:32 — Comp 1 2 (`public/loth/Comp 1.webm`) — 소스는 검정 배경 불투명; screen 블렌드용 백드롭 필요 */}
         <div className="loth-abs loth-frame-371" data-node-id="239:32" data-name="Comp 1 2">
-          <video
-            ref={compVideoRef}
-            className="loth-frame-371__media"
-            autoPlay
-            muted
-            playsInline
-            loop
-            preload="auto"
-            aria-hidden
-          >
-            <source src={lothAsset('Comp 1.webm')} type="video/webm" />
-          </video>
+          <div className="loth-frame-371__backdrop" aria-hidden />
+          <div className="loth-frame-371__blend">
+            <video
+              ref={compVideoRef}
+              className="loth-frame-371__media"
+              autoPlay
+              muted
+              playsInline
+              loop
+              preload="auto"
+              aria-hidden
+            >
+              <source src={lothAsset('Comp 1.webm')} type="video/webm" />
+            </video>
+          </div>
         </div>
 
         <h2 className="loth-abs loth-ui-h" data-node-id="203:1279">

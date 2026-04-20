@@ -67,29 +67,45 @@
   background-position: center;
 }
 
-.loth-header {
+/* embedded 헤더는 1920 프레임 기준 중앙 — site-back.css의 뷰포트용 비대칭 패딩을 쓰면 어긋남 */
+.loth-header.project-page-header {
   left: 0;
+  right: 0;
   top: 18px;
   width: 100%;
   z-index: 10;
   max-width: none !important;
+  margin: 0 !important;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  padding-inline: 48px;
+  padding: 20px 48px !important;
 }
 
-/* Figma 197:213 — Neue Haas 55 Roman 30px, leading 1.1, #F5FCF9 */
+body:has(.site-back) .loth-header.project-page-header,
+body:has(.site-back):has(.site-nav-next) .loth-header.project-page-header {
+  padding-left: 48px !important;
+  padding-right: 48px !important;
+}
+
+.loth-header .project-page-header__breadcrumb {
+  max-width: none;
+  width: 100%;
+}
+
+/* Figma 197:213 — Neue Haas 55 Roman 30px, leading 1.1, #F5FCF9 (1920 프레임 가로 중앙) */
 .loth-hero-line {
-  left: 789px;
+  left: 50%;
   top: 179px;
-  width: 342px;
-  min-height: 72px;
+  width: min(342px, calc(100% - 96px));
+  max-width: 342px;
+  min-height: 64px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   z-index: 5;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,13 +119,15 @@
   text-align: center;
 }
 
+/* Figma 197:217 — 히어로 로고(227×287), 프레임 가로 중앙 */
 .loth-hero-mark {
-  left: 846px;
+  left: 50%;
   top: 376px;
   width: 227px;
   height: 287px;
   z-index: 5;
   overflow: hidden;
+  transform: translateX(-50%);
 }
 
 .loth-hero-mark img {
@@ -117,6 +135,7 @@
   height: 100%;
   object-fit: contain;
   display: block;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.85));
 }
 
 /* Overview */
@@ -260,6 +279,7 @@
   height: 100%;
   object-fit: contain;
   display: block;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.85));
 }
 
 .loth-swatch {
@@ -494,8 +514,30 @@
   box-sizing: border-box;
   overflow: hidden;
   pointer-events: none;
-  /* 비디오 밖 영역이 검정으로 보이지 않도록(페이지 그라데이션과 합성) */
   background: transparent;
+}
+
+/*
+ * 파일은 검정(#000) 박스 위에 비드만 있음(실알파 없음). mix-blend-mode: screen 으로
+ * 검정을 “뚫”되, 배경이 순수 검정이면 screen(검정, 검정)=검정이라 아무 효과 없음.
+ * .loth-bg-page 그라데이션에서 이 블록 중앙(y≈6195 / 16932)에 해당하는 회색을 백드롭으로 깔아
+ * 블렌드가 페이지 배경과 이어지게 함.
+ */
+.loth-frame-371__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgb(46, 44, 44);
+}
+
+/* Safari 등: video 직접 블렌드보다 래퍼에 두는 편이 안정적 */
+.loth-frame-371__blend {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: screen;
 }
 
 .loth-frame-371__media {
@@ -505,9 +547,7 @@
   object-position: center;
   display: block;
   pointer-events: none;
-  background: transparent;
-  /* 파일에 박힌 레터박스 검정을 페이지 배경과 합성해 덜 보이게 (다크 그라데이션 전제) */
-  mix-blend-mode: screen;
+  background-color: transparent;
 }
 
 /* UI Design */

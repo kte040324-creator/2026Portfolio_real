@@ -2,7 +2,7 @@
    CV — Figma 76:789 (1920×2151)
    Safari: 뷰포트 너비에 맞춤 (가로 스크롤 없음), safe-area 반영
    Raster: 260:265 design tools strip only (900×176 @1920, --cv-s 스케일)
-   Typography: 258:64 hero name; 260:171 / 260:174 / 260:173 language notes
+   Hero: Figma 266:283 — 1688×502 @ (116, 98); 260:171 / 260:174 / 260:173 language notes
    ============================================ */
 
 :root {
@@ -83,6 +83,7 @@
 }
 
 .cv-artboard > .cv-header,
+.cv-artboard > section,
 .cv-artboard > h1,
 .cv-artboard > h2,
 .cv-artboard > h3,
@@ -142,32 +143,25 @@
   height: auto;
 }
 
-.cv-hero__name {
-  /* Figma 258:64 — 상단 에셋/글리프 잘림 방지: top 약간 하향 + 상단 패딩 */
-  top: calc(92 / var(--cv-design-h) * 100%);
-  left: calc(48 / var(--cv-design-w) * 100%);
-  width: calc(1824 / var(--cv-design-w) * 100%);
-  text-align: center;
-  font-size: clamp(2.25rem, calc(250 * var(--cv-w) / 1920), 250px);
-  line-height: 1.1;
-  padding-top: max(0.1em, calc(14 * var(--cv-s)));
-  padding-bottom: 0.05em;
+/* Figma 266:283 — hero 1 (래스터), 1688×502 @ x116 y98 */
+.cv-hero {
+  top: calc(98 / var(--cv-design-h) * 100%);
+  left: calc(116 / var(--cv-design-w) * 100%);
+  width: calc(1688 / var(--cv-design-w) * 100%);
+  max-width: calc(1688 / var(--cv-design-w) * 100%);
+  margin: 0;
+  padding: 0;
+  line-height: 0;
   box-sizing: border-box;
-  letter-spacing: calc(-5 * var(--cv-w) / 1920);
-  color: var(--color-black);
-  font-variation-settings: 'ital' var(--font-ital-default), 'wght' var(--cv-wght-extra);
-  overflow: visible;
 }
 
-.cv-hero__tagline {
-  top: calc(356 / var(--cv-design-h) * 100%);
-  left: calc(204 / var(--cv-design-w) * 100%);
-  width: calc(1512 / var(--cv-design-w) * 100%);
-  text-align: center;
-  font-size: clamp(1.25rem, calc(96 * var(--cv-w) / 1920), 96px);
-  line-height: 0.8;
-  color: var(--color-black);
-  font-variation-settings: 'ital' var(--font-ital-default), 'wght' var(--cv-wght-medium);
+.cv-hero__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 1688 / 502;
+  object-fit: contain;
 }
 
 .cv-section-heading {

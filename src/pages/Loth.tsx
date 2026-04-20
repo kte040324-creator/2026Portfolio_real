@@ -411,7 +411,7 @@ export function Loth() {
           <img src={lothAsset('img/iPhone 16.png')} alt="" draggable={false} />
         </div>
 
-        <div className="loth-abs loth-footer-logo" data-node-id="208:1307" data-project-reveal>
+        <div className="loth-abs loth-footer-logo" data-node-id="208:1307">
           <img src={lothAsset('img/logo_red_fill.png')} alt="" />
         </div>
 

@@ -1,7 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/main",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/projects/:slug",
       "destination": "/index.html"
     }
   ]

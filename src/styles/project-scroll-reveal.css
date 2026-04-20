@@ -82,6 +82,19 @@
   transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Mealtune (mt-frame) — scaled absolute layout: no translateY on reveal (same as Loth) */
+.mt-frame [data-project-reveal]:not(.project-reveal--visible) {
+  opacity: 0;
+  transform: none;
+  transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mt-frame [data-project-reveal].project-reveal--visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* Seoculus (109:1035) — opacity only */
 .seo-frame [data-project-reveal]:not(.project-reveal--visible) {
   opacity: 0;

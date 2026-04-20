@@ -1,11 +1,11 @@
-/* Figma 171:2354 — sooin, 1920 × 11736 px, scale-root */
+/* Figma 171:2354 — scale-root (프레임 높이 = 하단 로고까지, 아래 빈 그라데이션 제거) */
 
 .sooin-scale-root {
   width: 100%;
   overflow-x: hidden;
   position: relative;
   background: #7f7f79;
-  padding-bottom: calc(11736 / 1920 * 100%);
+  padding-bottom: calc(11715 / 1920 * 100%);
 }
 
 .sooin-frame {
@@ -13,9 +13,9 @@
   top: 0;
   left: 0;
   width: 1920px;
-  height: 11736px;
+  height: 11715px;
   transform-origin: top left;
-  transform: scale(var(--sooin-scale, 1));
+  transform: translateZ(0) scale(var(--sooin-scale, 1));
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #fff;
   overflow: hidden;
@@ -434,7 +434,7 @@
 /* Bottom logo 183:4141 */
 .sooin-bottom-logo {
   left: calc(50% - 0.5px);
-  bottom: 21px;
+  bottom: 0;
   width: 295px;
   height: 137px;
   transform: translateX(-50%);

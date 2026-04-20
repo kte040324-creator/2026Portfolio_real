@@ -21,7 +21,7 @@
   height: 10456px;
   background: #0b0b0c;
   transform-origin: top left;
-  transform: scale(var(--hy-scale, 1));
+  transform: translateZ(0) scale(var(--hy-scale, 1));
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #fff;
   overflow: hidden;

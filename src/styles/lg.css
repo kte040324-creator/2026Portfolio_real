@@ -75,7 +75,7 @@
   width: 1920px;
   height: 12888px;
   transform-origin: top left;
-  transform: scale(var(--lg-scale, 1));
+  transform: translateZ(0) scale(var(--lg-scale, 1));
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #0a0a0a;
   /* Large rotated ellipses (241:891 / 241:892) extend past 1920×12888 — must not clip */

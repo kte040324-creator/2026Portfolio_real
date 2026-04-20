@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build && cp -R pages dist/pages",
+    "build": "tsc --noEmit && vite build && cp -R pages dist/pages && cp -R css dist/css",
     "preview": "vite preview",
-    "serve:dist": "vite build && cd dist && python3 -m http.server 8080"
+    "serve:dist": "npm run build && cd dist && python3 -m http.server 8080"
   },
   "dependencies": {
     "flubber": "^0.4.2",

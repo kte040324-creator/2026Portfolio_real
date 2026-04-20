@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && cp -R pages dist/pages",
     "preview": "vite preview",
     "serve:dist": "vite build && cd dist && python3 -m http.server 8080"
   },

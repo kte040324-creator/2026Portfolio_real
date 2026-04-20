@@ -1,0 +1,113 @@
+/* next project 라벨 — FFFAcidGroteskVariableTRIALVF.ttf (style.css 과 동일 소스, 단독 링크 시에도 적용) */
+@font-face {
+  font-family: 'FFFAcidGrotesk';
+  src: url('../fonts/TRIAL TTF (Variable format) copy/FFFAcidGroteskVariableTRIALVF.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 좌/우 고정 네비 — y = 18px + safe-area */
+.site-back {
+  position: fixed;
+  top: calc(18px + env(safe-area-inset-top, 0px));
+  left: max(48px, env(safe-area-inset-left, 0px));
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  color: var(--color-black);
+  line-height: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.site-back:hover {
+  opacity: 0.75;
+}
+
+.site-back__arrow {
+  display: block;
+}
+
+.site-back__arrow svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.site-nav-next {
+  position: fixed;
+  top: calc(26px + env(safe-area-inset-top, 0px));
+  right: max(48px, env(safe-area-inset-right, 0px));
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: auto;
+  max-width: min(40vw, 200px);
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  color: var(--color-black);
+  line-height: 1.5;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.site-nav-next:hover {
+  opacity: 0.75;
+}
+
+/* FFF Acid Grotesk Variable — 14px / light (wght 70) */
+.site-nav-next__label {
+  display: block;
+  font-family: 'FFFAcidGrotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0;
+  white-space: nowrap;
+  font-variation-settings: 'wght' 70, 'ital' 30;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 어두운 배경 프로젝트 — 흰색 아이콘 */
+.site-nav--on-dark.site-back,
+.site-nav--on-dark.site-nav-next {
+  color: #ffffff;
+}
+
+.site-nav--on-dark.site-back:hover,
+.site-nav--on-dark.site-nav-next:hover {
+  opacity: 0.85;
+}
+
+/* 정적 site-header — 좌우 동일 여유로 브레드크럼과 정렬 */
+body:has(.site-back) .site-header {
+  padding-left: calc(48px + 40px + 12px);
+  padding-right: calc(48px + 40px + 12px);
+}
+
+/* React project-page-header — 좌우 동일 (한쪽만 next 있어도 가운데 정렬 유지) */
+body:has(.site-back) .project-page-header {
+  padding-left: calc(48px + 40px + 12px);
+  padding-right: calc(48px + 40px + 12px);
+}
+
+body:has(.site-back):has(.site-nav-next) .site-header {
+  padding-right: calc(48px + 132px + 12px);
+}
+
+body:has(.site-back):has(.site-nav-next) .project-page-header {
+  padding-right: calc(48px + 132px + 12px);
+}

@@ -1,15 +1,34 @@
 /**
  * Width used for `scale = width / 1920` on project pages.
- * Prefer `getBoundingClientRect().width` so Safari/WebKit match the painted layout
- * (avoids occasional clientWidth vs subpixel mismatch with transformed content).
+ * WebKit often disagrees with Blink on `getBoundingClientRect().width` vs `clientWidth`
+ * (subpixel, scrollbar, compositing). Use the smaller of the two when both are valid so
+ * the scaled frame does not exceed the viewport; clamp to the layout viewport width.
  */
 export function readDesignRootWidthPx(el: HTMLElement): number {
-  const w = el.getBoundingClientRect().width;
-  if (Number.isFinite(w) && w > 0) return w;
+  const rw = el.getBoundingClientRect().width;
   const cw = el.clientWidth;
-  if (Number.isFinite(cw) && cw > 0) return cw;
-  // Never return 1 here: that made scale ≈ 1/1920 and the whole scaled page vanish
-  // when layout hadn’t given the root a width yet (Canon / project pages looked empty).
+  const ow = el.offsetWidth;
+
+  let w = 0;
+  if (Number.isFinite(rw) && rw > 0 && Number.isFinite(cw) && cw > 0) {
+    w = Math.min(rw, cw);
+  } else if (Number.isFinite(rw) && rw > 0) {
+    w = rw;
+  } else if (Number.isFinite(cw) && cw > 0) {
+    w = cw;
+  } else if (Number.isFinite(ow) && ow > 0) {
+    w = ow;
+  }
+
+  if (typeof document !== 'undefined') {
+    const vw = document.documentElement?.clientWidth ?? window.innerWidth;
+    if (Number.isFinite(vw) && vw > 0 && w > vw + 0.5) {
+      w = vw;
+    }
+  }
+
+  if (Number.isFinite(w) && w > 0) return w;
+
   if (typeof document !== 'undefined') {
     const vw = document.documentElement?.clientWidth ?? window.innerWidth;
     if (Number.isFinite(vw) && vw > 0) return vw;
@@ -44,9 +63,12 @@ export function designScaleForRoot(el: HTMLElement, designW: number): number {
         : designW;
     s = designScaleFromRootWidth(vw > 0 ? vw : designW, designW);
   }
-  // Guard: absurdly small scale from bad early layout reads
-  if (s < 0.001 && typeof window !== 'undefined' && window.innerWidth > 64) {
-    s = designScaleFromRootWidth(window.innerWidth, designW);
+  // Guard: absurdly small scale from bad early layout reads (use layout width, not innerWidth)
+  if (s < 0.001 && typeof document !== 'undefined') {
+    const vw = document.documentElement?.clientWidth ?? window.innerWidth;
+    if (vw > 64) {
+      s = designScaleFromRootWidth(vw, designW);
+    }
   }
   return Number.isFinite(s) && s > 0 ? s : 1;
 }

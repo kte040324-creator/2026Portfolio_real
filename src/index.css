@@ -27,7 +27,6 @@ body {
   min-height: -webkit-fill-available;
   width: 100%;
   overflow-x: hidden;
-  overflow-x: clip;
   background: #000;
 }
 

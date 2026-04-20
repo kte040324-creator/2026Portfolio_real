@@ -15,10 +15,24 @@ import { Seoculus } from './pages/Seoculus';
 import { Canon } from './pages/Canon';
 import { ProjectStub } from './pages/ProjectStub';
 
+const GA_MEASUREMENT_ID = 'G-JYWHJEWGD4';
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+/** SPA 라우트 변경마다 GA4에 page_path 전송 (index.html gtag 로드 이후) */
+function GtagPageView() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('config', GA_MEASUREMENT_ID, {
+      page_path: pathname + window.location.search,
+    });
   }, [pathname]);
   return null;
 }
@@ -35,6 +49,7 @@ function AppRoutes() {
         <SiteBackLink />
       ) : null}
       <ScrollToTop />
+      <GtagPageView />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/main" element={<Main />} />

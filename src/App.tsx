@@ -1,5 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { ProjectDetailNav } from './components/ProjectDetailNav';
+import { SiteBackLink } from './components/SiteBackLink';
 import { Landing } from './Landing';
 import { Main } from './pages/Main';
 import { Hyundai } from './pages/Hyundai';
@@ -21,9 +23,17 @@ function ScrollToTop() {
   return null;
 }
 
-export default function App() {
+function AppRoutes() {
+  const { pathname } = useLocation();
+  const showNav = pathname !== '/' && pathname !== '/main';
+
   return (
-    <BrowserRouter>
+    <>
+      {showNav && pathname.startsWith('/projects/') ? (
+        <ProjectDetailNav />
+      ) : showNav ? (
+        <SiteBackLink />
+      ) : null}
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Landing />} />
@@ -45,6 +55,14 @@ export default function App() {
         <Route path="/projects/canon" element={<Canon />} />
         <Route path="/projects/:slug" element={<ProjectStub />} />
       </Routes>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   );
 }

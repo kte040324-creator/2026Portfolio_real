@@ -2,43 +2,180 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1920" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CV — Taeeun Clara Kim</title>
   <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/site-back.css" />
   <link rel="stylesheet" href="../css/cv.css" />
 </head>
-<body>
+<body class="cv-body-root cv-body-root--with-back">
 
-  <!-- ============================================
-       HEADER / NAV
-       ============================================ -->
-  <header class="site-header">
-    <div class="site-header__email"></div>
-    <div class="site-header__year"></div>
-  </header>
+  <a class="site-back" href="/main" aria-label="메인으로 돌아가기">
+    <span class="site-back__arrow" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 6L8 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </span>
+  </a>
 
-  <!-- ============================================
-       CV PAGE — 1920 × 2005
-       ============================================ -->
   <main class="cv-page">
+    <div class="cv-artboard" data-figma-frame="76:789">
 
-    <!-- Browser tab label -->
-    <div class="cv__tab-label"></div>
+      <header class="cv-header site-header cv-ab">
+        <a class="cv-header__email" href="mailto:taeeunclarakim@gmail.com">
+          <img class="cv-header__email-img" src="/cv/email.svg" width="259" height="20" alt="taeeunclarakim@gmail.com" />
+        </a>
+        <p class="cv-header__year">
+          <img class="cv-header__year-img" src="/cv/year-2026.svg" width="65" height="18" alt="@2026" />
+        </p>
+      </header>
 
-    <!-- Skills section -->
-    <section class="cv__section cv__section--skills" id="skills">
-      <div class="cv__section-label"></div>
-      <div class="cv__section-content"></div>
-    </section>
+      <h1 class="cv-hero__name cv-ab" data-node-id="258:64">Tae Kim(Clara)</h1>
+      <p class="cv-hero__tagline cv-ab">
+        is a User-centered Interaction Designer with a Cross-Disciplinary edge.
+      </p>
 
-    <!-- Experiences section -->
-    <section class="cv__section cv__section--experiences" id="experiences">
-      <div class="cv__section-label"></div>
-      <div class="cv__entries">
-        <!-- Entry rows populated dynamically -->
+      <h2 class="cv-section-heading cv-ab cv-ab--skills">SKILLS→→</h2>
+      <h2 class="cv-section-heading cv-ab cv-ab--experiences">EXPERIENCES →→</h2>
+
+      <h3 id="cv-skills-design-label" class="cv-subheading cv-ab cv-ab--design">Design</h3>
+      <div
+        class="cv-design-tools cv-ab cv-ab--tools cv-design-tools--figma"
+        data-node-id="260:265"
+      >
+        <img
+          class="cv-design-tools__figma"
+          src="/cv/figma-260-265-design-tools.png"
+          width="450"
+          height="88"
+          alt="Figma, Illustrator, Blender, After Effects — skill rings"
+        />
       </div>
-    </section>
 
+      <h3 id="cv-skills-dev-label" class="cv-subheading cv-ab cv-ab--dev">Dev</h3>
+      <ul class="cv-pills cv-ab cv-ab--pills">
+        <li><span class="cv-pill">HTML</span></li>
+        <li><span class="cv-pill">CSS</span></li>
+        <li><span class="cv-pill">JavaScript</span></li>
+        <li><span class="cv-pill">React</span></li>
+      </ul>
+
+      <h2 id="cv-languages-heading" class="cv-section-heading cv-ab cv-ab--languages">Languages</h2>
+
+      <img
+        class="cv-lang-dots-img cv-ab"
+        data-node-id="260:277"
+        src="/cv/image%206346553.png"
+        width="131"
+        height="113"
+        alt="Language proficiency: English 4.5 of 5, Korean 5 of 5, Chinese 2.5 of 5"
+      />
+
+      <div class="cv-lang-row cv-ab" data-row="en">
+        <span class="cv-lang-name">English</span>
+        <span class="cv-lang-dots" role="img" aria-label="4.5 out of 5">
+          <span class="cv-dot cv-dot--full"></span>
+          <span class="cv-dot cv-dot--full"></span>
+          <span class="cv-dot cv-dot--full"></span>
+          <span class="cv-dot cv-dot--full"></span>
+          <span class="cv-dot cv-dot--half"></span>
+        </span>
+        <span class="cv-lang-note" data-node-id="260:171">toefl 100</span>
+      </div>
+      <div class="cv-lang-row cv-ab" data-row="ko">
+        <span class="cv-lang-name">Korean</span>
+        <span class="cv-lang-dots" role="img" aria-label="5 out of 5">
+          <span class="cv-dot cv-dot--full"></span>
+          <span class="cv-dot cv-dot--full"></span>
+          <span class="cv-dot cv-dot--full"></span>
+          <span class="cv-dot cv-dot--full"></span>
+          <span class="cv-dot cv-dot--full"></span>
+        </span>
+        <span class="cv-lang-note" data-node-id="260:174">native</span>
+      </div>
+      <div class="cv-lang-row cv-ab" data-row="zh">
+        <span class="cv-lang-name">Chinese</span>
+        <span class="cv-lang-dots" role="img" aria-label="2.5 out of 5">
+          <span class="cv-dot cv-dot--full"></span>
+          <span class="cv-dot cv-dot--full"></span>
+          <span class="cv-dot cv-dot--half"></span>
+          <span class="cv-dot cv-dot--empty"></span>
+          <span class="cv-dot cv-dot--empty"></span>
+        </span>
+        <span class="cv-lang-note" data-node-id="260:173">HSK 2</span>
+      </div>
+
+      <h2 id="cv-education-heading" class="cv-section-heading cv-ab cv-ab--education">Education</h2>
+
+      <article class="cv-edu-block cv-ab" data-edu="1">
+        <div class="cv-edu-block__school" data-node-id="260:175">
+          <h3 class="cv-edu-title">Korea National Univ.of Arts</h3>
+          <p class="cv-edu-sub">Department of Design, Interaction Design</p>
+        </div>
+        <div class="cv-edu-block__detail" data-node-id="260:178">
+          <p class="cv-edu-meta">(2023- present), GPA 3.75/4.0</p>
+          <p class="cv-edu-award">
+            Awarded based on academic excellence, Internal Scholarship - K&rsquo;ARTS
+          </p>
+          <ul class="cv-edu-meta-list">
+            <li>2023 Fall Semester</li>
+            <li>2024 Fall Semester</li>
+            <li>2025 Fall Semester</li>
+          </ul>
+        </div>
+      </article>
+      <article class="cv-edu-block cv-ab" data-edu="2">
+        <div class="cv-edu-block__school" data-node-id="260:177">
+          <h3 class="cv-edu-title">Maryland Institute College of Art</h3>
+          <p class="cv-edu-sub">Graphic Design / Interactive Arts</p>
+        </div>
+        <p class="cv-edu-meta" data-node-id="260:179">(2026- present), Exchange Student</p>
+      </article>
+
+      <div class="cv-exp cv-ab cv-ab--exp-lead cv-exp--lead">
+        <header class="cv-exp__head">
+          <time class="cv-exp__date">2025.07-2026.03</time>
+          <h3 class="cv-exp__title">Student Researcher at the cciD Center</h3>
+        </header>
+      </div>
+      <ul class="cv-exp__list cv-ab cv-ab--exp-list">
+        <li>Ministry of Trade, Industry and Energy, Korea, UX research</li>
+        <li>Hyundai Motor Group, UX/UI design</li>
+        <li>CJ CGV Naver, UX/UI design</li>
+        <li>LG X K’ARTS Design, UX/UI, Interactive Exhibition</li>
+      </ul>
+
+      <article class="cv-exp cv-exp--dated cv-ab cv-ab--exp-dated">
+        <div class="cv-exp__dated-row">
+          <time class="cv-exp__date">2025.03</time>
+          <p class="cv-exp__body">
+            Graphic Design for &lt;Now,Flowing&gt; 11th “Geomungo” Ensemble Concert at School of Korean Traditional Arts
+          </p>
+        </div>
+        <div class="cv-exp__dated-row">
+          <time class="cv-exp__date">2024.11</time>
+          <p class="cv-exp__body">
+            Graphic Design for &lt;The Angel, Mang-u&gt; Graduation at School of Musical Theatre Creation, Korea
+          </p>
+        </div>
+        <div class="cv-exp__dated-row">
+          <time class="cv-exp__date">2024.08</time>
+          <p class="cv-exp__body">Graphic Design for Graduation Concert at School of Korean Traditional Arts</p>
+        </div>
+        <div class="cv-exp__dated-row">
+          <time class="cv-exp__date">2024.03</time>
+          <p class="cv-exp__body">
+            Exhibition &lt;IN( )-OUT( ), Object Archiving Creation Project&gt; at Hongdae, Korea
+          </p>
+        </div>
+        <div class="cv-exp__dated-row">
+          <time class="cv-exp__date">2024.02</time>
+          <p class="cv-exp__body">
+            Technology for Cross Culture project with Prof. Andreas Schegel from LASALLE Collge of the Arts, Singapore
+          </p>
+        </div>
+      </article>
+    </div>
   </main>
 
   <script src="../js/main.js"></script>

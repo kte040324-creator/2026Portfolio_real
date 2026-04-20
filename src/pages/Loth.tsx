@@ -265,6 +265,7 @@ export function Loth() {
             loop
             preload="auto"
             aria-hidden
+            style={{ backgroundColor: 'transparent' }}
           >
             <source src={lothAsset('Comp 1.webm')} type="video/webm" />
           </video>

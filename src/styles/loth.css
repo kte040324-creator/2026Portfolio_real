@@ -67,7 +67,7 @@
   background-position: center;
 }
 
-/* embedded 헤더는 1920 프레임 기준 중앙 — site-back.css의 뷰포트용 비대칭 패딩을 쓰면 어긋남 */
+/* embedded 헤더 — site-back.css + project-page-header.css 전역 규칙으로 48px 대칭 (Loth 전용 덮어쓰기 없음) */
 .loth-header.project-page-header {
   left: 0;
   right: 0;
@@ -80,18 +80,6 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  padding: 20px 48px !important;
-}
-
-body:has(.site-back) .loth-header.project-page-header,
-body:has(.site-back):has(.site-nav-next) .loth-header.project-page-header {
-  padding-left: 48px !important;
-  padding-right: 48px !important;
-}
-
-.loth-header .project-page-header__breadcrumb {
-  max-width: none;
-  width: 100%;
 }
 
 /* Figma 197:213 — Neue Haas 55 Roman 30px, leading 1.1, #F5FCF9 (1920 프레임 가로 중앙) */
@@ -451,7 +439,8 @@ body:has(.site-back):has(.site-nav-next) .loth-header.project-page-header {
   align-items: stretch;
   width: max-content;
   height: 100%;
-  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .loth-strip-unit {
@@ -461,7 +450,7 @@ body:has(.site-back):has(.site-nav-next) .loth-header.project-page-header {
   align-items: stretch;
 }
 
-/* 6346545: 왼쪽으로 흐름 (트랙 이동 0 → -50%) */
+/* 6346545: 왼쪽으로 흐름 (트랙 이동 0 → -50%) — translate3d GPU 레이어 */
 .loth-strip-track--ltr {
   animation: loth-strip-marquee-ltr 48s linear infinite;
 }
@@ -471,29 +460,37 @@ body:has(.site-back):has(.site-nav-next) .loth-header.project-page-header {
   animation: loth-strip-marquee-rtl 56s linear infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .loth-strip-track--ltr,
+  .loth-strip-track--rtl {
+    animation: none;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @keyframes loth-strip-marquee-ltr {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @keyframes loth-strip-marquee-rtl {
   from {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 
   to {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .loth-strip-img {
   box-sizing: content-box;
-  height: 100%;
+  height: 223px;
   width: auto;
   max-width: none;
   flex-shrink: 0;

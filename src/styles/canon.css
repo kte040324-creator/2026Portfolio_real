@@ -77,12 +77,6 @@
   z-index: 20;
 }
 
-/* 고정 네비는 뷰포트 기준 — 스케일된 프레임 안 패딩은 Figma 좌우 48px만 (site-back.css 보정 덮어씀) */
-body:has(.site-back) .canon-header.project-page-header {
-  padding-left: 48px;
-  padding-right: 48px;
-}
-
 /* Overview */
 .canon-overview-heading {
   position: absolute;

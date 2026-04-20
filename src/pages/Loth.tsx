@@ -233,23 +233,60 @@ export function Loth() {
           </div>
         </div>
 
-        <div className="loth-abs loth-strip loth-strip--a" data-node-id="230:35" data-project-reveal>
+        {/* 스트립: 마퀴 transform + reveal 부모 opacity가 겹치면 깜빡임·틀어짐 → reveal 없음 */}
+        <div className="loth-abs loth-strip loth-strip--a" data-node-id="230:35">
           <div className="loth-strip-track loth-strip-track--ltr" aria-hidden>
             <div className="loth-strip-unit">
-              <img className="loth-strip-img" src={lothAsset('img/image 6346545.png')} alt="" draggable={false} />
+              <img
+                className="loth-strip-img"
+                src={lothAsset('img/image 6346545.png')}
+                width={4060}
+                height={223}
+                alt=""
+                draggable={false}
+                loading="eager"
+                decoding="async"
+              />
             </div>
             <div className="loth-strip-unit">
-              <img className="loth-strip-img" src={lothAsset('img/image 6346545.png')} alt="" draggable={false} />
+              <img
+                className="loth-strip-img"
+                src={lothAsset('img/image 6346545.png')}
+                width={4060}
+                height={223}
+                alt=""
+                draggable={false}
+                loading="eager"
+                decoding="async"
+              />
             </div>
           </div>
         </div>
-        <div className="loth-abs loth-strip loth-strip--b" data-node-id="230:32" data-project-reveal>
+        <div className="loth-abs loth-strip loth-strip--b" data-node-id="230:32">
           <div className="loth-strip-track loth-strip-track--rtl" aria-hidden>
             <div className="loth-strip-unit">
-              <img className="loth-strip-img" src={lothAsset('img/image 6346544.png')} alt="" draggable={false} />
+              <img
+                className="loth-strip-img"
+                src={lothAsset('img/image 6346544.png')}
+                width={4832}
+                height={223}
+                alt=""
+                draggable={false}
+                loading="eager"
+                decoding="async"
+              />
             </div>
             <div className="loth-strip-unit">
-              <img className="loth-strip-img" src={lothAsset('img/image 6346544.png')} alt="" draggable={false} />
+              <img
+                className="loth-strip-img"
+                src={lothAsset('img/image 6346544.png')}
+                width={4832}
+                height={223}
+                alt=""
+                draggable={false}
+                loading="eager"
+                decoding="async"
+              />
             </div>
           </div>
         </div>

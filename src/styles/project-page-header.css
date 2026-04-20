@@ -31,6 +31,10 @@
   background: transparent;
 }
 
+.project-page-header--embedded .project-page-header__breadcrumb {
+  max-width: none;
+}
+
 /* Light / Dark variants */
 .project-page-header--light {
   color: #000;

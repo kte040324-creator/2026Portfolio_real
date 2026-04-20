@@ -111,3 +111,17 @@ body:has(.site-back):has(.site-nav-next) .site-header {
 body:has(.site-back):has(.site-nav-next) .project-page-header {
   padding-right: calc(48px + 132px + 12px);
 }
+
+/*
+ * 스케일된 1920 프레임 안 embedded 헤더 — 브레드크럼은 디자인 프레임 기준 가운데.
+ * 위 뷰포트용 비대칭 패딩은 sticky 전용이며, embedded 에는 적용되면 안 됨.
+ */
+body:has(.site-back) .project-page-header.project-page-header--embedded {
+  padding-left: 48px !important;
+  padding-right: 48px !important;
+}
+
+body:has(.site-back):has(.site-nav-next) .project-page-header.project-page-header--embedded {
+  padding-left: 48px !important;
+  padding-right: 48px !important;
+}

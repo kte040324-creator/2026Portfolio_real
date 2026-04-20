@@ -1,11 +1,10 @@
-/* Figma 171:2354 — scale-root (프레임 높이 = 하단 로고까지, 아래 빈 그라데이션 제거) */
+/* Figma 171:2354 — scale-root; 세로 스크롤 높이는 Sooin.tsx에서 DESIGN_H * scale (Loth/Mealtune과 동일) */
 
 .sooin-scale-root {
   width: 100%;
   overflow-x: hidden;
   position: relative;
   background: #7f7f79;
-  padding-bottom: calc(11715 / 1920 * 100%);
 }
 
 .sooin-frame {

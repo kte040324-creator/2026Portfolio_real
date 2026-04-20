@@ -5,6 +5,8 @@ import { sooinAsset } from '../lib/sooinAssets';
 import '../styles/sooin.css';
 
 const DESIGN_W = 1920;
+/** Figma 171:2354 프레임 높이 — 스크롤 영역을 padding % 대신 `height = DESIGN_H * scale`로 맞춰 하단 여백 제거 */
+const DESIGN_H = 11715;
 
 /**
  * Process strip: 같은 구간에서 가로 패닝을 더 천천히(세로로 더 오래) 하려면 이 값을 **곱한 만큼** 분모를 키움.
@@ -54,6 +56,7 @@ export function Sooin() {
     const update = () => {
       const scale = designScaleForRoot(root, DESIGN_W);
       frame.style.setProperty('--sooin-scale', String(scale));
+      root.style.height = `${DESIGN_H * scale}px`;
     };
     update();
     const ro = new ResizeObserver(update);

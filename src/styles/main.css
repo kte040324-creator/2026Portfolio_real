@@ -140,38 +140,6 @@
   line-height: 1.1;
 }
 
-/* ── CV — Figma 211:1378 (transform 밖) ─────────────────────── */
-.main-v2-frame > .main-v2-cv {
-  position: absolute;
-  left: calc(1698px * var(--main-v2-scale, 1));
-  top: calc(413px * var(--main-v2-scale, 1));
-  margin: 0;
-  font-family: 'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif;
-  font-size: calc(30px * var(--main-v2-scale, 1));
-  font-style: italic;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: calc(-0.6px * var(--main-v2-scale, 1));
-  color: #fdfdfd;
-  text-decoration: none;
-  white-space: nowrap;
-  font-variation-settings: 'wght' 220, 'ital' 300;
-  font-synthesis: none;
-  z-index: 6;
-  -webkit-font-smoothing: antialiased;
-}
-
-.main-v2-frame > .main-v2-cv:hover {
-  opacity: 0.88;
-}
-
-@supports (mix-blend-mode: difference) {
-  .main-v2-frame > .main-v2-cv {
-    mix-blend-mode: difference;
-    color: #fdfdfd;
-  }
-}
-
 /* ── Skills — Figma 211:1379 (transform 밖) ─────────────────── */
 .main-v2-frame > .main-v2-skills {
   position: absolute;

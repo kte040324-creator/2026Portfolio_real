@@ -60,10 +60,6 @@ export function Main() {
           <p>Looking for an Opportunity</p>
         </div>
 
-        <a className="main-v2-cv" href="/pages/cv.html" data-node-id="211:1378">
-          → CV
-        </a>
-
         <p className="main-v2-skills main-v2-hero-blend" data-node-id="211:1379">
           Website, Branding Identity, Visual Coding, 3D Modeling
         </p>

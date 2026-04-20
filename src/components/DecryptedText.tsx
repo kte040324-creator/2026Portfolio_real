@@ -9,11 +9,14 @@ import {
 } from 'react';
 import { motion } from 'motion/react';
 
-const styles = {
-  wrapper: {
-    display: 'inline-block',
+const wrapperStyle = (lineLayout: 'inline-block' | 'block') =>
+  ({
+    display: lineLayout === 'block' ? 'block' : 'inline-block',
+    width: lineLayout === 'block' ? ('100%' as const) : undefined,
     whiteSpace: 'pre-wrap' as const,
-  },
+  }) as const;
+
+const styles = {
   srOnly: {
     position: 'absolute' as const,
     width: '1px',
@@ -41,6 +44,11 @@ export type DecryptedTextProps = Omit<ComponentPropsWithoutRef<typeof motion.spa
   encryptedClassName?: string;
   animateOn?: DecryptedTextAnimateOn;
   clickMode?: 'once' | 'toggle';
+  /**
+   * `block` + full width: multi-line pre-wrap text matches Chrome/Safari when parent is wide
+   * (inline-block can shrink-wrap differently in WebKit during decrypt reflow).
+   */
+  lineLayout?: 'inline-block' | 'block';
   /** Forward decrypt 애니메이션이 끝나 전체 문구가 확정될 때 한 번 호출 */
   onDecryptComplete?: () => void;
 };
@@ -58,6 +66,7 @@ export default function DecryptedText({
   encryptedClassName = '',
   animateOn = 'hover',
   clickMode = 'once',
+  lineLayout = 'inline-block',
   onDecryptComplete,
   ...props
 }: DecryptedTextProps) {
@@ -89,6 +98,7 @@ export default function DecryptedText({
         .split('')
         .map((char, i) => {
           if (char === ' ') return ' ';
+          if (char === '\n' || char === '\r') return char;
           if (currentRevealed.has(i)) return originalText[i];
           return availableChars[Math.floor(Math.random() * availableChars.length)] ?? char;
         })
@@ -218,6 +228,7 @@ export default function DecryptedText({
             }
             if (intervalRef.current) clearInterval(intervalRef.current);
             intervalRef.current = null;
+            setDisplayText(text);
             setIsAnimating(false);
             setIsDecrypted(true);
             queueMicrotask(() => onDecryptCompleteRef.current?.());
@@ -403,11 +414,13 @@ export default function DecryptedText({
           }
         : {};
 
+  const wrapperStyles = wrapperStyle(lineLayout);
+
   return (
     <motion.span
       className={parentClassName}
       ref={containerRef}
-      style={styles.wrapper}
+      style={wrapperStyles}
       {...animateProps}
       {...props}
     >
@@ -415,6 +428,9 @@ export default function DecryptedText({
 
       <span aria-hidden="true">
         {displayText.split('').map((char, index) => {
+          if (char === '\n' || char === '\r') {
+            return char === '\r' ? null : <br key={index} />;
+          }
           const isRevealedOrDone = revealedIndices.has(index) || (!isAnimating && isDecrypted);
 
           return (

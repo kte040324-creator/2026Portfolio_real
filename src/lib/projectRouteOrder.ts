@@ -9,6 +9,8 @@ export const PROJECT_ROUTES = [
   '/projects/sooin',
   '/projects/seoculus',
   '/projects/canon',
+  '/projects/sea',
+  '/projects/angel',
 ] as const;
 
 export type ProjectRoute = (typeof PROJECT_ROUTES)[number];
@@ -27,6 +29,7 @@ export const PROJECT_NAV_ON_DARK = [
   '/projects/loth',
   '/projects/canon',
   '/projects/exhibition-archive',
+  '/projects/sea',
 ] as const;
 
 export function isProjectNavOnDark(pathname: string): boolean {

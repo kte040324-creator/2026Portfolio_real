@@ -1,0 +1,267 @@
+/*
+ * Sea (Material Ecology) — Figma 312:96 (1920 × 5967)
+ */
+
+.sea-scale-root {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+  background: #000;
+  padding-bottom: calc(var(--sea-design-h, 5967px) / 1920 * 100%);
+}
+
+.sea-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: var(--sea-design-h, 5967px);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #fff;
+  overflow: visible;
+  background: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  font-synthesis: none;
+}
+
+.sea-frame p,
+.sea-frame h2 {
+  margin: 0;
+}
+
+.sea-frame figure {
+  margin: 0;
+}
+
+.sea-header {
+  left: 0;
+  right: 0;
+  top: 18px;
+  z-index: 20;
+}
+
+.sea-header .project-page-header__breadcrumb {
+  color: #fff;
+}
+
+/* 히어로 312:130 — 1920×1080 top 59px */
+.sea-hero {
+  position: absolute;
+  left: 0;
+  top: 59px;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.sea-hero img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+}
+
+/* vv 1 — 313:249 */
+.sea-vv {
+  position: absolute;
+  left: 691px;
+  top: 1135px;
+  width: 1229px;
+  height: 834px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.sea-vv img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* vf — 313:254 (Figma: 142×2326 · 731×657, vv와 별도 구역) */
+.sea-vf {
+  position: absolute;
+  left: 142px;
+  top: 2326px;
+  width: 731px;
+  height: 657px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.sea-vf img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 커버 설명 312:138 — 일부 영역 vf와 겹침 */
+.sea-copy-covers {
+  position: absolute;
+  left: 613px;
+  top: 2428px;
+  width: 637px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+  z-index: 2;
+}
+
+/* 매거진 설명 312:135 */
+.sea-copy-magazine {
+  position: absolute;
+  left: 969px;
+  top: 2919px;
+  width: 827px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+  z-index: 2;
+}
+
+/* 큰 스프레드 313:246 */
+.sea-spread-large {
+  position: absolute;
+  left: 315px;
+  top: 3089px;
+  width: 1350px;
+  height: 1102px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.sea-spread-large img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sea-overview-heading {
+  position: absolute;
+  left: 69px;
+  top: 1264px;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+  z-index: 3;
+}
+
+.sea-overview-line-wrap {
+  position: absolute;
+  left: 69px;
+  top: 1330px;
+  width: 319px;
+  height: 1px;
+  z-index: 3;
+}
+
+.sea-overview-line-wrap .sea-overview-line {
+  display: block;
+  width: 319px;
+  height: 1px;
+  max-width: 100%;
+}
+
+.sea-overview-copy {
+  position: absolute;
+  left: 69px;
+  top: 1380px;
+  width: 346px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+  z-index: 3;
+}
+
+/* 좁은 열 313:250 */
+.sea-spread-narrow {
+  position: absolute;
+  left: 316px;
+  top: 3831px;
+  width: 750px;
+  height: 1102px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.sea-spread-narrow img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 플랫레이 313:243 */
+.sea-flatlay {
+  position: absolute;
+  left: 839px;
+  top: 3985px;
+  width: 960px;
+  height: 689px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.sea-flatlay img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* vb 1 — 313:247 */
+.sea-vb {
+  position: absolute;
+  left: 1255px;
+  top: 4724px;
+  width: 541px;
+  height: 656px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.sea-vb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sea-meta-tools {
+  position: absolute;
+  left: 86px;
+  top: 5855px;
+  width: 384px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.165px;
+  color: #d0d0d0;
+}
+
+.sea-meta-dates {
+  position: absolute;
+  left: 1665px;
+  top: 5844px;
+  width: 177px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.165px;
+  color: #d0d0d0;
+  text-align: left;
+}

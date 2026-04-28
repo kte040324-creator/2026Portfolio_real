@@ -1,0 +1,281 @@
+/*
+ * Angel of Oblivion — Figma 312:139 (angel, 1920 × 5967)
+ */
+
+.angel-scale-root {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+  background: #dedede;
+  padding-bottom: calc(var(--angel-design-h, 5967px) / 1920 * 100%);
+}
+
+.angel-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: var(--angel-design-h, 5967px);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #000;
+  overflow: visible;
+  background: #dedede;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  font-synthesis: none;
+}
+
+.angel-frame p,
+.angel-frame h2 {
+  margin: 0;
+}
+
+.angel-frame figure {
+  margin: 0;
+}
+
+/* 상단 카테고리 — 블랙 (연회색 배경) */
+.angel-header {
+  left: 0;
+  right: 0;
+  top: 18px;
+  z-index: 20;
+}
+
+.angel-header .project-page-header__breadcrumb {
+  color: #000;
+}
+
+/* 히어로 — 313:238 박스(705×994) 좌변 x = (1920−705)/2, width 중앙(960px)과 정렬 — translate 미사용(scale 스택 깨짐 방지) */
+.angel-hero {
+  position: absolute;
+  left: calc(50% - 705px / 2);
+  top: 93px;
+  width: 705px;
+  height: 994px;
+  overflow: hidden;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  background-color: inherit;
+}
+
+.angel-hero img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center center;
+}
+
+/* 타입 디자인 스트립 PNG 312:179 */
+.angel-type-strip {
+  position: absolute;
+  left: 930px;
+  top: 1522px;
+  width: 871px;
+  height: 201px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.angel-type-strip img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.angel-type-label {
+  position: absolute;
+  left: 1641px;
+  top: 1777px;
+  width: 184px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+}
+
+.angel-about-heading {
+  position: absolute;
+  left: 69px;
+  top: 1264px;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+  z-index: 2;
+}
+
+.angel-about {
+  position: absolute;
+  left: 110px;
+  top: 1395px;
+  width: 599px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+  z-index: 2;
+}
+
+.angel-about__list {
+  margin: 0;
+  padding: 0 0 0 30px;
+  list-style-type: disc;
+}
+
+.angel-about__list > li + li {
+  margin-top: 0;
+}
+
+.angel-about__reg {
+  font-weight: 400;
+}
+
+.angel-about__quote {
+  font-style: italic;
+  font-weight: 700;
+}
+
+.angel-about__title-italic {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.angel-about__gap {
+  height: 12px;
+}
+
+.angel-about__concept-block > li {
+  list-style-type: disc;
+}
+
+/* Moodboard heading 312:169 */
+.angel-section-heading {
+  position: absolute;
+  left: 69px;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+  z-index: 2;
+}
+
+.angel-heading-moodboard {
+  top: 2299px;
+}
+
+.angel-heading-reflet {
+  top: 3262px;
+}
+
+/* Moodboard 이미지 386px 높이 */
+.angel-mood {
+  position: absolute;
+  top: 2394px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.angel-mood img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.angel-mood--12 {
+  left: 82px;
+  width: 326px;
+  height: 386px;
+}
+
+.angel-mood--13 {
+  left: 437px;
+  width: 217px;
+  height: 386px;
+}
+
+.angel-mood--14 {
+  left: 683px;
+  width: 278px;
+  height: 386px;
+}
+
+.angel-mood--1 {
+  left: 990px;
+  width: 244px;
+  height: 386px;
+}
+
+.angel-mood--27 {
+  left: 1263px;
+  width: 288px;
+  height: 386px;
+}
+
+.angel-mood--29 {
+  left: 1580px;
+  width: 257px;
+  height: 386px;
+}
+
+/* Reflet 스프레드 — Figma 313:239, 313:240 */
+.angel-finale {
+  position: absolute;
+  left: 202px;
+  width: 1507px;
+  height: 1074px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.angel-finale img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.angel-finale--reflet {
+  top: 3416px;
+}
+
+.angel-finale--bottom {
+  top: 4635px;
+}
+
+.angel-meta-dates {
+  position: absolute;
+  left: 1665px;
+  top: 5844px;
+  width: 177px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.165px;
+  color: #000;
+}
+
+.angel-meta-tools {
+  position: absolute;
+  left: 86px;
+  top: 5855px;
+  width: 384px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.165px;
+  color: #000;
+}

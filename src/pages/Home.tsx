@@ -5,8 +5,8 @@ import { mainAsset } from '../lib/mainAssets';
 import '../styles/home.css';
 
 const DESIGN_W = 1920;
-/** Figma 291:210 — 하단 CONTACT·라인 포함 */
-const DESIGN_H = 8790;
+/** Figma 291:210 — Publication·CONTACT 포함 전체 높이 */
+const DESIGN_H = 10511;
 
 /** `public/assets/` 루트 기준 (header SVG 등) */
 function publicAsset(relativePath: string): string {
@@ -17,7 +17,7 @@ function publicAsset(relativePath: string): string {
 
 /**
  * Figma main 프레임 썸네일 노드(Frame 377, 402, …)와 동일한 파일명 —
- * MCP `get_design_context`로부터 내려받은 PNG를 `public/assets/main/`에 둠.
+ * PNG는 `public/assets/main/` 에 둠.
  */
 const THUMB_BY_FIGMA = {
   frame402: 'Frame 402.png',
@@ -43,27 +43,36 @@ function initialHomeScale(): number {
   return designScaleFromRootWidth(Math.max(w, 1), DESIGN_W);
 }
 
+type ThumbTone =
+  | 'gradient'
+  | 'teal'
+  | 'gradient2'
+  | 'black'
+  | 'publicationBlack'
+  | 'publicationGray';
+
 type ProjectRow = {
   slug: string;
   to: string;
   thumbTop: number;
   panelTop: number;
-  /** Figma `calc(60% + Npx)` — 패널 이미지(665×343) 왼쪽 기준과 정렬 */
   panelOffsetPx: number;
   thumbFile: string;
-  thumbTone: 'gradient' | 'teal' | 'gradient2' | 'black';
-  /** Figma 291:210 — 패널을 PNG로 내보낸 파일 (`public/assets/main/`) */
+  thumbTone: ThumbTone;
   panelImageFile: string;
-  /** 스크린리더용 */
   panelLabel: string;
+  /** Figma Publication 우측 패널 — 591×335 */
+  panelNarrow?: boolean;
+  /** Figma View Project 프레임 (312:60, 312:78 …) */
+  ctaNodeId?: string;
 };
 
-const PROJECTS: ProjectRow[] = [
+const DIGITAL_ROWS: ProjectRow[] = [
   {
     slug: 'lg',
     to: '/projects/lg',
     thumbTop: 1749,
-    panelTop: 1813,
+    panelTop: 1812,
     panelOffsetPx: 22,
     thumbFile: 'lg-thumb.png',
     thumbTone: 'gradient',
@@ -74,7 +83,7 @@ const PROJECTS: ProjectRow[] = [
     slug: 'sori',
     to: '/projects/sori',
     thumbTop: 2728,
-    panelTop: 2792,
+    panelTop: 2791,
     panelOffsetPx: 10,
     thumbFile: THUMB_BY_FIGMA.frame402,
     thumbTone: 'teal',
@@ -85,7 +94,7 @@ const PROJECTS: ProjectRow[] = [
     slug: 'loth',
     to: '/projects/loth',
     thumbTop: 3707,
-    panelTop: 3771,
+    panelTop: 3770,
     panelOffsetPx: 22,
     thumbFile: THUMB_BY_FIGMA.frame378,
     thumbTone: 'gradient2',
@@ -96,7 +105,7 @@ const PROJECTS: ProjectRow[] = [
     slug: 'exhibition',
     to: '/projects/exhibition-archive',
     thumbTop: 4685,
-    panelTop: 4750,
+    panelTop: 4748,
     panelOffsetPx: 22,
     thumbFile: THUMB_BY_FIGMA.frame396,
     thumbTone: 'black',
@@ -107,7 +116,7 @@ const PROJECTS: ProjectRow[] = [
     slug: 'sooin',
     to: '/projects/sooin',
     thumbTop: 5664,
-    panelTop: 5729,
+    panelTop: 5727,
     panelOffsetPx: 2,
     thumbFile: THUMB_BY_FIGMA.frame379,
     thumbTone: 'black',
@@ -118,7 +127,7 @@ const PROJECTS: ProjectRow[] = [
     slug: 'canon',
     to: '/projects/canon',
     thumbTop: 6643,
-    panelTop: 6708,
+    panelTop: 6706,
     panelOffsetPx: 10,
     thumbFile: THUMB_BY_FIGMA.frame400,
     thumbTone: 'black',
@@ -129,7 +138,7 @@ const PROJECTS: ProjectRow[] = [
     slug: 'seoculus',
     to: '/projects/seoculus',
     thumbTop: 7622,
-    panelTop: 7687,
+    panelTop: 7685,
     panelOffsetPx: 10,
     thumbFile: THUMB_BY_FIGMA.frame398,
     thumbTone: 'black',
@@ -138,12 +147,42 @@ const PROJECTS: ProjectRow[] = [
   },
 ];
 
+/** Figma 312:* — 우측 591×335 패널, View Project 버튼 */
+const PUBLICATION_ROWS: ProjectRow[] = [
+  {
+    slug: 'publication-sea',
+    to: '/projects/sea',
+    thumbTop: 8617,
+    panelTop: 8664,
+    panelOffsetPx: 34,
+    thumbFile: 'Frame 406.png',
+    thumbTone: 'publicationBlack',
+    panelImageFile: 'Frame 408.png',
+    panelLabel: 'SEA — Material Ecology publication',
+    panelNarrow: true,
+    ctaNodeId: '312:60',
+  },
+  {
+    slug: 'publication-angel',
+    to: '/projects/angel',
+    thumbTop: 9578,
+    panelTop: 9645,
+    panelOffsetPx: 20,
+    thumbFile: 'Frame 407.png',
+    thumbTone: 'publicationGray',
+    panelImageFile: 'Frame 409.png',
+    panelLabel: 'Angel of Oblivion — publication',
+    panelNarrow: true,
+    ctaNodeId: '312:78',
+  },
+];
+
 function ThumbBox({
   tone,
   src,
   alt,
 }: {
-  tone: ProjectRow['thumbTone'];
+  tone: ThumbTone;
   src: string;
   alt: string;
 }) {
@@ -151,6 +190,58 @@ function ThumbBox({
     <div className={`home-thumb home-thumb--${tone}`}>
       <img src={src} alt={alt} className="home-thumb__img" loading="lazy" decoding="async" />
     </div>
+  );
+}
+
+function WorksRow({
+  p,
+  thumbLeft,
+}: {
+  p: ProjectRow;
+  thumbLeft: string;
+}) {
+  return (
+    <article className="home-row" aria-label={p.panelLabel}>
+      <div className="home-thumb-wrap" style={{ left: thumbLeft, top: p.thumbTop }} aria-hidden>
+        <ThumbBox tone={p.thumbTone} src={mainAsset(p.thumbFile)} alt="" />
+      </div>
+      <div
+        className={`home-panel-slot${p.panelNarrow ? ' home-panel-slot--narrow' : ''}`}
+        style={{
+          left: `calc(60% + ${p.panelOffsetPx}px)`,
+          top: p.panelTop,
+        }}
+      >
+        <div className="home-panel-stack">
+          <img
+            className="home-panel-image"
+            src={mainAsset(p.panelImageFile)}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+          />
+          <Link
+            className="home-panel-cta home-panel-cta--fig389 home-panel-cta-link"
+            to={p.to}
+            aria-label={`${p.panelLabel} — View Project`}
+            {...(p.ctaNodeId ? { 'data-node-id': p.ctaNodeId } : {})}
+          >
+            <span className="home-panel-cta__inner">
+              <span className="home-panel-cta__label">View Project</span>
+              <span className="home-panel-cta__arrow-holder" aria-hidden>
+                <img
+                  className="home-panel-cta__arrow"
+                  src={mainAsset('view-project-arrow.svg')}
+                  alt=""
+                  draggable={false}
+                />
+              </span>
+            </span>
+          </Link>
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -217,51 +308,19 @@ export function Home() {
         ))}
 
         <h2 className="home-works-heading" data-node-id="291:325">
-          Works →
+          Digital Works →
         </h2>
 
-        {PROJECTS.map((p) => (
-          <article key={p.slug} className="home-row" aria-label={p.panelLabel}>
-            <div
-              className="home-thumb-wrap"
-              style={{ left: thumbLeft, top: p.thumbTop }}
-              aria-hidden
-            >
-              <ThumbBox tone={p.thumbTone} src={mainAsset(p.thumbFile)} alt="" />
-            </div>
-            <div
-              className="home-panel-slot"
-              style={{ left: `calc(60% + ${p.panelOffsetPx}px)`, top: p.panelTop }}
-            >
-              <div className="home-panel-stack">
-                <img
-                  className="home-panel-image"
-                  src={mainAsset(p.panelImageFile)}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  draggable={false}
-                />
-                <Link
-                  className="home-panel-cta home-panel-cta--fig389 home-panel-cta-link"
-                  to={p.to}
-                  aria-label={`${p.panelLabel} — View Project`}
-                >
-                  <span className="home-panel-cta__inner">
-                    <span className="home-panel-cta__label">View Project</span>
-                    <span className="home-panel-cta__arrow-holder" aria-hidden>
-                      <img
-                        className="home-panel-cta__arrow"
-                        src={mainAsset('view-project-arrow.svg')}
-                        alt=""
-                        draggable={false}
-                      />
-                    </span>
-                  </span>
-                </Link>
-              </div>
-            </div>
-          </article>
+        {DIGITAL_ROWS.map((p) => (
+          <WorksRow key={p.slug} p={p} thumbLeft={thumbLeft} />
+        ))}
+
+        <h2 className="home-publication-heading" data-node-id="312:32">
+          Publication works →
+        </h2>
+
+        {PUBLICATION_ROWS.map((p) => (
+          <WorksRow key={p.slug} p={p} thumbLeft={thumbLeft} />
         ))}
 
         <div className="home-footer-line" data-node-id="303:671" aria-hidden />

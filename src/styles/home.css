@@ -1,5 +1,5 @@
 /*
- * Figma 291:210 — portfolio home (1920 × 8790)
+ * Figma 291:210 — portfolio home (1920 × 10511) — Digital + Publication works
  * 썸네일·메인 비주얼 PNG: `public/assets/main/` + `mainAsset()`
  */
 
@@ -12,9 +12,9 @@
   background: linear-gradient(93.9966deg, rgb(239, 233, 233) 0%, rgb(255, 255, 255) 100%);
   /*
    높이 = (디자인 세로 / 가로) × 부모 너비.
-   잘못된 예: 8790px / 1920 → ~4.6px 로 잡혀 레이아웃이 붕괴함. px는 비율에 넣지 않는다.
+   잘못된 예: 디자인 px를 비율에 직접 넣어 (~4px) 높이가 붕괴되는 문제 방지 — 숫자만 변수로 둠.
   */
-  padding-bottom: calc(100% * var(--home-design-h-num, 8790) / 1920);
+  padding-bottom: calc(100% * var(--home-design-h-num, 10511) / 1920);
 }
 
 .home-frame {
@@ -22,7 +22,7 @@
   top: 0;
   left: 0;
   width: 1920px;
-  height: calc(var(--home-design-h-num, 8790) * 1px);
+  height: calc(var(--home-design-h-num, 10511) * 1px);
   border-radius: 10px;
   overflow: hidden;
   background: linear-gradient(93.9966deg, rgb(239, 233, 233) 0%, rgb(255, 255, 255) 100%);
@@ -128,8 +128,25 @@
 
 .home-works-heading {
   position: absolute;
-  left: calc(12.5% - 16px);
+  left: calc(15% - 2px);
   top: 1602px;
+  margin: 0;
+  font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
+  font-size: 40px;
+  font-weight: 170;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+  mix-blend-mode: difference;
+  font-variation-settings: 'ital' 30;
+}
+
+.home-publication-heading {
+  position: absolute;
+  left: calc(15% - 2px);
+  top: 8462px;
   margin: 0;
   font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
   font-size: 40px;
@@ -258,6 +275,14 @@
   background: #000;
 }
 
+.home-thumb--publicationBlack {
+  background: #000;
+}
+
+.home-thumb--publicationGray {
+  background: #ededed;
+}
+
 .home-thumb__img {
   position: relative;
   z-index: 1;
@@ -275,6 +300,12 @@
   height: 343px;
   box-sizing: border-box;
   cursor: default;
+}
+
+/* Figma Publication — 우측 591×335 (312:94, 312:95) */
+.home-panel-slot--narrow {
+  width: 591px;
+  height: 335px;
 }
 
 .home-panel-stack {
@@ -324,6 +355,11 @@
     opacity 0.48s ease,
     border-color 0.48s ease,
     color 0.48s ease;
+}
+
+/* Figma 312:60, 312:78 — Publication View Project: y +2px (bottom 12→10) */
+.home-panel-slot--narrow .home-panel-cta.home-panel-cta--fig389.home-panel-cta-link {
+  bottom: 2px;
 }
 
 .home-panel-cta-link:focus-visible {
@@ -398,7 +434,7 @@
 .home-footer-line {
   position: absolute;
   left: 50%;
-  top: 8456px;
+  top: 10248px;
   transform: translate(-50%, -50%);
   width: min(1743px, calc(100% - 88px));
   height: 0;
@@ -411,7 +447,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 8509px;
+  top: 10301px;
   display: flex;
   justify-content: center;
   padding: 0 24px 120px;

@@ -11,6 +11,8 @@ import { Loth } from './pages/Loth';
 import { Seoculus } from './pages/Seoculus';
 import { Canon } from './pages/Canon';
 import { ExhibitionWebsite } from './pages/ExhibitionWebsite';
+import { Sea } from './pages/Sea';
+import { Angel } from './pages/Angel';
 import { ProjectStub } from './pages/ProjectStub';
 
 const GA_MEASUREMENT_ID = 'G-JYWHJEWGD4';
@@ -65,6 +67,8 @@ function AppRoutes() {
         <Route path="/projects/loth" element={<Loth />} />
         <Route path="/projects/seoculus" element={<Seoculus />} />
         <Route path="/projects/canon" element={<Canon />} />
+        <Route path="/projects/sea" element={<Sea />} />
+        <Route path="/projects/angel" element={<Angel />} />
         <Route path="/projects/:slug" element={<ProjectStub />} />
       </Routes>
     </>

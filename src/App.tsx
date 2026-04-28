@@ -1,18 +1,16 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { ProjectDetailNav } from './components/ProjectDetailNav';
 import { SiteBackLink } from './components/SiteBackLink';
-import { Landing } from './Landing';
-import { Main } from './pages/Main';
-import { Hyundai } from './pages/Hyundai';
+import { Home } from './pages/Home';
 
 const Lg = lazy(() => import('./pages/Lg').then((m) => ({ default: m.Lg })));
-import { Mealtune } from './pages/Mealtune';
 import { Sooin } from './pages/Sooin';
 import { Sori } from './pages/Sori';
 import { Loth } from './pages/Loth';
 import { Seoculus } from './pages/Seoculus';
 import { Canon } from './pages/Canon';
+import { ExhibitionWebsite } from './pages/ExhibitionWebsite';
 import { ProjectStub } from './pages/ProjectStub';
 
 const GA_MEASUREMENT_ID = 'G-JYWHJEWGD4';
@@ -51,9 +49,8 @@ function AppRoutes() {
       <ScrollToTop />
       <GtagPageView />
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/main" element={<Main />} />
-        <Route path="/projects/hyundai" element={<Hyundai />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/main" element={<Navigate to="/" replace />} />
         <Route
           path="/projects/lg"
           element={
@@ -62,7 +59,7 @@ function AppRoutes() {
             </Suspense>
           }
         />
-        <Route path="/projects/mealtune" element={<Mealtune />} />
+        <Route path="/projects/exhibition-archive" element={<ExhibitionWebsite />} />
         <Route path="/projects/sooin" element={<Sooin />} />
         <Route path="/projects/sori" element={<Sori />} />
         <Route path="/projects/loth" element={<Loth />} />

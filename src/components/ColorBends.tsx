@@ -128,6 +128,11 @@ export interface ColorBendsProps {
   hoverSpeedMultiplier?: number;
   /** 호버 시 속도가 목표값으로 수렴하는 정도(클수록 빠름). 기본 12. */
   hoverSpeedSmooth?: number;
+  /**
+   * 셰이더의 마우스 추적(uPointer)이 목표 위치로 붙는 속도. 값이 클수록 반응이 빠름.
+   * 기본 5(이전 내부값 8보다 느림).
+   */
+  pointerLerpSpeed?: number;
 }
 
 export default function ColorBends({
@@ -149,6 +154,7 @@ export default function ColorBends({
   bandWidth = 6,
   hoverSpeedMultiplier,
   hoverSpeedSmooth = 12,
+  pointerLerpSpeed = 5,
 }: ColorBendsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
@@ -159,12 +165,16 @@ export default function ColorBends({
   const autoRotateRef = useRef(autoRotate);
   const pointerTargetRef = useRef(new THREE.Vector2(0, 0));
   const pointerCurrentRef = useRef(new THREE.Vector2(0, 0));
-  const pointerSmoothRef = useRef(8);
+  const pointerSmoothRef = useRef(pointerLerpSpeed);
   const baseSpeedRef = useRef(speed);
   const pointerOverRef = useRef(false);
   const hoverMultRef = useRef(hoverSpeedMultiplier ?? 1.5);
   const hoverSmoothRef = useRef(hoverSpeedSmooth);
   const hoverEnabledRef = useRef(hoverSpeedMultiplier !== undefined);
+
+  useEffect(() => {
+    pointerSmoothRef.current = pointerLerpSpeed;
+  }, [pointerLerpSpeed]);
 
   useEffect(() => {
     const container = containerRef.current;

@@ -5,6 +5,7 @@ const TITLES: Record<string, string> = {
   sori: 'Sori',
   loth: 'Loth',
   seoculus: 'Seoculus',
+  'exhibition-archive': 'Exhibition Archive',
 };
 
 export function ProjectStub() {

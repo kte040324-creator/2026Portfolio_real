@@ -1,0 +1,343 @@
+/*
+ * Exhibition — Figma 309:41 (1920 × 8117)
+ */
+
+.exhibition-scale-root {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+  background: #3f3f3f;
+  padding-bottom: calc(var(--exhibition-design-h, 8117px) / 1920 * 100%);
+}
+
+.exhibition-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: var(--exhibition-design-h, 8117px);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #fff;
+  overflow: visible;
+  background: #3f3f3f;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  font-synthesis: none;
+}
+
+.exhibition-frame p,
+.exhibition-frame h2 {
+  margin: 0;
+}
+
+.exhibition-frame figure {
+  margin: 0;
+}
+
+/* 헤더: 히어로 위 — Figma 309:42 블랙 텍스트 */
+.exhibition-header {
+  left: 0;
+  right: 0;
+  top: 18px;
+  z-index: 20;
+}
+
+.exhibition-header .project-page-header__breadcrumb {
+  color: #000;
+}
+
+/* 랜딩 이미지 309:1624 — top -4 클램프 */
+.exhibition-hero {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+}
+
+.exhibition-hero img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  pointer-events: none;
+}
+
+/* 우측 Rectangle 와이어 309:101 */
+.exhibition-wire-rect {
+  position: absolute;
+  left: 999px;
+  top: 1148px;
+  width: 840px;
+  height: 1077px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Figma 프레임 안에 전체가 보이도록 — cover/과확대 크롭 방지 */
+.exhibition-wire-rect img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+}
+
+/* Overview */
+.exhibition-overview-heading {
+  position: absolute;
+  left: 69px;
+  top: 1264px;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+}
+
+/* Overview 제목 아래 구분선 — 캐논 SVG(검정) 대신 회색 배경용 흰색 */
+.exhibition-overview-line {
+  position: absolute;
+  left: 69px;
+  top: 1330px;
+  width: 319px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.exhibition-overview-copy {
+  position: absolute;
+  left: 69px;
+  top: 1380px;
+  width: 346px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+}
+
+.exhibition-overview-copy p {
+  margin: 0;
+}
+
+.exhibition-overview-copy__spacer {
+  line-height: 0;
+  min-height: 0;
+}
+
+.exhibition-label-video p,
+.exhibition-label-photo p {
+  margin: 0;
+}
+
+.exhibition-wire-heading {
+  position: absolute;
+  left: 69px;
+  top: 2626px;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+}
+
+.exhibition-label-popup {
+  position: absolute;
+  left: 279px;
+  top: 2940px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+}
+
+.exhibition-label-video {
+  position: absolute;
+  left: 280px;
+  top: 3726px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+}
+
+.exhibition-label-photo {
+  position: absolute;
+  left: 280px;
+  top: 4515px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.22px;
+}
+
+.exhibition-wire-img-a,
+.exhibition-wire-img-b,
+.exhibition-wire-img-c {
+  position: absolute;
+  left: 443px;
+  overflow: hidden;
+}
+
+.exhibition-wire-img-a {
+  top: 2706px;
+  width: 1280px;
+  height: 256px;
+}
+
+.exhibition-wire-img-b {
+  top: 3066px;
+  width: 1280px;
+  height: 720px;
+}
+
+.exhibition-wire-img-c {
+  top: 3855px;
+  width: 1280px;
+  height: 720px;
+}
+
+.exhibition-wire-img-a img,
+.exhibition-wire-img-b img,
+.exhibition-wire-img-c img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Line 99 */
+.exhibition-line-connector {
+  position: absolute;
+  left: 1057px;
+  top: 4396.5px;
+  width: 52px;
+  height: 15px;
+  transform: translateY(-50%);
+}
+
+.exhibition-line-connector img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.exhibition-designed-heading {
+  position: absolute;
+  left: 69px;
+  top: 5063px;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+}
+
+/* Designed Pages — Figma 309:1664–1666, 1663 (2×2) */
+.exhibition-designed-img-a,
+.exhibition-designed-img-b,
+.exhibition-designed-img-c,
+.exhibition-designed-img-d {
+  position: absolute;
+  overflow: hidden;
+}
+
+.exhibition-designed-img-a {
+  left: 61px;
+  top: 5227px;
+  width: 872px;
+  height: 490px;
+}
+
+.exhibition-designed-img-b {
+  left: 968px;
+  top: 5227px;
+  width: 872px;
+  height: 490px;
+}
+
+.exhibition-designed-img-c {
+  left: 968px;
+  top: 5783px;
+  width: 876px;
+  height: 493px;
+}
+
+.exhibition-designed-img-d {
+  left: 61px;
+  top: 5783px;
+  width: 876px;
+  height: 493px;
+}
+
+.exhibition-designed-img-a img,
+.exhibition-designed-img-b img,
+.exhibition-designed-img-c img,
+.exhibition-designed-img-d img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.exhibition-proto-heading {
+  position: absolute;
+  left: 69px;
+  top: 6611px;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.33px;
+}
+
+/* Figma 309:1654 — left 71px (프레임 기준), 가운데 정렬 아님 */
+.exhibition-prototype-video {
+  position: absolute;
+  left: 71px;
+  top: 6720px;
+  width: 1777px;
+  height: 998px;
+  overflow: hidden;
+}
+
+.exhibition-prototype-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.exhibition-meta-tools {
+  position: absolute;
+  left: 86px;
+  top: 8024px;
+  width: 384px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.165px;
+  color: #d0d0d0;
+}
+
+.exhibition-meta-dates {
+  position: absolute;
+  left: 1665px;
+  top: 8013px;
+  width: 177px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.165px;
+  color: #d0d0d0;
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exhibition-prototype-video video {
+    display: none;
+  }
+}

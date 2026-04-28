@@ -1,0 +1,438 @@
+/*
+ * Figma 291:210 — portfolio home (1920 × 8790)
+ * 썸네일·메인 비주얼 PNG: `public/assets/main/` + `mainAsset()`
+ */
+
+.home-scale-root {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: linear-gradient(93.9966deg, rgb(239, 233, 233) 0%, rgb(255, 255, 255) 100%);
+  /*
+   높이 = (디자인 세로 / 가로) × 부모 너비.
+   잘못된 예: 8790px / 1920 → ~4.6px 로 잡혀 레이아웃이 붕괴함. px는 비율에 넣지 않는다.
+  */
+  padding-bottom: calc(100% * var(--home-design-h-num, 8790) / 1920);
+}
+
+.home-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: calc(var(--home-design-h-num, 8790) * 1px);
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(93.9966deg, rgb(239, 233, 233) 0%, rgb(255, 255, 255) 100%);
+  isolation: isolate;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  font-synthesis: none;
+}
+
+.home-top-fade {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(217, 217, 217, 0) 0%, #fff 100%);
+}
+
+.home-mail {
+  position: absolute;
+  left: calc(2.5% + 0.28px);
+  top: 64px;
+  width: 258.404px;
+  line-height: 0;
+  text-decoration: none;
+  display: block;
+  z-index: 5;
+  transition: opacity 0.52s ease;
+}
+
+.home-mail:hover {
+  opacity: 0.72;
+}
+
+.home-mail img {
+  display: block;
+  width: 258.404px;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.home-year {
+  position: absolute;
+  left: calc(92.5% + 29.76px);
+  top: 65px;
+  width: 64.336px;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  z-index: 5;
+}
+
+.home-year img {
+  display: block;
+  width: 64.336px;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: right center;
+}
+
+.home-hero-title {
+  position: absolute;
+  left: 50%;
+  top: 472px;
+  transform: translateX(-50%);
+  margin: 0;
+  width: max-content;
+  max-width: calc(100% - 80px);
+  text-align: center;
+  white-space: nowrap;
+  font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
+  font-size: 140px;
+  font-weight: 220;
+  font-style: normal;
+  line-height: 1.1;
+  letter-spacing: -2.8px;
+  color: #252327;
+  font-variation-settings: 'ital' 30;
+}
+
+.home-hero-sub {
+  position: absolute;
+  left: 50%;
+  top: 627px;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
+  font-size: 46px;
+  font-weight: 70;
+  line-height: 1.1;
+  letter-spacing: -0.92px;
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+  mix-blend-mode: difference;
+  font-variation-settings: 'ital' 30;
+}
+
+.home-works-heading {
+  position: absolute;
+  left: calc(12.5% - 16px);
+  top: 1602px;
+  margin: 0;
+  font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
+  font-size: 40px;
+  font-weight: 170;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+  mix-blend-mode: difference;
+  font-variation-settings: 'ital' 30;
+}
+
+@keyframes home-sticker-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Hero stickers (Frame 383–387) 지속 회전 ─────────────────── */
+.home-hero-sticker {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.home-hero-sticker img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center center;
+  animation: home-sticker-spin 44s linear infinite;
+}
+
+.home-hero-sticker--384 img {
+  animation-duration: 56s;
+  animation-direction: reverse;
+}
+
+.home-hero-sticker--385 img {
+  animation-duration: 38s;
+}
+
+.home-hero-sticker--386 img {
+  animation-duration: 50s;
+  animation-direction: reverse;
+}
+
+.home-hero-sticker--387 img {
+  animation-duration: 62s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-sticker img {
+    animation: none;
+  }
+}
+
+.home-hero-sticker--383 {
+  left: calc(7.5% - 3px);
+  top: 149px;
+  width: 323px;
+  height: 323px;
+}
+
+.home-hero-sticker--384 {
+  left: calc(45% + 34px);
+  top: 228px;
+  width: 215px;
+  height: 220px;
+}
+
+.home-hero-sticker--385 {
+  left: calc(75% + 7px);
+  top: 149px;
+  width: 329px;
+  height: 329px;
+}
+
+.home-hero-sticker--386 {
+  left: calc(82.5% + 2px);
+  top: 652px;
+  width: 256px;
+  height: 253px;
+}
+
+.home-hero-sticker--387 {
+  left: calc(7.5% + 28px);
+  top: 729px;
+  width: 238px;
+  height: 215px;
+}
+
+/* ── Project thumbnails (프로젝트 이동은 View Project만) ───────────────── */
+.home-thumb-wrap {
+  position: absolute;
+  width: 830px;
+  height: 470px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+.home-thumb {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.home-thumb--gradient {
+  background: linear-gradient(119.082deg, rgb(239, 233, 233) 0%, rgb(255, 255, 255) 100%);
+}
+
+.home-thumb--teal {
+  background: #7cf7db;
+}
+
+.home-thumb--gradient2 {
+  background: linear-gradient(119.082deg, rgb(239, 233, 233) 0%, rgb(255, 255, 255) 100%);
+}
+
+.home-thumb--black {
+  background: #000;
+}
+
+.home-thumb__img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* ── Project panel: PNG 665×343 + Frame 389 — 버튼은 이미지 위 오버레이 ─ */
+.home-panel-slot {
+  position: absolute;
+  width: 665px;
+  height: 343px;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+.home-panel-stack {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0;
+  isolation: isolate;
+}
+
+.home-panel-image {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.home-panel-slot:hover .home-panel-image {
+  opacity: 0.97;
+}
+
+/*
+ * Frame 389 — 링크는 pill만; 패널·이미지는 클릭으로 이동하지 않음.
+ */
+.home-panel-cta.home-panel-cta--fig389.home-panel-cta-link {
+  position: absolute;
+  z-index: 2;
+  right: 12px;
+  bottom: 12px;
+  box-sizing: border-box;
+  width: 325px;
+  height: 64px;
+  border-radius: 50px;
+  border: 1.5px solid #252327;
+  overflow: hidden;
+  cursor: pointer;
+  background: #ffffff;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    opacity 0.48s ease,
+    border-color 0.48s ease,
+    color 0.48s ease;
+}
+
+.home-panel-cta-link:focus-visible {
+  outline: 2px solid rgba(37, 35, 39, 0.45);
+  outline-offset: 3px;
+}
+
+.home-panel-cta__inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+  padding: 6px 12px;
+  box-sizing: border-box;
+}
+
+.home-panel-cta__arrow-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  margin-bottom: -1px;
+}
+
+/*
+ * `view-project-arrow.svg` 자체가 우향(→) 형태라 추가 회전 없음.
+ */
+.home-panel-cta__arrow {
+  display: block;
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
+  object-fit: contain;
+  transition: opacity 0.48s ease;
+}
+
+.home-panel-cta__label {
+  font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
+  font-size: 40px;
+  font-weight: 130;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  white-space: nowrap;
+  color: #252327;
+  font-variation-settings: 'ital' 30;
+  transition: color 0.48s ease;
+}
+
+.home-panel-slot:hover .home-panel-cta.home-panel-cta-link {
+  opacity: 0.96;
+  border-color: #3d3d42;
+}
+
+.home-panel-cta-link:hover {
+  opacity: 0.94;
+}
+
+.home-panel-slot:hover .home-panel-cta__label {
+  color: #1a1820;
+}
+
+.home-panel-slot:hover .home-panel-cta__arrow {
+  opacity: 0.92;
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.home-footer-line {
+  position: absolute;
+  left: 50%;
+  top: 8456px;
+  transform: translate(-50%, -50%);
+  width: min(1743px, calc(100% - 88px));
+  height: 0;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.home-contact {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 8509px;
+  display: flex;
+  justify-content: center;
+  padding: 0 24px 120px;
+}
+
+.home-contact__link {
+  display: inline-block;
+  font-family: 'FFFAcidGrotesk', system-ui, sans-serif;
+  font-size: 140px;
+  font-weight: 70;
+  line-height: 0.8;
+  letter-spacing: 2.8px;
+  text-align: center;
+  color: #000;
+  text-decoration: none;
+  font-variation-settings: 'ital' 30;
+  max-width: 100%;
+  width: min(1235px, 100%);
+  transition: opacity 0.52s ease;
+}
+
+.home-contact__link:hover {
+  opacity: 0.75;
+}

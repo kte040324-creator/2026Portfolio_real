@@ -7,21 +7,22 @@
   font-display: swap;
 }
 
-/* 좌/우 고정 네비 — y = 18px + safe-area */
+/* 좌/우 고정 네비 — next project와 동일 폰트로 back home */
 .site-back {
   position: fixed;
-  top: calc(18px + env(safe-area-inset-top, 0px));
+  top: calc(26px + env(safe-area-inset-top, 0px));
   left: max(48px, env(safe-area-inset-left, 0px));
   z-index: 1100;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
+  justify-content: flex-start;
+  width: auto;
+  max-width: min(40vw, 200px);
+  min-height: 0;
   margin: 0;
   padding: 0;
   color: var(--color-black);
-  line-height: 0;
+  line-height: 1.5;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -30,16 +31,6 @@
 
 .site-back:hover {
   opacity: 0.75;
-}
-
-.site-back__arrow {
-  display: block;
-}
-
-.site-back__arrow svg {
-  display: block;
-  width: 24px;
-  height: 24px;
 }
 
 .site-nav-next {

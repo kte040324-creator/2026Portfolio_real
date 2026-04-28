@@ -2,13 +2,12 @@
  * 메인 그리드(CARDS)와 동일한 순서 — 상세 페이지 "다음" 네비용
  */
 export const PROJECT_ROUTES = [
-  '/projects/hyundai',
   '/projects/lg',
   '/projects/sori',
   '/projects/loth',
+  '/projects/exhibition-archive',
   '/projects/sooin',
   '/projects/seoculus',
-  '/projects/mealtune',
   '/projects/canon',
 ] as const;
 
@@ -24,10 +23,10 @@ export function getNextProjectPath(pathname: string): string | null {
 
 /** 어두운 배경 — 고정 좌/우 네비 아이콘 흰색 (ProjectPageHeader variant=dark + Canon 등) */
 export const PROJECT_NAV_ON_DARK = [
-  '/projects/hyundai',
   '/projects/seoculus',
   '/projects/loth',
   '/projects/canon',
+  '/projects/exhibition-archive',
 ] as const;
 
 export function isProjectNavOnDark(pathname: string): boolean {

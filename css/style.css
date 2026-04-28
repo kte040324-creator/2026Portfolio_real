@@ -38,7 +38,6 @@
   --gutter: 48px;
 
   /* Z-index layers */
-  --z-loading: 1000;
   --z-nav: 100;
   --z-content: 1;
 }

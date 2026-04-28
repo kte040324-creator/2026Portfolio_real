@@ -1,36 +1,4 @@
-/* Canon Camera Museum — Figma 215:2580 (1920 × 7040) */
-
-@font-face {
-  font-family: 'Neue Haas Grotesk Display Pro';
-  src: url('/fonts/NeueHaasGrotesk/NHaasGroteskDSPro-35XLt.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Neue Haas Grotesk Display Pro';
-  src: url('/fonts/NeueHaasGrotesk/NHaasGroteskDSPro-55Rg.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Neue Haas Grotesk Display Pro';
-  src: url('/fonts/NeueHaasGrotesk/NHaasGroteskDSPro-65Md.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Neue Haas Grotesk Display Pro';
-  src: url('/fonts/NeueHaasGrotesk/NHaasGroteskDSPro-75Bd.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* Canon Camera Museum — Figma 215:2580 (1920 × 5964) */
 
 .canon-scale-root {
   width: 100%;
@@ -40,7 +8,7 @@
   /* Safari: overflow: clip is recent only; hidden matches layout intent */
   overflow-x: hidden;
   background: #ddd;
-  padding-bottom: calc(var(--canon-design-h, 5920px) / 1920 * 100%);
+  padding-bottom: calc(var(--canon-design-h, 5964px) / 1920 * 100%);
 }
 
 .canon-frame {
@@ -48,7 +16,7 @@
   top: 0;
   left: 0;
   width: 1920px;
-  height: var(--canon-design-h, 5920px);
+  height: var(--canon-design-h, 5964px);
   /* scale() is set inline in Canon.tsx — avoids empty page when --canon-scale fails */
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #000;
@@ -77,7 +45,26 @@
   z-index: 20;
 }
 
-/* Overview */
+.canon-header .project-page-header__breadcrumb {
+  color: #fff;
+}
+
+.canon-landing-video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1107px;
+  overflow: hidden;
+}
+
+.canon-landing-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .canon-overview-heading {
   position: absolute;
   left: 69px;
@@ -251,291 +238,6 @@
   white-space: nowrap;
 }
 
-/* Figma 249:218 — landing first frame (was below hero; hero removed in 215:2580) */
-.canon-landing-block {
-  left: 0;
-  top: 79px;
-  width: 1920px;
-  height: 1080px;
-  background: #000;
-  overflow: hidden;
-  position: absolute;
-}
-
-/* 순서: decrypt → videos → logo PNG → line draw → museum PNG */
-.canon-landing-block[data-landing-phase='decrypt'] .canon-landing-clock,
-.canon-landing-block[data-landing-phase='decrypt'] .canon-landing-eye,
-.canon-landing-block[data-landing-phase='decrypt'] .canon-landing-pupil {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.canon-landing-block:not([data-landing-phase='decrypt']) .canon-landing-clock,
-.canon-landing-block:not([data-landing-phase='decrypt']) .canon-landing-eye,
-.canon-landing-block:not([data-landing-phase='decrypt']) .canon-landing-pupil {
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
-
-/* Figma 249:219 — 위→아래: lead, sub / THE는 pupil 세로선에 고정 */
-.canon-landing-statement {
-  position: absolute;
-  left: calc(50% - 911px);
-  top: 205px;
-  width: 1848px;
-  max-height: 652px;
-  margin: 0;
-  font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 128px;
-  font-weight: 300;
-  line-height: normal;
-  letter-spacing: 3.84px;
-  color: #fff;
-  white-space: pre-wrap;
-  z-index: 2;
-}
-
-.canon-landing-statement__stack {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  align-items: stretch;
-}
-
-.canon-landing-statement__lead,
-.canon-landing-statement__sub {
-  margin: 0;
-}
-
-.canon-landing-statement__body {
-  margin: 0;
-  line-height: 1.3;
-}
-
-/* THE — pupil(1330×282) 오른쪽, 동일 세로 밴드 */
-.canon-landing-the-row {
-  position: absolute;
-  left: calc(1330px + 282px);
-  right: 69px;
-  top: 396px;
-  height: 111px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  margin: 0;
-  font-family: 'Neue Haas Grotesk Display Pro', 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 128px;
-  font-weight: 300;
-  letter-spacing: 3.84px;
-  color: #fff;
-  z-index: 4;
-}
-
-.canon-landing-statement__body--the {
-  width: 100%;
-  line-height: 1.3;
-}
-
-.canon-landing-decrypt {
-  font: inherit;
-  color: inherit;
-  letter-spacing: inherit;
-  vertical-align: top;
-  line-height: 1.3;
-}
-
-.canon-landing-decrypt__revealed,
-.canon-landing-decrypt__encrypted {
-  font: inherit;
-  letter-spacing: inherit;
-}
-
-.canon-landing-decrypt__revealed {
-  color: inherit;
-}
-
-/* opacity on glyphs can change WebKit line-box metrics during decrypt; use color instead */
-.canon-landing-decrypt__encrypted {
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.canon-landing-logo {
-  position: absolute;
-  left: 69px;
-  top: 556px;
-  width: 525px;
-  height: 110px;
-  opacity: 0;
-  transition: opacity 0.48s ease;
-}
-
-.canon-landing-block[data-landing-phase='logo'] .canon-landing-logo,
-.canon-landing-block[data-landing-phase='line'] .canon-landing-logo,
-.canon-landing-block[data-landing-phase='museum'] .canon-landing-logo,
-.canon-landing-block[data-landing-phase='done'] .canon-landing-logo {
-  opacity: 1;
-}
-
-.canon-landing-logo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.canon-landing-clock {
-  position: absolute;
-  left: 18.96%;
-  right: 66.35%;
-  top: 728px;
-  height: 114px;
-}
-
-.canon-landing-eye .canon-landing-vid-slot video,
-.canon-landing-pupil .canon-landing-vid-slot video {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  max-width: none;
-}
-
-.canon-landing-eye .canon-landing-vid-slot video {
-  height: 139%;
-  top: -18.92%;
-}
-
-.canon-landing-pupil .canon-landing-vid-slot video {
-  height: 142.84%;
-  top: -22.1%;
-}
-
-.canon-landing-vid-slot {
-  position: absolute;
-  inset: 0;
-  background: transparent;
-  overflow: hidden;
-}
-
-.canon-landing-clock .canon-landing-vid-slot video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.canon-landing-vid-slot video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Figma 249:227 — white line: 좌→우 scale (phase line 이후) */
-.canon-landing-line {
-  position: absolute;
-  left: 628px;
-  top: 956px;
-  width: 460px;
-  height: 2px;
-  overflow: visible;
-}
-
-.canon-landing-line__draw {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.canon-landing-block[data-landing-phase='line'] .canon-landing-line__draw,
-.canon-landing-block[data-landing-phase='museum'] .canon-landing-line__draw,
-.canon-landing-block[data-landing-phase='done'] .canon-landing-line__draw {
-  transform: scaleX(1);
-}
-
-.canon-landing-line__inner {
-  position: absolute;
-  inset: 0;
-}
-
-.canon-landing-line__inner img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-}
-
-.canon-landing-wordmark {
-  position: absolute;
-  left: 1147px;
-  top: 933px;
-  width: 725px;
-  height: 47px;
-  opacity: 0;
-  transition: opacity 0.45s ease;
-}
-
-.canon-landing-block[data-landing-phase='museum'] .canon-landing-wordmark,
-.canon-landing-block[data-landing-phase='done'] .canon-landing-wordmark {
-  opacity: 1;
-}
-
-.canon-landing-wordmark img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.canon-landing-eye {
-  position: absolute;
-  left: 973px;
-  top: 229px;
-  width: 282px;
-  height: 114px;
-  z-index: 3;
-}
-
-.canon-landing-eye__clip {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.canon-landing-pupil {
-  position: absolute;
-  left: 1330px;
-  top: 396px;
-  width: 282px;
-  height: 111px;
-  z-index: 3;
-}
-
-.canon-landing-pupil__clip {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-/* Figma 249:232 — Atlas Grotesk Medium fallback */
-.canon-landing-copyright {
-  position: absolute;
-  left: 49.99px;
-  top: 30px;
-  width: 136px;
-  height: 32px;
-  margin: 0;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: normal;
-  color: #9a9a9a;
-  font-family: 'Atlas Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
 /* Gallery strip */
 .canon-gallery-strip {
   position: absolute;
@@ -545,7 +247,8 @@
   height: 1080px;
 }
 
-.canon-gallery-strip img {
+.canon-gallery-strip img,
+.canon-gallery-strip video {
   display: block;
   width: 100%;
   height: 100%;
@@ -557,21 +260,22 @@
 .canon-evolution-left {
   position: absolute;
   left: 69px;
-  top: 4188px;
-  width: 638px;
-  height: 432px;
+  top: 4212px;
+  width: 566px;
+  height: 384px;
 }
 
-.canon-evolution-right {
+.canon-detail-video {
   position: absolute;
-  left: 792px;
-  top: 4114px;
-  width: 1031px;
-  height: 580px;
+  left: 722px;
+  top: 4036px;
+  width: 1160px;
+  height: 669px;
+  overflow: hidden;
 }
 
 .canon-evolution-left img,
-.canon-evolution-right img {
+.canon-detail-video video {
   display: block;
   width: 100%;
   height: 100%;
@@ -582,8 +286,8 @@
 /* Figma 249:277 — Line 99 (viewBox ~54×14.7): non-zero box so SVG does not smear */
 .canon-line-dot {
   position: absolute;
-  left: 721.5px;
-  top: 4396.5px;
+  left: 653px;
+  top: 3237.5px;
   width: 52px;
   height: 15px;
   transform: translateY(-50%);
@@ -596,59 +300,20 @@
   object-fit: fill;
 }
 
-/* Figma 249:274 — Arrow 3 */
-.canon-arrow-feature-h {
-  position: absolute;
-  left: 1155px;
-  top: 4891px;
-  width: 601px;
-  height: 15px;
-  transform: translateY(-50%);
-}
-
-.canon-arrow-feature-h img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-}
-
-/* Figma 249:275 — Arrow 4 (horizontal SVG rotated 90°) */
-.canon-arrow-feature-v {
-  position: absolute;
-  left: 75px;
-  top: 4950px;
-  width: 16px;
-  height: 918px;
-  overflow: visible;
-  pointer-events: none;
-}
-
-.canon-arrow-feature-v__img {
+.canon-bottom-wip {
   position: absolute;
   left: 50%;
-  top: 50%;
-  width: 919px;
-  height: 14.7279px;
-  margin-left: calc(-919px / 2);
-  margin-top: calc(-14.7279px / 2);
-  transform: rotate(90deg);
-  transform-origin: center center;
-  max-width: none;
+  bottom: 48px;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: 'FFFAcidGrotesk', 'FFF Acid Grotesk Variable TRIAL', system-ui, sans-serif;
+  font-size: 100px;
+  font-weight: 130;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  white-space: nowrap;
+  color: #000;
+  font-variation-settings: 'wght' 130, 'ital' 30;
 }
 
-.canon-featured-card {
-  position: absolute;
-  left: 134px;
-  top: 4950px;
-  width: 1633px;
-  height: 918px;
-}
-
-.canon-featured-card img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-}
